@@ -1,6 +1,12 @@
-// aqui exportaras las funciones que necesites
+//exports
+/* export const headerLogo = () => {
+  const header = document.createElement("header");
+  const logo = document.createElement("img");
+  logo.classList.add("logo-gggirls");
+  logo.setAttribute("alt", "Logo GGgirls");
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
+  header.appendChild(logo);
+
+  return header;
 };
+*/

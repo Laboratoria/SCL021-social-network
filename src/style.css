@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,600;1,400&family=Rubik+Glitch&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+    color: white;
+    background-color: #251A3A;
+}
+
+header{
+    width: 800px;
+    height: 500px;
+}
+
+.logo-gggirls{
+    background: url("./assets/logo-gggirls.png") no-repeat; 
+}
+
+.titleContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 22px;
+}
+.titleContainer img {
+    height: 150px;
+    width: 150px;
+}
+.titleContainer p {
+    font-family: 'Rubik Glitch', sans-serif;
+    margin: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+line-height: 24px;    color: #B1589B;
+
+text-shadow: 0.5px 0.5px 3px rgba(177, 88, 155, 0.8);
+}
+.titleContainer input {
+    border: solid 1px #B1589B;
+    font-size: 15px;
+    background: #5F5277;
+    border-radius: 10px;
+    width: 70%;
+    height: 50px;
+    text-align: center;
+}
+::placeholder { color: white; }
+
+.titleContainer button {
+background:#656FCB;
+border: solid #656FCB;
+border-radius:10px;
+height: 40px;
+width: 25%;
+}
+#googleButton {
+    background:#656FCB;
+border: solid #656FCB;
+border-radius:10px;
+height: 40px;
+width: 35%
+}
+.registerContainer {
+    background: #411946;
+    border-radius: 5px;
+    border: solid #A85495;
+    border-radius: 5px;
+    gap: 20px;
+    padding: 20px;
+}
+.registerContainer p {
+    background: #411946;
+    display:flex;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+footer{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
