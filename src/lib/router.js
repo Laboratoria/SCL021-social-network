@@ -1,4 +1,4 @@
-//ECMAS
+//ECMAS ESTE ROUTER SI ES
 import {login} from "../component/login.js";
 import {register} from "../component/register.js";
 //import {posts} from "./component/posts.js";
@@ -24,7 +24,7 @@ export const myRouter = (hash) => {
       break;
     case '#/register':
       document.getElementById('mainRoute').innerHTML = '';
-      rootBox.append(register());
+      rootBox.appendChild(register());
       break;
       /*case '#/posts':
         document.getElementById('mainRoute').innerHTML = '';

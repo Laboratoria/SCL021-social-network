@@ -1,6 +1,5 @@
 //ECMAS
 
-
 const register = () => {
     const titleContainer = document.createElement("div");
 titleContainer.classList.add("titleContainer");
@@ -21,22 +20,22 @@ titleContainer.appendChild(title);
     const formLogin = document.createElement("form");
         formLogin.classList.add("formLogin");
 titleContainer.appendChild(formLogin);
- 
+
  //formulario de nombre de usuario
-    const inputUsuario = document.createElement("input");
-        inputEmail.setAttribute("type", "text");
-        inputEmail.setAttribute("id", "usuario");
-        inputEmail.setAttribute("placeholder", "Crea tu nombre de usuario");
-        inputEmail.setAttribute("size", "25");
-        inputEmail.setAttribute("maxlength", "40");
-        inputEmail.setAttribute("required", "");
+    const inputUser = document.createElement("input");
+        inputUser.setAttribute("type", "text");
+        inputUser.setAttribute("id", "usuarioRegister");
+        inputUser.setAttribute("placeholder", "Crea tu nombre de usuario");
+        inputUser.setAttribute("size", "25");
+        inputUser.setAttribute("maxlength", "40");
+        inputUser.setAttribute("required", "");
 
 titleContainer.appendChild(inputUsuario);
 
  //form email
     const inputEmail = document.createElement("input");
         inputEmail.setAttribute("type", "email");
-        inputEmail.setAttribute("id", "emailLogin");
+        inputEmail.setAttribute("id", "emailRegister");
         inputEmail.setAttribute("placeholder", "Ingresa tu correo o usuario");
         inputEmail.setAttribute("size", "25");
         inputEmail.setAttribute("maxlength", "40");
@@ -50,7 +49,7 @@ titleContainer.appendChild(inputEmail);
         inputPassword.setAttribute("onclick", "showPassword", "<i class=`fa-solid fa-eye`></i>");
         inputPassword.setAttribute("onclick", "hidePassword", "<i class=`fa-solid fa-eye-slash`></i>");
         inputPassword.setAttribute("type", "password");
-        inputPassword.setAttribute("id", "passwordLogin");
+        inputPassword.setAttribute("id", "passwordRegister");
         inputPassword.setAttribute("placeholder", "Ingresa tu contraseña");
         inputPassword.setAttribute("minlength", "6");
         inputPassword.setAttribute("maxlength", "12");

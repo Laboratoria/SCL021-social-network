@@ -1,6 +1,6 @@
-import { auth,
+/*import { auth,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword } from "../lib/firebase";
+    signInWithEmailAndPassword } from "../lib/firebase"; */
 
 const login = () => { 
   
