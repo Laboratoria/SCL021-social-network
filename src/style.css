@@ -5,6 +5,9 @@
     padding: 0;
     font-family: 'Jost', sans-serif;
     color: white;
+}
+
+body{
     background-color: #251A3A;
 }
 
@@ -17,6 +20,7 @@ header{
     background: url("./assets/logo-gggirls.png") no-repeat; 
 }
 
+/*LOGIN */
 .titleContainer{
     display: flex;
     flex-direction: column;
@@ -25,72 +29,78 @@ header{
     align-items: center;
     padding: 20px;
     gap: 22px;
+
 }
+
 .titleContainer img {
     height: 150px;
     width: 150px;
 }
+
 .titleContainer p {
-    font-family: 'Rubik Glitch', sans-serif;
     margin: 20px;
     font-style: normal;
     font-weight: 400;
     font-size: 45px;
-line-height: 24px;    color: #B1589B;
-
-text-shadow: 0.5px 0.5px 3px rgba(177, 88, 155, 0.8);
+    line-height: 24px;    
+    color: white;
+    text-shadow: 0.5px 0.5px 3px rgba(177, 88, 155, 0.8);
 }
+
 .titleContainer input {
     border: solid 1px #B1589B;
     font-size: 15px;
     background: #5F5277;
     border-radius: 10px;
-    width: 70%;
+    width: 65%;
     height: 50px;
     text-align: center;
 }
+
 ::placeholder { color: white; }
 
 .titleContainer button {
-background:#656FCB;
-border: solid #656FCB;
-border-radius:10px;
-height: 40px;
-width: 25%;
-}
-#googleButton {
     background:#656FCB;
-border: solid #656FCB;
-border-radius:10px;
-height: 40px;
-width: 35%
+    border: solid #656FCB;
+    border-radius:10px;
+    padding: 10px;
 }
+
+/*REGISTRO*/
 .registerContainer {
     background: #411946;
     border-radius: 5px;
     border: solid #A85495;
-    border-radius: 5px;
-    gap: 20px;
-    padding: 20px;
-}
-.registerContainer p {
-    background: #411946;
-    display:flex;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
+    padding: 5px;
+    height: auto;
+    width: 50%;
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    gap: 20px;
-    padding: 20px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
 }
+
+.registerContainer p {
+    background: #411946;
+    font-size: 15px;
+    opacity: 50%;
+}
+
+#linkRegister {
+    color: white;
+    opacity: 100%;
+}
+
+a{
+    text-decoration: none;
+    padding-bottom: 20px;
+}
+
+/*FOOTER*/
 footer{
     width: 100%;
     height: 50px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     text-align: center;
 }

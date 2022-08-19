@@ -1,6 +1,6 @@
 //ECMAS
-/*import {login} from "./component/login.js"; */
-import {register} from "./component/register.js";
+import {login} from "../component/login.js";
+import {register} from "../component/register.js";
 //import {posts} from "./component/posts.js";
 // import {iniciar} from "../src/main.js";
 
