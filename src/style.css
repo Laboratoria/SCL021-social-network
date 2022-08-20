@@ -86,6 +86,12 @@ header{
     opacity: 50%;
 }
 
+form i {
+	margin-left: -30px;
+	cursor: pointer;
+}
+
+
 #linkRegister {
     color: white;
     opacity: 100%;

@@ -1,9 +1,5 @@
-/*import { auth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword } from "../lib/firebase"; */
-
 const login = () => { 
-  
+    
     //crea div
 const titleContainer = document.createElement("div");
     titleContainer.classList.add("titleContainer");
@@ -40,8 +36,8 @@ const inputEmail = document.createElement("input");
     //form password
 const inputPassword = document.createElement("input");
     inputPassword.setAttribute("value", "hideandshow");
-    inputPassword.setAttribute("onclick", "showPassword", "<i class=`fa-solid fa-eye`></i>");
-    inputPassword.setAttribute("onclick", "hidePassword", "<i class=`fa-solid fa-eye-slash`></i>");
+    inputPassword.setAttribute("onclick", "showPassword", "<i class=`bi bi-eye-slash` id=`togglePassword`></i> ");
+    inputPassword.setAttribute("onclick", "hidePassword", "<i class=`bi bi-eye-slash` id=`togglePassword`></i> ");
     inputPassword.setAttribute("type", "password");
     inputPassword.setAttribute("id", "passwordLogin");
     inputPassword.setAttribute("placeholder", "Ingresa tu contraseña");
@@ -55,42 +51,27 @@ const inputPassword = document.createElement("input");
     //funcion de ojito para el password
 //PROBANDO REVISAR DESPUES
 
+//PRUEBA 2
+/* //SEGUN ESTA FUNCIONA PERO HAY PROBLEMAS CON LOS ECMAS 
+<input type="password" name="password" id="password" />
+<i class="bi bi-eye-slash" id="togglePassword"></i> */
+
+/*const togglePassword = document.querySelector("#togglePassword");
+const password = document.querySelector("#password");
+
+togglePassword.addEventListener("click", function () {
+    // toggle the type attribute
+    const type = password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
+    
+    // toggle the icon
+    this.classList.toggle("bi-eye");
+});
+*/
+
+
+//PRUEBA 1
 /*
-
-PARTE HTML 
-
- <input class="form" type="text" id="creditCard" name="number" placeholder="Ingrese Nº de tarjeta"/>
-        <i class="far fa-eye" id="toggleCreditCard" style="margin-left: -30px; cursor: pointer;"></i>
-        <p id="error-card" class="error-message hide">Tarjeta de crédito inválida</p>
-        
-  maskify: (creditCard) => {
-    return creditCard.replace(/.(?=.{4})/g, "#");
-  },
-
-};
-
-function cardReplace() {
-    const creditCard = creditCardNumber.value;
-    cardNumber = creditCard.replace(/[^\d]/g, '');
-    const nums = creditCard.replace(/[^\d.#]/g, '');
-    creditCardNumber.value = nums; 
-
-    function toggleCredit() {
-        if (!isToggle) {
-          cardNumber = creditCardNumber.value;
-        }
-        isToggle = !isToggle;
-        if (isToggle) {
-          let cardNumber = creditCardNumber.value;
-          creditCardNumber.value = validator.maskify(cardNumber);
-          return;
-        }
-    
-      creditCardNumber.value = cardNumber;
-    
-    } */
-
-
 /*function hideAndShowPassword(){
     var passwordType = document.querySelectorAll("passwordLogin");
     if (passwordType.getAttribute('type') === "password") {
@@ -136,7 +117,7 @@ const linkRegister = document.createElement("a"); /* id="linkReg" */
     registerContainer.appendChild(linkRegister);
 
 
-
+/*
      // Eventlistener botón login
      titleContainer
 .querySelector('#buttonLogin')
@@ -149,7 +130,7 @@ const linkRegister = document.createElement("a"); /* id="linkReg" */
     signInWithEmailAndPassword(auth, mail, password)
   });
 
-
+*/
   return titleContainer;
 
 };

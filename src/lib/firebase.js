@@ -1,6 +1,7 @@
+/*
+
 //ECMAS
-import { initializeApp } from 'firebase/app';
-import { app, analytics} from './firebaseconfig.js';
+import { app, analytics} from './firebaseconfig';
 import { getAuth, createUserWithEmailAndPassword, 
   signInWithEmailAndPassword } from "firebase/auth";
 
@@ -31,4 +32,6 @@ signInWithEmailAndPassword(auth, email, password)
 
   export { auth,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword } 
+    signInWithEmailAndPassword }
+    
+    */

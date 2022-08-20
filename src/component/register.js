@@ -1,5 +1,3 @@
-//ECMAS
-
 const register = () => {
     const titleContainer = document.createElement("div");
 titleContainer.classList.add("titleContainer");
@@ -30,7 +28,7 @@ titleContainer.appendChild(formLogin);
         inputUser.setAttribute("maxlength", "40");
         inputUser.setAttribute("required", "");
 
-titleContainer.appendChild(inputUsuario);
+titleContainer.appendChild(inputUser);
 
  //form email
     const inputEmail = document.createElement("input");

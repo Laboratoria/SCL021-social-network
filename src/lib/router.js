@@ -1,6 +1,6 @@
 //ECMAS ESTE ROUTER SI ES
-import {login} from "../component/login.js";
-import {register} from "../component/register.js";
+import {login} from "../component/login";
+import {register} from "../component/register";
 //import {posts} from "./component/posts.js";
 // import {iniciar} from "../src/main.js";
 
