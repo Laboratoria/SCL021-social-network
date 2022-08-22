@@ -1,3 +1,8 @@
+//ECMAS
+//import {register} from "../component/register.js";
+import { auth, loginEmailPassword, 
+  signInWithEmailAndPassword } from '../lib/firebase.js';
+
 const login = () => { 
     
     //crea div
@@ -5,7 +10,7 @@ const titleContainer = document.createElement("div");
     titleContainer.classList.add("titleContainer");
 
     //crea logo
-const logo = document.createElement("img");
+const logo = document.createElement("img"); 
     logo.src = './assets/logo-gggirls.png';
     
     titleContainer.appendChild(logo);  
@@ -47,27 +52,23 @@ const inputPassword = document.createElement("input");
   
     titleContainer.appendChild(inputPassword);
 
-    
+    console.log(titleContainer.innerHTML);
     //funcion de ojito para el password
-//PROBANDO REVISAR DESPUES
 
 //PRUEBA 2
-/* //SEGUN ESTA FUNCIONA PERO HAY PROBLEMAS CON LOS ECMAS 
-<input type="password" name="password" id="password" />
-<i class="bi bi-eye-slash" id="togglePassword"></i> */
+
 
 /*const togglePassword = document.querySelector("#togglePassword");
 const password = document.querySelector("#password");
-
-togglePassword.addEventListener("click", function () {
+console.log(togglePassword); */
+/*togglePassword.addEventListener("click", function () {
     // toggle the type attribute
     const type = password.getAttribute("type") === "password" ? "text" : "password";
     password.setAttribute("type", type);
     
     // toggle the icon
     this.classList.toggle("bi-eye");
-});
-*/
+});*/
 
 
 //PRUEBA 1
@@ -83,16 +84,16 @@ togglePassword.addEventListener("click", function () {
   }; */
 
     //botones
-const buttonForLogin = document.createElement("button");
+const buttonForLogin = document.createElement("button", "a");
     buttonForLogin.setAttribute("id","buttonLogin");
-    buttonForLogin.setAttribute("type", "button");
+    buttonForLogin.setAttribute("type", "click");
     buttonForLogin.innerHTML = 'Iniciar sesión';
     titleContainer.appendChild(buttonForLogin);
 
-const buttonForGoogle = document.createElement("button");
+const buttonForGoogle = document.createElement("button", "a");
     buttonForGoogle.setAttribute("type", "button"); 
     buttonForGoogle.setAttribute("id", "googleButton"); 
-    buttonForGoogle.innerHTML = 'Iniciar sesión con Google'; 
+    buttonForGoogle.innerHTML = `<a href="#/posts">Iniciar sesión con Google</a>`; 
     titleContainer.appendChild(buttonForGoogle);
     
     // olvidaste contraseña
@@ -117,20 +118,46 @@ const linkRegister = document.createElement("a"); /* id="linkReg" */
     registerContainer.appendChild(linkRegister);
 
 
-/*
+
      // Eventlistener botón login
-     titleContainer
-.querySelector('#buttonLogin')
-.addEventListener('click', (e) => {
-    e.preventDefault();
+     //aqui estoy ahoraaaaaaaaa pero no sé cómo hacer que tome el botón
+     //let buttonToLogin = document.getElementById("buttonLogin");
+     buttonForLogin.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("emailLogin").value;
+        const password = document.getElementById("passwordLogin").value;
+        
+        console.log(email, password);
+        //estrella es nombre de cualquier cosa porque en verdad no sabemos como indicar que te logueaste o no
+        //las chiquillas lo hacen con catch error
+        //necesitamos recoger eso para ver si el botón te lleva a post o a ningun lado 
+        /*const alertaLogin = (estrella) => {
+          if (valid) {
+            window.location.hash = '#/posts';
+          } /*else (invalid){  */
+         // invalid.alert("No es posible ingresar a tu sesion. Intenta de nuevo!") + `window.location.hash = '#/login'`
+         //};
+         // alertaLogin()
+        //};
+      loginEmailPassword(email, password, alertaLogin);
+
+      
+       });
+      
+    //acá tenemos que usar la función de firebase que recogía los datos
+      //const loginForm = document getelementbyid
+      //loginForm.addeventlistener submit e funcion flecha preventdefault
+      //crea constantes email y pass
+      //usa funcion de guardar importada desde firebase y le pasa user value y pass value
+
 
     // Obtener datos desde el DOM y ejecutar loginEmail
-    let mail = titleContainer.querySelector('#emailLogin').value;
+  /*  let mail = titleContainer.querySelector('#emailLogin').value;
     let password = titleContainer.querySelector('#passwordLogin').value;
     signInWithEmailAndPassword(auth, mail, password)
-  });
+  }); */
 
-*/
+
   return titleContainer;
 
 };

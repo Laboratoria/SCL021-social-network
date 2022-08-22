@@ -1,8 +1,8 @@
 //ECMAS ESTE ROUTER SI ES
-import {login} from "../component/login";
-import {register} from "../component/register";
-//import {posts} from "./component/posts.js";
-// import {iniciar} from "../src/main.js";
+import {login} from "../component/login.js";
+import {register} from "../component/register.js";
+//import {posts} from "../component/posts.js";
+//import {iniciar} from "../src/main.js";
 
 
 //console.log(login);
@@ -13,11 +13,10 @@ import {register} from "../component/register";
  //constante router para crear varias rutas
 
 //definir hash
-
-export const myRouter = (hash) => {
+const myRouter = (hash) => {
   const rootBox = document.getElementById('mainRoute');
-
   switch (hash) {
+    case '#/':
     case '#/login':
       document.getElementById('mainRoute').innerHTML = '';
       rootBox.appendChild(login());
@@ -26,16 +25,17 @@ export const myRouter = (hash) => {
       document.getElementById('mainRoute').innerHTML = '';
       rootBox.appendChild(register());
       break;
-      /*case '#/posts':
+      case '#/posts':
         document.getElementById('mainRoute').innerHTML = '';
         rootBox.appendChild(newContent(getUserData()));
-        break; */
+        break;
     default:
       mainRoute.innerHTML = 'Esta página no existe'
   }
 
 };
 
+export {myRouter}
 
 /*
 export const myRouter = (hash) => {

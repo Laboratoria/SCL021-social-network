@@ -1,6 +1,9 @@
-const register = () => {
+//ECMAS
+import {} from "../lib/firebase.js"
+
+ const register = () => {
     const titleContainer = document.createElement("div");
-titleContainer.classList.add("titleContainer");
+    titleContainer.classList.add("titleContainer");
 
     //crea logo
     const logo = document.createElement("img");
@@ -15,9 +18,9 @@ titleContainer.appendChild(logo);
 titleContainer.appendChild(title);
 
  //crea form
-    const formLogin = document.createElement("form");
-        formLogin.classList.add("formLogin");
-titleContainer.appendChild(formLogin);
+    const formRegister= document.createElement("form");
+    formRegister.classList.add("formRegister");
+titleContainer.appendChild(formRegister);
 
  //formulario de nombre de usuario
     const inputUser = document.createElement("input");
@@ -52,11 +55,44 @@ titleContainer.appendChild(inputEmail);
         inputPassword.setAttribute("minlength", "6");
         inputPassword.setAttribute("maxlength", "12");
         inputPassword.setAttribute("required", "");
-  
-titleContainer.appendChild(inputPassword);
+    
+    titleContainer.appendChild(inputPassword);
+
+//Boton de inicio de sesion
+    const buttonForNewAccount = document.createElement("button");
+    buttonForNewAccount.setAttribute("id","buttonLogin");
+    buttonForNewAccount.setAttribute("type", "button");
+    buttonForNewAccount.innerHTML = 'Crear cuenta';
+        titleContainer.appendChild(buttonForNewAccount);
+
+   
+
+ //cuadrito
+ const registerContainer = document.createElement("div");
+ registerContainer.classList.add("registerContainer");
+ titleContainer.appendChild(registerContainer);
+
+//link volver al login si ya tienes cuenta gg
+    const parrRegister = document.createElement("p");
+        parrRegister.innerHTML = `¿Ya tienes una cuenta?`;
+        registerContainer.appendChild(parrRegister);
+
+    const loginForRegister = document.createElement("a");
+        loginForRegister.innerHTML = `<a href="#/posts">Ingresa</a>`;
+        loginForRegister.setAttribute("id", "linkRegist");
+        registerContainer.appendChild(loginForRegister);
+
+    
+        // guardar informacion de usuario para crear cuenta
+        formRegister.addEventListener("button", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+        
+            registerUser(email, password);
+        });
 
     return titleContainer;
  };
  
  export {register}
- 
