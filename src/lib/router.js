@@ -1,7 +1,7 @@
-//ECMAS ESTE ROUTER SI ES
+//ESTE ROUTER SI ES
 import {login} from "../component/login.js";
 import {register} from "../component/register.js";
-//import {posts} from "../component/posts.js";
+import {posts} from "../component/posts.js";
 //import {iniciar} from "../src/main.js";
 
 
@@ -27,7 +27,7 @@ const myRouter = (hash) => {
       break;
       case '#/posts':
         document.getElementById('mainRoute').innerHTML = '';
-        rootBox.appendChild(newContent(getUserData()));
+        rootBox.appendChild(posts());
         break;
     default:
       mainRoute.innerHTML = 'Esta página no existe'
@@ -36,29 +36,3 @@ const myRouter = (hash) => {
 };
 
 export {myRouter}
-
-/*
-export const myRouter = (hash) => {
-    const routeBox = document.getElementById('mainRoute');
-//para el login
-    switch (hash) {
-      case '#/':
-        document.getElementById('mainRoute').innerHTML = '';
-        routeBox.appendChild(login());
-        break;
-//para el registro
-      case '#/register':
-        document.getElementById('mainRoute').innerHTML = '';
-        routeBox.appendChild(register());
-        break;
-//para los posts
-      case '#posts/':
-        document.getElementById('mainRoute').innerHTML = '';
-        routeBox.appendChild(posts());
-        break;
-    //si escriben mal la URL o la pagina no existe. 
-     default:
-      mainRoute.innerHTML = 'Esta pagina no existe'
-    }
-  } 
-  */

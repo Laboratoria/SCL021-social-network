@@ -21,6 +21,7 @@ header{
 }
 
 /*LOGIN */
+
 .titleContainer{
     display: flex;
     flex-direction: column;
@@ -29,7 +30,6 @@ header{
     align-items: center;
     padding: 20px;
     gap: 22px;
-
 }
 
 .titleContainer img {
