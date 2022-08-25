@@ -1,18 +1,15 @@
-//ESTE ROUTER SI ES
-import {login} from "../component/login.js";
-import {register} from "../component/register.js";
-import {posts} from "../component/posts.js";
-//import {iniciar} from "../src/main.js";
+// ESTE ROUTER SI ES
+import { login } from '../component/login.js';
+import { register } from '../component/register.js';
+import { posts } from '../component/posts.js';
 
-
-//console.log(login);
-//creando rutas de SPA
-//crear login
-//constructor
-//imprimir cosas de login js en contenedor padre en index html
- //constante router para crear varias rutas
-
-//definir hash
+// console.log(login);
+// creando rutas de SPA
+// crear login
+// constructor
+// imprimir cosas de login js en contenedor padre en index html
+// constante router para crear varias rutas
+// definir hash
 const myRouter = (hash) => {
   const rootBox = document.getElementById('mainRoute');
   switch (hash) {
@@ -25,14 +22,12 @@ const myRouter = (hash) => {
       document.getElementById('mainRoute').innerHTML = '';
       rootBox.appendChild(register());
       break;
-      case '#/posts':
-        document.getElementById('mainRoute').innerHTML = '';
-        rootBox.appendChild(posts());
-        break;
+    case '#/posts':
+      document.getElementById('mainRoute').innerHTML = '';
+      rootBox.appendChild(posts());
+      break;
     default:
-      mainRoute.innerHTML = 'Esta página no existe'
+      rootBox.innerHTML = 'Esta página no existe';
   }
-
 };
-
-export {myRouter}
+export { myRouter };
