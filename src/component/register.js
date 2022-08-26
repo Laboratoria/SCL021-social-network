@@ -2,23 +2,23 @@ import { registerEmailPassword } from '../lib/firebase.js';
 
 // Crea Div que contiene Titulo titleContainer
 const register = () => {
-  const titleContainer = document.createElement('div');
-  titleContainer.classList.add('titleContainer');
+  const mainContainer = document.createElement('div');
+  mainContainer.classList.add('mainContainer');
 
   // Crea logo
   const logo = document.createElement('img');
-  logo.src = './assets/logo-gggirls.png';
-  titleContainer.appendChild(logo);
+  logo.src = './assets/audifonito-sin-pixelado.png';
+  mainContainer.appendChild(logo);
 
   // Crea parrafo o titulo
   const title = document.createElement('p');
   title.textContent = '/GGgirls';
-  titleContainer.appendChild(title);
+  mainContainer.appendChild(title);
 
   // Crea form para ingresar datos de Email y Password
   const formRegister = document.createElement('form');
   formRegister.classList.add('formRegister');
-  titleContainer.appendChild(formRegister);
+  mainContainer.appendChild(formRegister);
 
   // Crea ingreso de Email
   const inputEmail = document.createElement('input');
@@ -29,32 +29,54 @@ const register = () => {
   inputEmail.setAttribute('size', '25');
   inputEmail.setAttribute('maxlength', '40');
   inputEmail.setAttribute('required', '');
-  titleContainer.appendChild(inputEmail);
+  mainContainer.appendChild(inputEmail);
 
   // Crea ingreso de Password
+  const passwordContainer = document.createElement('div');
+  passwordContainer.setAttribute('id', 'passwordContainer');
+  mainContainer.appendChild(passwordContainer);
+
   const inputPassword = document.createElement('input');
   inputPassword.setAttribute('value', '');
-  inputPassword.setAttribute('onclick', 'showPassword', '<i class=`fa-solid fa-eye`></i>');
-  inputPassword.setAttribute('onclick', 'hidePassword', '<i class=`fa-solid fa-eye-slash`></i>');
   inputPassword.setAttribute('type', 'password');
-  inputPassword.setAttribute('id', 'passwordRegister');
-  inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña, 4 letras y 4 números AAA');
+  inputPassword.setAttribute('class', 'password');
+  inputPassword.setAttribute('id', 'passwordLogin');
+  inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña');
   inputPassword.setAttribute('minlength', '6');
   inputPassword.setAttribute('maxlength', '12');
   inputPassword.setAttribute('required', '');
-  titleContainer.appendChild(inputPassword);
+  // mainContainer.appendChild(inputPassword);
+
+  passwordContainer.appendChild(inputPassword);
+
+  const checkbox = document.createElement('input');
+  checkbox.setAttribute('type', 'checkbox');
+  // checkbox.setAttribute('value', 'hola');
+  checkbox.setAttribute('id', 'checkbox');
+  passwordContainer.appendChild(checkbox);
+
+  // funcion de ocultado
+  function showPassword() {
+    const x = document.getElementById('passwordLogin');
+    if (x.type === 'password') {
+      x.type = 'text';
+    } else {
+      x.type = 'password';
+    }
+  }
+  checkbox.addEventListener('click', showPassword);
 
   // Boton de Crear Cuenta
   const buttonForNewAccount = document.createElement('button');
   buttonForNewAccount.setAttribute('id', 'buttonLogin');
   buttonForNewAccount.setAttribute('type', 'button');
   buttonForNewAccount.innerHTML = 'Crear cuenta';
-  titleContainer.appendChild(buttonForNewAccount);
+  mainContainer.appendChild(buttonForNewAccount);
 
   // Cuadrito que lleva a Login en caso de cuenta ya creada
   const registerContainer = document.createElement('div');
   registerContainer.classList.add('registerContainer');
-  titleContainer.appendChild(registerContainer);
+  mainContainer.appendChild(registerContainer);
 
   // Link volver al login si ya tienes cuenta gg
   const parrRegister = document.createElement('p');
@@ -76,7 +98,7 @@ const register = () => {
     // window.location.hash = "#/posts";
   });
 
-  return titleContainer;
+  return mainContainer;
 };
 
 export { register };

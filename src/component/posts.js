@@ -6,32 +6,33 @@ import { auth, logOut } from '../lib/firebase.js';
 // cerrar sesion
 const posts = () => {
   // Crea Div que contiene Titulo titleContainer
-  const titleContainer = document.createElement('div');
-  titleContainer.classList.add('titleContainer');
+  const mainContainer = document.createElement('div');
+  mainContainer.classList.add('mainContainer');
 
   // Crea logo
   const logo = document.createElement('img');
-  logo.src = './assets/logo-gggirls.png';
-  titleContainer.appendChild(logo);
+  logo.src = './assets/audifonito-sin-pixelado.png';
+  mainContainer.appendChild(logo);
 
   const dataUser = document.createElement('h4');
   dataUser.setAttribute('id', 'dataUser');
   // console.log(auth.currentUser.displayName);
   dataUser.innerHTML = `<span class="h4bold">Hola!</span> ${auth.currentUser.displayName}`;
-  titleContainer.appendChild(dataUser);
+  mainContainer.appendChild(dataUser);
 
   const buttonForLogOut = document.createElement('button', 'a');
   buttonForLogOut.setAttribute('id', 'buttonLogOut');
   buttonForLogOut.setAttribute('type', 'click');
   buttonForLogOut.innerHTML = '<a href="#/login ">Cerrar sesión</a>';
   buttonForLogOut.innerHTML = 'Cerrar sesión';
-  titleContainer.appendChild(buttonForLogOut);
+  mainContainer.appendChild(buttonForLogOut);
 
   // REVISAR
   buttonForLogOut.addEventListener('click', () => {
     logOut();
   });
-  return titleContainer;
+
+  return mainContainer;
 };
 
 export { posts };

@@ -14,6 +14,7 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 const getUserData = () => auth.currentUser;
+
 // let user = ;
 
 const loginEmailPassword = (email, password, callback) => {
@@ -33,19 +34,16 @@ const loginEmailPassword = (email, password, callback) => {
         return errorCode;
       }
       callback(false);
-      return 'hola';
+      return errorCode;
     });
 };
 
-// console.log(verification.currentUser);
 // -------------- Cerrar sesión
+
 const logOut = () => {
   signOut(auth)
     .then(() => {
-      // window.location.hash = '#/login';
-      // console.log('cerraste sesion');
-      /* if (user.auth.currentUser === user) {
-      await user.auth.signOut(); */
+      window.location.hash = '#/login';
     })
     .catch((error) => error);
 };
@@ -59,16 +57,16 @@ const verification = () => {
       // const uid = user.uid;
       // console.log('te logeastes');
       // console.log(currentUser);
-      return currentUser;
+    } else {
+      /* if (window.location.hash === '#/login') */
     }
-    if (window.location.hash === '#/login') {
-      logOut();
-      // console.log('USUARIO NO LOGGEADO', user);
-      // User is signed out
-    }
-    return 'hola';
+    logOut();
+    // console.log('USUARIO NO LOGGEADO', user);
+    // User is signed out
+    return currentUser;
   });
 };
+
 const registerEmailPassword = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

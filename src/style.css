@@ -1,114 +1,140 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,600;1,400&family=Rubik+Glitch&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Jost', sans-serif;
-    color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Jost', sans-serif;
+  color: white;
 }
 
 body {
-    background-color: #251A3A;
+  background-color: #251a3a;
 }
 
 header {
-    width: 800px;
-    height: 500px;
+  width: 800px;
+  height: 500px;
 }
 
 .logo-gggirls {
-    background: url("./assets/logo-gggirls.png") no-repeat;
+  background: url('./assets/logo-gggirls.png') no-repeat;
 }
 
 /*LOGIN */
 
-.titleContainer {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    gap: 22px;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 22px;
 }
 
-.titleContainer img {
-    height: 150px;
-    width: 150px;
+.mainContainer img {
+  height: 150px;
+  width: 150px;
 }
 
-.titleContainer p {
-    margin: 20px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 45px;
-    line-height: 24px;
-    color: white;
-    text-shadow: 0.5px 0.5px 3px rgba(177, 88, 155, 0.8);
+.mainContainer p {
+  margin: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 24px;
+  color: white;
+  text-shadow: 0.5px 0.5px 3px rgba(177, 88, 155, 0.8);
 }
 
-.titleContainer input {
-    border: solid 1px #B1589B;
-    font-size: 15px;
-    background: #5F5277;
-    border-radius: 10px;
-    width: 65%;
-    height: 50px;
-    text-align: center;
+.mainContainer input {
+  border: solid 1px #b1589b;
+  font-size: 15px;
+  background: #5f5277;
+  border-radius: 10px;
+  width: 65%;
+  height: 50px;
+  text-align: center;
+}
+
+.password {
+  background: transparent !important;
+  border: none !important;
+  width: 100% !important;
+}
+
+#passwordContainer {
+  display: flex;
+  border: solid 1px #b1589b;
+  font-size: 15px;
+  background: #5f5277;
+  border-radius: 10px;
+  width: 65%;
+  height: 50px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+  background: white;
+  margin-right: 10px;
+  position: absolute;
+  align-self: flex-end;
 }
 
 ::placeholder {
-    color: white;
+  color: white;
 }
 
-.titleContainer button {
-    background: #656FCB;
-    border: solid #656FCB;
-    border-radius: 10px;
-    padding: 10px;
+.mainContainer button {
+  background: #656fcb;
+  border: solid #656fcb;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 /*REGISTRO*/
 .registerContainer {
-    background: #411946;
-    border-radius: 5px;
-    border: solid #A85495;
-    padding: 5px;
-    height: auto;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background: #411946;
+  border-radius: 5px;
+  border: solid #a85495;
+  padding: 5px;
+  height: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .registerContainer p {
-    background: #411946;
-    font-size: 15px;
-    opacity: 50%;
+  background: #411946;
+  font-size: 15px;
+  opacity: 50%;
 }
 
 form i {
-    margin-left: -30px;
-    cursor: pointer;
+  margin-left: -30px;
+  cursor: pointer;
 }
 
-
 #linkRegister {
-    color: white;
-    opacity: 100%;
+  color: white;
+  opacity: 100%;
 }
 
 a {
-    text-decoration: none;
-    padding-bottom: 20px;
+  text-decoration: none;
+  padding-bottom: 20px;
 }
 
 /*FOOTER*/
 footer {
-    width: 100%;
-    height: 50px;
-    position: relative;
-    bottom: 0;
-    text-align: center;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  bottom: 0;
+  text-align: center;
 }
