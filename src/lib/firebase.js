@@ -6,6 +6,8 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  sendEmailVerification,
+  sendPasswordResetEmail,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 import { app } from './firebaseconfig.js';
 
@@ -41,7 +43,8 @@ const loginEmailPassword = (email, password, callback) => {
 // -------------- Cerrar sesión
 
 const logOut = () => {
-  signOut(auth)
+  signOut(auth);
+  alert('tesalistes')
     .then(() => {
       window.location.hash = '#/login';
     })
@@ -52,18 +55,14 @@ const logOut = () => {
 const verification = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // console.log('el estado del usuario cambio', user);
       const currentUser = auth.currentUser;
-      // const uid = user.uid;
-      // console.log('te logeastes');
-      // console.log(currentUser);
-    } else {
-      /* if (window.location.hash === '#/login') */
+      window.location.hash = '#/posts';
+      return currentUser;
     }
-    logOut();
-    // console.log('USUARIO NO LOGGEADO', user);
-    // User is signed out
-    return currentUser;
+    window.alert('no estás logueada');
+    window.location.hash = '#/login';
+
+    // location.reload();
   });
 };
 
@@ -111,6 +110,27 @@ const signGoogle = () => {
     });
 };
 
+// Olvidaste tu contraseña
+const resetPass = (email) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
+
+// Enviar correo de validación de Google
+function emailVerification(auth) {
+  sendEmailVerification(auth.currentUser).then(() => {
+    alert(
+      'Se ha enviado un mensaje de verificación a tu correo electrónico, por favor revisalo e intenta inicia sesión.',
+    );
+  });
+}
+
 export {
   app,
   auth,
@@ -120,4 +140,5 @@ export {
   registerEmailPassword,
   signGoogle,
   getUserData,
+  resetPass,
 };

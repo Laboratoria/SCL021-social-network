@@ -1,10 +1,27 @@
 // import {register} from "../component/register.js";
-import { loginEmailPassword, signGoogle } from '../lib/firebase.js';
+import { loginEmailPassword, signGoogle, resetPass } from '../lib/firebase.js';
 
 const login = () => {
   // Crea Div que contiene Titulo mainContainer
   const mainContainer = document.createElement('div');
   mainContainer.classList.add('mainContainer');
+
+  // Intento de popUp
+
+  const divOverlay = document.createElement('div');
+  divOverlay.classList.add('overlay');
+  divOverlay.setAttribute('id', 'overlay');
+  const divPopup = document.createElement('div');
+  divPopup.classList.add('popup');
+  divPopup.setAttribute('id', 'popup');
+  const btnClose = document.createElement('i');
+  btnClose.classList.add('fa-solid');
+  btnClose.classList.add('fa-xmark');
+  const textPopup = document.createElement('p');
+  textPopup.innerHTML = 'Enviaremos a tu email un correo para puedas recuperar tu contraseña.';
+  const formResetPass = document.createElement('form');
+  mainContainer.appendChild(divOverlay);
+  mainContainer.appendChild(divPopup);
 
   // Crea logo
   const logo = document.createElement('img');
@@ -46,12 +63,14 @@ const login = () => {
   inputPassword.setAttribute('minlength', '6');
   inputPassword.setAttribute('maxlength', '12');
   inputPassword.setAttribute('required', '');
+
   // mainContainer.appendChild(inputPassword);
 
   passwordContainer.appendChild(inputPassword);
 
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
+
   // checkbox.setAttribute('value', 'hola');
   checkbox.setAttribute('id', 'checkbox');
   passwordContainer.appendChild(checkbox);
@@ -67,6 +86,50 @@ const login = () => {
   }
   checkbox.addEventListener('click', showPassword);
 
+  // Olvidaste contraseña
+  const forgotPassword = document.createElement('h4');
+  forgotPassword.innerHTML = '¿Olvidaste tu contraseña? Recupérala';
+  mainContainer.appendChild(forgotPassword);
+  forgotPassword.onclick = function () {
+    divPopup.style.display = 'block';
+  };
+
+  const resetPassword = document.createElement('button');
+  resetPassword.classList.add('btnResetPassword');
+  resetPassword.innerHTML = '<i class="fa-solid fa-key"></i> Recuperar Contraseña';
+
+  // snfjnsjnfjnjsfn EJEMPLO LUNA
+
+  /* Abrir y cerrar popup
+  textReset.addEventListener("click", (e) => {
+    e.preventDefault();
+    divOverlay.classList.add("active");
+    divPopup.classList.add("active");
+  });
+  btnClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    divOverlay.classList.remove("active");
+    divPopup.classList.remove("active");
+  });
+  formResetPass.addEventListener("submit", (e) => {
+    e.preventDefault();
+    divOverlay.classList.remove("active");
+    divPopup.classList.remove("active");
+    const saveEmail = document.getElementById("userEmail").value;
+    resetPass(saveEmail);
+    divPopup.appendChild(formResetPass);
+  }); */
+
+  // formLogin.appendChild(textReset);
+  formLogin.appendChild(divOverlay);
+  divOverlay.appendChild(divPopup);
+  divPopup.appendChild(btnClose);
+  // divPopup.appendChild(h3Popup);
+  divPopup.appendChild(textPopup);
+  divPopup.appendChild(formResetPass);
+  formResetPass.appendChild(inputEmail);
+  formResetPass.appendChild(resetPassword);
+
   // Botones para Login e inicio de sesión con Google
   const buttonForLogin = document.createElement('button', 'a');
   buttonForLogin.setAttribute('id', 'buttonLogin');
@@ -79,11 +142,6 @@ const login = () => {
   buttonForGoogle.setAttribute('id', 'googleButton');
   buttonForGoogle.innerHTML = '<a href="#/posts">Iniciar sesión con Google</a>';
   mainContainer.appendChild(buttonForGoogle);
-
-  // Olvidaste contraseña
-  const forgotPassword = document.createElement('h3');
-  forgotPassword.textContent = '¿Olvidaste tu contraseña?';
-  mainContainer.appendChild(forgotPassword);
 
   // Crea Div dentro de Div principal el donde se encuentra link a Register
   const registerContainer = document.createElement('div');
