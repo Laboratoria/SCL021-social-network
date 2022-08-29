@@ -1,5 +1,6 @@
 // CONFIG FIREBASE APP
 // Import the functions you need from the SDKs you need
+/* eslint import/no-unresolved: [2, { ignore: ['gstatic'] }] */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/analytics.js";
 // TODO: Add SDKs for Firebase products that you want to use

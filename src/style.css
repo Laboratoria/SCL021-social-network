@@ -57,7 +57,7 @@ header {
   text-align: center;
 }
 
-.password {
+.transparent-input {
   background: transparent !important;
   border: none !important;
   width: 100% !important;
@@ -75,6 +75,20 @@ header {
   flex-direction: column;
   justify-content: center;
 }
+
+#emailContainer {
+  display: flex;
+  border: solid 1px #b1589b;
+  font-size: 15px;
+  background: #5f5277;
+  border-radius: 10px;
+  width: 65%;
+  height: 50px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
 input[type='checkbox'] {
   width: 15px;
   height: 15px;
