@@ -1,3 +1,4 @@
+/* eslint import/no-unresolved: [2, { ignore: ['gstatic'] }] */
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -6,10 +7,9 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  sendEmailVerification,
-  sendPasswordResetEmail,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 import { app } from './firebaseconfig.js';
+// importar sendPasswordResetEmail y sendEmailVerification
 
 // -----------Firebase Login autorización
 const auth = getAuth();
@@ -43,8 +43,8 @@ const loginEmailPassword = (email, password, callback) => {
 // -------------- Cerrar sesión
 
 const logOut = () => {
-  signOut(auth);
-  alert('tesalistes')
+  signOut(auth)
+    // alert('tesalistes')
     .then(() => {
       window.location.hash = '#/login';
     })
@@ -59,9 +59,9 @@ const verification = () => {
       window.location.hash = '#/posts';
       return currentUser;
     }
-    window.alert('no estás logueada');
+    // window.alert('no estás logueada');
     window.location.hash = '#/login';
-
+    return ('not logged');
     // location.reload();
   });
 };
@@ -111,25 +111,20 @@ const signGoogle = () => {
 };
 
 // Olvidaste tu contraseña
-const resetPass = (email) => {
+/* const resetPass = (email) => {
   sendPasswordResetEmail(auth, email)
     .then(() => {
+      return ('emailSent');
       // Password reset email sent!
     })
     .catch((error) => {
-      const errorCode = error.code;
+      // const errorCode = error.code;
       const errorMessage = error.message;
+      return errorMessage;
     });
-};
+}; */
 
 // Enviar correo de validación de Google
-function emailVerification(auth) {
-  sendEmailVerification(auth.currentUser).then(() => {
-    alert(
-      'Se ha enviado un mensaje de verificación a tu correo electrónico, por favor revisalo e intenta inicia sesión.',
-    );
-  });
-}
 
 export {
   app,
@@ -140,5 +135,4 @@ export {
   registerEmailPassword,
   signGoogle,
   getUserData,
-  resetPass,
 };
