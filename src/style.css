@@ -37,11 +37,14 @@ header {
   width: 150px;
 }
 
+.mainContainer h1 {
+  font-size: 45px;
+}
+
 .mainContainer p {
   margin: 20px;
   font-style: normal;
   font-weight: 400;
-  font-size: 45px;
   line-height: 24px;
   color: white;
   text-shadow: 0.5px 0.5px 3px rgba(177, 88, 155, 0.8);
@@ -92,10 +95,12 @@ header {
 input[type='checkbox'] {
   width: 15px;
   height: 15px;
-  background: white;
+  border: none;
   margin-right: 10px;
   position: absolute;
   align-self: flex-end;
+  appearance: none;
+  
 }
 
 ::placeholder {
@@ -109,11 +114,11 @@ input[type='checkbox'] {
   padding: 10px;
 }
 
-/*REGISTRO*/
 .registerContainer {
   background: #411946;
   border-radius: 5px;
-  border: solid #a85495;
+  border: 1px solid #a85495;
+  box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
   padding: 5px;
   height: auto;
   width: 50%;
@@ -153,24 +158,68 @@ footer {
   text-align: center;
 }
 
-.overlay {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+dialog {
+  width: 60%;
+  height: fit-content;
+  margin: auto;
+  border-radius: 10px;
+  background: #251a3a;
+  border: 1px solid #a85495;
+  box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
+  padding: 5px;
 }
 
-/* Modal Content/Box */
-.popup {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+::backdrop, /* for native <dialog> */
+dialog + .backdrop {
+  /* for dialog-polyfill */
+  /* a transparent shade of gray */
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#mainDivDialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+#mainDivDialog p {
+  margin: 10px;
+}
+
+#botonClosePopUp {
+  width: 10%;
+  align-self: flex-end;
+  background-color: transparent;
+  border: none;
+}
+
+#titulo {
+  margin: 0px;
+}
+
+button#botoncito {
+  margin: 10px 0px 30px;
+}
+
+/*ojitos*/
+.ojitocerrado {
+  background-image: url(./assets/ojo.png) !important;
+  display: inline-block;
+  
+}
+
+.ojitoabierto {
+  background-image: url(./assets/ojo-cerrado.png) !important;
+  display: inline-block;
+}
+.inputMainContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.inputMainContainer input {
+  width:70%;
 }

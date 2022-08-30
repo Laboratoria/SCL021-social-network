@@ -7,6 +7,8 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail, 
+  sendEmailVerification
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 import { app } from './firebaseconfig.js';
 // importar sendPasswordResetEmail y sendEmailVerification
@@ -72,6 +74,7 @@ const registerEmailPassword = (email, password) => {
       window.location.hash = '#/posts';
       // Signed in
       const user = userCredential.user;
+      emailVerification(auth);
       // const userId = user.uid;
       // console.log(user);
       return user;
@@ -111,7 +114,7 @@ const signGoogle = () => {
 };
 
 // Olvidaste tu contraseña
-/* const resetPass = (email) => {
+ const resetPass = (email) => {
   sendPasswordResetEmail(auth, email)
     .then(() => {
       return ('emailSent');
@@ -122,9 +125,16 @@ const signGoogle = () => {
       const errorMessage = error.message;
       return errorMessage;
     });
-}; */
+};
 
 // Enviar correo de validación de Google
+
+function emailVerification(auth) {
+  sendEmailVerification(auth.currentUser)
+    .then(() => {
+      alert('Se ha enviado un mensaje de verificación a tu correo electrónico, por favor revisalo y verifica tu registro. Luego inicia sesión.');
+    });
+}
 
 export {
   app,
@@ -135,4 +145,5 @@ export {
   registerEmailPassword,
   signGoogle,
   getUserData,
+  resetPass
 };

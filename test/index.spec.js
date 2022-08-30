@@ -6,7 +6,7 @@ import {
   logOut,
   verification,
   getUserData,
-} from '../src/lib/firebase';
+} from '../src/lib/firebase.js';
 
 //  TESTS FUNCIONES REGISTRO
 //  registerEmailPassword

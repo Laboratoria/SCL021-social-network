@@ -11,7 +11,7 @@ const register = () => {
   mainContainer.appendChild(logo);
 
   // Crea parrafo o titulo
-  const title = document.createElement('p');
+  const title = document.createElement('h1');
   title.textContent = '/GGgirls';
   mainContainer.appendChild(title);
 
@@ -31,40 +31,45 @@ const register = () => {
   inputEmail.setAttribute('required', '');
   mainContainer.appendChild(inputEmail);
 
-  // Crea ingreso de Password
-  const passwordContainer = document.createElement('div');
-  passwordContainer.setAttribute('id', 'passwordContainer');
-  mainContainer.appendChild(passwordContainer);
-
-  const inputPassword = document.createElement('input');
-  inputPassword.setAttribute('value', '');
-  inputPassword.setAttribute('type', 'password');
-  inputPassword.setAttribute('class', 'password');
-  inputPassword.setAttribute('id', 'passwordLogin');
-  inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña');
-  inputPassword.setAttribute('minlength', '6');
-  inputPassword.setAttribute('maxlength', '12');
-  inputPassword.setAttribute('required', '');
-  // mainContainer.appendChild(inputPassword);
-
-  passwordContainer.appendChild(inputPassword);
-
-  const checkbox = document.createElement('input');
-  checkbox.setAttribute('type', 'checkbox');
-  // checkbox.setAttribute('value', 'hola');
-  checkbox.setAttribute('id', 'checkbox');
-  passwordContainer.appendChild(checkbox);
-
-  // funcion de ocultado
-  function showPassword() {
-    const x = document.getElementById('passwordLogin');
-    if (x.type === 'password') {
-      x.type = 'text';
-    } else {
-      x.type = 'password';
-    }
-  }
-  checkbox.addEventListener('click', showPassword);
+   // Crea ingreso de Password
+   const passwordContainer = document.createElement('div');
+   passwordContainer.setAttribute('id', 'passwordContainer');
+   mainContainer.appendChild(passwordContainer);
+ 
+   const inputPassword = document.createElement('input');
+   inputPassword.setAttribute('value', '');
+   inputPassword.setAttribute('type', 'password');
+   inputPassword.setAttribute('class', 'transparent-input');
+   inputPassword.setAttribute('id', 'passwordLogin');
+   inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña');
+   inputPassword.setAttribute('minlength', '6');
+   inputPassword.setAttribute('maxlength', '12');
+   inputPassword.setAttribute('required', '');
+ 
+   // mainContainer.appendChild(inputPassword);
+ 
+   passwordContainer.appendChild(inputPassword);
+ 
+   const checkbox = document.createElement('input');
+   checkbox.setAttribute('type', 'checkbox');
+   checkbox.setAttribute('class', 'ojitocerrado');
+   checkbox.setAttribute('id', 'ojitoabierto')
+ 
+   // checkbox.setAttribute('value', 'hola');
+   checkbox.setAttribute('id', 'checkbox');
+   passwordContainer.appendChild(checkbox);
+ 
+   // funcion de ocultado
+   function showPassword() {
+     const x = document.getElementById('passwordLogin');
+     if (x.type === 'password') {
+       x.type = 'text';
+     } else {
+       x.type = 'password';
+     }
+   }
+   checkbox.addEventListener('click', showPassword);
+ 
 
   // Boton de Crear Cuenta
   const buttonForNewAccount = document.createElement('button');
