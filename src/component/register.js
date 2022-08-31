@@ -79,17 +79,19 @@ const register = () => {
    checkbox.setAttribute('id', 'checkbox');
    passwordContainer.appendChild(checkbox);
  
-   // funcion de ocultado
-   function showPassword() {
-     const x = document.getElementById('passwordRegister');
-     if (x.type === 'password') {
-       x.type = 'text';
-     } else {
-       x.type = 'password';
-     }
-   }
-   checkbox.addEventListener('click', showPassword);
- 
+
+    // funcion de ocultado
+  function showPassword() {
+    const logForPassword = document.getElementById('passwordLogin');
+    if (logForPassword.type === 'password') {
+      logForPassword.type = 'text';
+      checkbox.setAttribute('class', 'ojitocerrado');
+    } else {
+      logForPassword.type = 'password';
+      checkbox.setAttribute('class', 'ojitoabierto');
+    }
+  }
+  checkbox.addEventListener('click', showPassword);
 
   // Boton de Crear Cuenta
   const buttonForNewAccount = document.createElement('button');

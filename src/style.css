@@ -162,7 +162,8 @@ a {
   padding-bottom: 15px;
 }
 
-dialog {
+ /* Dialog Pop Up */
+ dialog {
   width: 60%;
   height: fit-content;
   margin: auto;
@@ -179,7 +180,6 @@ dialog + .backdrop {
   /* a transparent shade of gray */
   background-color: rgba(0, 0, 0, 0.3);
 }
-
 #mainDivDialog {
   display: flex;
   flex-direction: column;
@@ -188,18 +188,15 @@ dialog + .backdrop {
   gap: 20px;
   padding: 10px;
 }
-
 #mainDivDialog p {
   margin: 10px;
 }
-
 #botonClosePopUp {
   width: 10%;
   align-self: flex-end;
   background-color: transparent;
   border: none;
 }
-
 #titulo {
   margin: 0px;
 }
@@ -221,18 +218,10 @@ button#botoncito {
   background-size: contain !important;
 }
 
-.inputMainContainer {
-  display: flex;
-  justify-content: center;
-  width: auto;
-  padding: 20px;
-}
 
-.inputMainContainer input {
-  width: 70%;
-}
 
 /* POSTS */
+
 
 #navbarContainer {
   position: sticky;
@@ -246,16 +235,25 @@ button#botoncito {
   justify-content: space-between;
   align-items: center;
 }
+
 #buttonLogOut {
   margin-right: 20px;
   height: 40px;
   background-color: #b1589b;
+  border: 0;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .logogg {
   height: inherit;
   padding: 10px;
   margin-left: 20px;
 }
+
 .postsContainer {
   width: 95%;
   margin: auto;
@@ -268,6 +266,7 @@ button#botoncito {
   margin-bottom: 20px;
   align-items: center;
 }
+
 .userDataContainer {
   height: 900px;
   width: 25%;
@@ -276,16 +275,19 @@ button#botoncito {
   flex-direction: column;
   gap: 30px;
 }
+
 #userDataDiv {
   height: 300px;
   width: 100%;
   margin-left: 0px;
 }
+
 #trendingDataDiv {
   height: 600px;
   width: 100%;
   margin-left: 0px;
 }
+
 .divPosts {
   height: 900px;
   width: 90%;
@@ -306,11 +308,22 @@ button#botoncito {
   border-radius: 10px;
 } */
 
+.inputMainContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
+  padding: 10px;
+  gap: 10px;
+}
+
 .postsContainer button {
   background: #656fcb;
   border: 0;
   border-radius: 10px;
+  width: 15%;
   padding: 15px;
+  height: 50px;
+  align-self: center;
 }
 
 .postsContainer input {
@@ -318,13 +331,19 @@ button#botoncito {
   font-size: 15px;
   background: #5f5277;
   border-radius: 10px;
-  width: 65%;
-  height: 50px;
+  width: 70%;
+  height: 100px;
   text-align: center;
+  align-self: center;
+  align-items: center;
 }
 
 .postsContainer button:hover {
   background-color: #6980c7;
+}
+
+.profilePicturePost {
+ display: none;
 }
 
 /* RESPONSIVE PANTALLAS GRANDES */
@@ -337,11 +356,13 @@ button#botoncito {
     background-size: cover;
     backdrop-filter: opacity(20%);
   }
+
   #mainRoute {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
   }
+
   /* Pantalla de Login y Register */
   .mainContainer {
     background: #251a3b;
@@ -354,6 +375,7 @@ button#botoncito {
     margin-top: 50px;
     margin-right: 50px;
   }
+
   /* Todo lo de Posts */ 
    #navbarContainer {
     position: sticky;
@@ -367,16 +389,19 @@ button#botoncito {
     justify-content: space-between;
     align-items: center;
   }
+
   #buttonLogOut {
     margin-right: 20px;
     height: 40px;
     background-color: #b1589b;
   }
+
   .logogg {
     height: inherit;
     padding: 10px;
     margin-left: 20px;
   }
+
   .postsContainer {
     width: 95%;
     margin: auto;
@@ -388,9 +413,10 @@ button#botoncito {
     justify-content: space-evenly;
     margin-bottom: 20px;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
   }
+
   .userDataContainer {
     height: 900px;
     width: 25%;
@@ -399,22 +425,26 @@ button#botoncito {
     flex-direction: column;
     gap: 30px;
   }
+
   #userDataDiv {
     height: 300px;
     width: 100%;
     margin-left: 0px;
   }
+
   #trendingDataDiv {
     height: 600px;
     width: 100%;
     margin-left: 0px;
   }
+
   .divPosts {
     height: 900px;
     width: 70%;
     margin-left: 0px;
     text-align: center;
   }
+
   /* Habian dos clases para el mismo div */
   .insidePost { 
     background-color: #411946;
@@ -424,6 +454,53 @@ button#botoncito {
     border-radius: 10px;
   }
 
+  .inputMainContainer {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    flex-wrap: wrap;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .postsContainer button {
+    background: #656fcb;
+    border: 0;
+    border-radius: 15px;
+    width: 15%;
+    padding: 15px;
+    height: 50px;
+    align-self: center;
+  }
+  
+  /* Vista de Posts en grande */
+  .postsContainer input {
+    border: solid 1px #b1589b;
+    font-size: 15px;
+    background: #5f5277;
+    border-radius: 10px;
+    width: 65%;
+    height: 130px;
+    text-align: center;
+    align-self: center;
+  }
+  
+  .postsContainer button:hover {
+    background-color: #6980c7;
+  }
+  
+  .profilePicturePost {
+    display: flex;
+    border: solid 1px #b1589b;
+    background: #5f5277;
+    border-radius: 5px;
+    width: 11%;
+    height: 130px;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+ 
   footer {
     /*position: absolute; */
     display: flex;

@@ -8,7 +8,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail, 
-  sendEmailVerification
+  sendEmailVerification,
+  
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 import { app } from './firebaseconfig.js';
 // importar sendPasswordResetEmail y sendEmailVerification
@@ -82,9 +83,10 @@ const emailVerification = () => {
 const verification = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const currentUser = auth.currentUser;
+      const currentUser = auth.currentUser; console.log(user);
       window.location.hash = '#/posts';
       return currentUser;
+      
     }
     // window.alert('no estás logueada');
     window.location.hash = '#/login';
@@ -152,23 +154,34 @@ const signGoogle = () => {
 
 //PENDIENTE DEBO VER
 // ------------- Almacenamos el post --------------------
-export const savePost = (description) => {
-  let userName;
-  if (auth.currentUser.displayName == null) {
-    let separateEmail = auth.currentUser.email.split('@');
-    userName = separateEmail[0];
-  } else {
-    userName = auth.currentUser.displayName;
+
+/*const googleUsers = async () => {
+  const user = auth.currentUser;
+  if (user !== null) {
+    const docRef = await addDoc(collection(db, 'googleUsers'), {
+      name: user.displayName,
+      email: user.email,
+      uid: user.uid,
+      photo: user.photoURL,
+    });
   }
-  addDoc(collection(db, 'Post'), {
-    uid: auth.currentUser.uid,
-    name: userName,
-    description: description,
-    likes:[],
+};
+
+// -------- Agregar data de post ------
+export const addData = async (descripcion, titulo) => {
+  const docRef = await addDoc(collection(db, 'publicaciones'), {
+    userId: auth.currentUser.uid,
+    name: auth.currentUser.displayName, 
+    photo: auth.currentUser.photoURL,
+    description: descripcion,
+    titulos: titulo,
+    likes: [],
     likesCounter: 0,
-    datepost: Timestamp.fromDate(new Date()),
+    datePosted: Timestamp.fromDate(new Date()),
   });
-}; 
+  return docRef;
+};
+*/
 
 //---------- Publicar en el posts ----------------------
 /*export const postOnTheWall = async () => {
@@ -227,4 +240,5 @@ export {
   signGoogle,
   getUserData,
   resetPass
+
 };
