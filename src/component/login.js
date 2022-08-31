@@ -7,26 +7,6 @@ const login = () => {
   const mainContainer = document.createElement('div');
   mainContainer.classList.add('mainContainer');
 
-  // Intento de popUp
- 
-  /* const divOverlay = document.createElement('div');
-  divOverlay.classList.add('overlay');
-  divOverlay.setAttribute('id', 'overlay');
-
-  const divPopup = document.createElement('div');
-  /* // divPopup.classList.add('popup');
-  // divPopup.setAttribute('id', 'popup');
-  const btnClose = document.createElement('i');
-  // btnClose.classList.add('fa-solid');
-  // btnClose.classList.add('fa-xmark');
-  const textPopup = document.createElement('p');
-  // textPopup.innerHTML =
-  //  'Enviaremos a tu email un correo para puedas recuperar tu contraseña.';
-  const formResetPass = document.createElement('form');
-  
-  mainContainer.appendChild(divOverlay);*/
-  // mainContainer.appendChild(divPopup); 
-
   // Crea logo
   const logo = document.createElement('img');
   logo.src = './assets/audifonito-sin-pixelado.png';
@@ -98,30 +78,11 @@ const login = () => {
     }
   }
   checkbox.addEventListener('click', showPassword);
-
-  // funcion para cambiar la clase del ojito
-
- /* function eyestoShow(){
-      let ojitos = document.getElementsByClassName('ojitocerrado')
-      if (ojitos.type === 'password') {
-        ojitos.type = 'text'
-      } else if (ojitos = document.getElementById('ojitoabierto'))
-        ojitos.type === 'text' 
-        {  {
-          ojitos.type = 'password'
-        }
-
-      }
-  } */ 
-
- // checkbox.addEventListener('click', eyestoShow); 
   
   // Olvidaste contraseña
   const forgotPassword = document.createElement('h4');
-  forgotPassword.innerHTML = '¿Olvidaste tu contraseña? Recupérala';
+  forgotPassword.innerHTML = '¿Olvidaste tu contraseña? <b>Recupérala</b>';
   mainContainer.appendChild(forgotPassword);
-
-
 
 const ventanaDialog = document.createElement('dialog');
  ventanaDialog.setAttribute('id', 'popUp');
@@ -167,10 +128,19 @@ const botonClosePopUp = document.createElement ('button');
  buttonForForget.addEventListener('click', (e) => {
   e.preventDefault();
   const email = document.getElementById('inputForgetEmail').value;
-  console.log(email);
-  resetPass(email);
+  const alertaReset = (valid) => {
+    if (valid) {
+      //usar lo que retorna la resetemail
+      alert("Hemos enviado un email para que recuperes tu contraseña! Si no lo encuentras, revisa en spam e intenta ingresar de nuevo");
+    }
+    else {
+      alert("Tu usuario no ha sido verificado, intenta con otro correo");
+    }
+  };
+  resetPass(email,alertaReset);
 });
  
+
  /* Funciones para abrir y cerrar Dialog */ 
 forgotPassword.addEventListener('click', showPopUp);
 function showPopUp (){
@@ -206,7 +176,7 @@ function closePopUp() {
   registerContainer.appendChild(pRegister);
 
   const linkRegister = document.createElement('a'); /* id='linkReg' */
-  linkRegister.innerHTML = '<a href="#/register">Regístrate</a>';
+  linkRegister.innerHTML = '<a href="#/register"><b>Regístrate</b></a>';
   linkRegister.setAttribute('id', 'linkRegist');
   registerContainer.appendChild(linkRegister);
 

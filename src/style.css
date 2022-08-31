@@ -16,6 +16,14 @@ header {
   height: 500px;
 }
 
+h4 {
+  font-weight: normal;
+}
+
+b:hover {
+  text-decoration: underline;
+}
+
 .logo-gggirls {
   background: url('./assets/logo-gggirls.png') no-repeat;
 }
@@ -100,7 +108,6 @@ input[type='checkbox'] {
   position: absolute;
   align-self: flex-end;
   appearance: none;
-  
 }
 
 ::placeholder {
@@ -109,9 +116,13 @@ input[type='checkbox'] {
 
 .mainContainer button {
   background: #656fcb;
-  border: solid #656fcb;
+  border: 0;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
+}
+
+.mainContainer button:hover {
+  background-color: #6980c7;
 }
 
 .registerContainer {
@@ -206,13 +217,12 @@ button#botoncito {
 
 /*ojitos*/
 .ojitocerrado {
-  background-image: url(./assets/ojo.png) !important;
+  background-image: url(./assets/ojitosabiertos-blanco.png) !important;
   display: inline-block;
-  
 }
 
 .ojitoabierto {
-  background-image: url(./assets/ojo-cerrado.png) !important;
+  background-image: url(./assets/ojitoscerrados-blanco.png) !important;
   display: inline-block;
 }
 .inputMainContainer {
@@ -221,5 +231,92 @@ button#botoncito {
   width: 100%;
 }
 .inputMainContainer input {
-  width:70%;
+  width: 70%;
+}
+
+/* POSTS */
+
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 22px;
+}
+.postsContainer img {
+  height: 150px;
+  width: 150px;
+}
+
+.postsContainer button {
+  background: #656fcb;
+  border: 0;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.postsContainer input {
+  border: solid 1px #b1589b;
+  font-size: 15px;
+  background: #5f5277;
+  border-radius: 10px;
+  width: 65%;
+  height: 50px;
+  text-align: center;
+}
+
+.postsContainer button:hover {
+  background-color: #6980c7;
+}
+
+#buttonPost {
+}
+
+/* RESPONSIVE */
+@media only screen and (min-width: 990px) {
+  body {
+    background-image: url(https://giffiles.alphacoders.com/214/214388.gif);
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    backdrop-filter: opacity(20%);
+  }
+
+  #mainRoute {
+    display: flex;
+    justify-content: flex-end;
+    padding: 70px;
+  }
+
+  .mainContainer {
+    background: #251a3b;
+    border: 2px solid #b1589b;
+    box-shadow: 0px 0px 8px 1px #b1589b;
+    border-radius: 8px;
+    height: 85%;
+    width: 30%;
+  }
+
+  footer {
+    /*position: absolute; */
+    margin: auto;
+    width: 30%;
+    height: 50px;
+    bottom: 0;
+    padding: 10px;
+    background-color: #251a3b;
+  }
+
+  .postsContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #251a3b;
+  }
+  .logogg {
+    height: 100px;
+    width: 100px;
+  }
 }

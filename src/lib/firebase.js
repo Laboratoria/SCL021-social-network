@@ -21,6 +21,7 @@ const getUserData = () => auth.currentUser;
 
 // let user = ;
 
+// -----------Ingresar con Email y contraseña 
 const loginEmailPassword = (email, password, callback) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -32,9 +33,12 @@ const loginEmailPassword = (email, password, callback) => {
       const errorCode = error.code;
       //  const errorMessage = error.message;
       if (errorCode === 'auth/user-not-found') {
+        alert(errorCode);
         return errorCode;
+       
       }
       if (errorCode === 'auth/wrong-password') {
+        alert (errorCode);
         return errorCode;
       }
       callback(false);
@@ -42,18 +46,39 @@ const loginEmailPassword = (email, password, callback) => {
     });
 };
 
-// -------------- Cerrar sesión
-
-const logOut = () => {
-  signOut(auth)
-    // alert('tesalistes')
-    .then(() => {
-      window.location.hash = '#/login';
+// -----------Registrarse con Email y Contraseña
+const registerEmailPassword = (email, password) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      window.location.hash = '#/posts';
+      // Signed in
+      const user = userCredential.user;
+      emailVerification(auth);
+      //  const userId = user.uid;
+      return user;
     })
-    .catch((error) => error);
+    .catch((error) => {
+      const errorCode = error.code;
+      // const errorMessage = error.message;
+      // console.log(user);
+      return errorCode;
+    });
 };
 
-// -------- Permite verificar si hay un usuario conectado -----------
+// ----------- Enviar correo de verificacion 
+const emailVerification = () => { 
+  sendEmailVerification(auth.currentUser) 
+    .then(() => {
+      alert('Se ha enviado un mensaje de verificación a tu correo electrónico, por favor revisalo y verifica tu registro. Luego inicia sesión.');
+    });
+}
+/* function emailVerification(auth) {
+  sendEmailVerification(auth.currentUser)
+    .then(() => {
+      alert('Se ha enviado un mensaje de verificación a tu correo electrónico, por favor revisalo y verifica tu registro. Luego inicia sesión.');
+    });
+} */
+// -------- Permite verificar si hay un usuario conectado 
 const verification = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -68,26 +93,22 @@ const verification = () => {
   });
 };
 
-const registerEmailPassword = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      window.location.hash = '#/posts';
-      // Signed in
-      const user = userCredential.user;
-      emailVerification(auth);
-      // const userId = user.uid;
-      // console.log(user);
-      return user;
+// -------------- Cerrar sesión
+
+const logOut = () => {
+  signOut(auth)
+    // alert('tesalistes')
+    .then(() => {
+      window.location.hash = '#/login';
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      // const errorMessage = error.message;
-      // console.log(user);
-      return errorCode;
-    });
+    .catch((error) => error);
 };
 
-// Igreso con google gg
+
+
+
+
+// ----------- Ingreso con Google 
 const signGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -113,28 +134,25 @@ const signGoogle = () => {
     });
 };
 
-// Olvidaste tu contraseña
- const resetPass = (email) => {
+// ----------- Reestablecer contraseña olvidada
+ const resetPass = (email, callback) => {
   sendPasswordResetEmail(auth, email)
-    .then(() => {
-      return ('emailSent');
-      // Password reset email sent!
-    })
+  .then((userCredential) => {
+    callback(true);
+    return userCredential;
+    // console.log('entraste jeje');
+  })
     .catch((error) => {
+      callback(false);
       // const errorCode = error.code;
       const errorMessage = error.message;
       return errorMessage;
     });
 };
 
-// Enviar correo de validación de Google
 
-function emailVerification(auth) {
-  sendEmailVerification(auth.currentUser)
-    .then(() => {
-      alert('Se ha enviado un mensaje de verificación a tu correo electrónico, por favor revisalo y verifica tu registro. Luego inicia sesión.');
-    });
-}
+
+
 
 export {
   app,

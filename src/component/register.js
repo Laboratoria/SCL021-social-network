@@ -20,6 +20,14 @@ const register = () => {
   formRegister.classList.add('formRegister');
   mainContainer.appendChild(formRegister);
 
+  const inputUser = document.createElement('input');
+  inputUser.setAttribute('value', '');
+  inputUser.setAttribute('type', 'text');
+  inputUser.setAttribute('id', 'usuario');
+  inputUser.setAttribute('placeholder', 'Ingresa nombre de usuario');
+  inputUser.setAttribute('maxlenght', '15');
+  mainContainer.appendChild(inputUser);
+
   // Crea ingreso de Email
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('value', '');
@@ -89,17 +97,18 @@ const register = () => {
   registerContainer.appendChild(parrRegister);
 
   const loginForRegister = document.createElement('a');
-  loginForRegister.innerHTML = '<a href="#/login">Ingresa</a>';
+  loginForRegister.innerHTML = '<a href="#/login"><b>Ingresa</b></a>';
   loginForRegister.setAttribute('id', 'linkRegist');
   registerContainer.appendChild(loginForRegister);
 
   // Guardar información de usuario para crear cuenta
   buttonForNewAccount.addEventListener('click', (e) => {
     e.preventDefault();
+    const user = document.getElementById('usuario').value;
     const email = document.getElementById('emailRegister').value;
     const password = document.getElementById('passwordRegister').value;
     // console.log(email, password);
-    registerEmailPassword(email, password);
+    registerEmailPassword(email, password, user);
     // window.location.hash = "#/posts";
   });
 
