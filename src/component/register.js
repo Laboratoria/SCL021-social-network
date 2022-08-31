@@ -10,6 +10,8 @@ const register = () => {
   logo.src = './assets/audifonito-sin-pixelado.png';
   mainContainer.appendChild(logo);
 
+ 
+
   // Crea parrafo o titulo
   const title = document.createElement('h1');
   title.textContent = '/GGgirls';

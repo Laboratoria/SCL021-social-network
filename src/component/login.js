@@ -2,6 +2,19 @@
 // import { check } from 'yargs';
 import { loginEmailPassword, signGoogle, resetPass } from '../lib/firebase.js';
 // importar resetPass
+
+ //bienvenida
+ const welcome = document.createElement('div');
+ welcome.setAttribute('class','bienvenida');
+
+ const slogan = document.createElement('h1');
+ slogan.innerHTML = 'Bienvenidx a Good Game Girls';
+ welcome.appendChild(slogan);
+
+ const pForSlogan = document.createElement('h3');
+ pForSlogan.innerHTML = 'La comunidad gamer femenina más grande de Latinoamérica!'
+ welcome.appendChild(pForSlogan);
+
 const login = () => {
   // Crea Div que contiene Titulo mainContainer
   const mainContainer = document.createElement('div');
