@@ -1,19 +1,8 @@
-// import {register} from '../component/register.js';
+// import { register } from '../component/register.js';
 // import { check } from 'yargs';
 import { loginEmailPassword, signGoogle, resetPass } from '../lib/firebase.js';
 // importar resetPass
 
- //bienvenida
- const welcome = document.createElement('div');
- welcome.setAttribute('class','bienvenida');
-
- const slogan = document.createElement('h1');
- slogan.innerHTML = 'Bienvenidx a Good Game Girls';
- welcome.appendChild(slogan);
-
- const pForSlogan = document.createElement('h3');
- pForSlogan.innerHTML = 'La comunidad gamer femenina más grande de Latinoamérica!'
- welcome.appendChild(pForSlogan);
 
 const login = () => {
   // Crea Div que contiene Titulo mainContainer
@@ -29,6 +18,16 @@ const login = () => {
   const title = document.createElement('h1');
   title.textContent = '/GGgirls';
   mainContainer.appendChild(title);
+
+  // slogan 
+
+  const slogan = document.createElement('h2');
+  slogan.innerHTML = 'Bienvenidx a Good Game Girls';
+  mainContainer.appendChild(slogan);
+ 
+  const pForSlogan = document.createElement('h3');
+  pForSlogan.innerHTML = 'La comunidad gamer femenina más grande de Latinoamérica!'
+  mainContainer.appendChild(pForSlogan); 
 
   // Crea form para ingresar datos de Email y Password
   const formLogin = document.createElement('form');
@@ -81,12 +80,12 @@ const login = () => {
 
   // funcion de ocultado
   function showPassword() {
-    const x = document.getElementById('passwordLogin');
-    if (x.type === 'password') {
-      x.type = 'text';
+    const logForPassword = document.getElementById('passwordLogin');
+    if (logForPassword.type === 'password') {
+      logForPassword.type = 'text';
       checkbox.setAttribute('class', 'ojitocerrado');
     } else {
-      x.type = 'password';
+      logForPassword.type = 'password';
       checkbox.setAttribute('class', 'ojitoabierto');
     }
   }
@@ -207,8 +206,22 @@ function closePopUp() {
     loginEmailPassword(email, password, alertaLogin);
   });
 
+  
+
   buttonForGoogle.addEventListener('click', signGoogle);
 
   return mainContainer;
 };
+
+// Crear footer
+const footercito = () => {
+const footer = document.createElement('footer');
+footer.setAttribute('class', 'footer');
+footer.innerHTML= `
+<p>© 2022, todos los derechos reservados.</p>
+<p>Carla J, Carolina F y Emily N.</p>
+`
+return footercito
+};
+
 export { login };

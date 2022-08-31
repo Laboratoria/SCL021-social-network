@@ -150,7 +150,70 @@ const signGoogle = () => {
     });
 };
 
+//PENDIENTE DEBO VER
+// ------------- Almacenamos el post --------------------
+export const savePost = (description) => {
+  let userName;
+  if (auth.currentUser.displayName == null) {
+    let separateEmail = auth.currentUser.email.split('@');
+    userName = separateEmail[0];
+  } else {
+    userName = auth.currentUser.displayName;
+  }
+  addDoc(collection(db, 'Post'), {
+    uid: auth.currentUser.uid,
+    name: userName,
+    description: description,
+    likes:[],
+    likesCounter: 0,
+    datepost: Timestamp.fromDate(new Date()),
+  });
+}; 
 
+//---------- Publicar en el posts ----------------------
+/*export const postOnTheWall = async () => {
+
+  const allPost = query(collection(db, "Post"), orderBy('datepost', 'desc'));
+  const querySnapshot = await getDocs(allPost);
+  let html = '';
+  querySnapshot.forEach((doc) => {
+    const post = doc.data();
+
+    html += `
+    <div class="mainDash_board_publications_content">
+      <div class="mainDash_board_publications_content_user">
+        <h6>${post.name} publicó:</h6>`;
+
+    if (post.uid === auth.currentUser.uid) {
+      html += `
+        <button type="btn" class="btnDelete" value="${doc.id}" data-id="myId"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="mainDash_board_publications_content_text">${post.description}</p>
+      <button class="btn-like mainDash_board_publications_content_starR" value="${doc.id}">
+      <span id="star" class="star"><i class="fa-regular fa-star"></i></span> ${post.likesCounter} Likes</button>
+    </div>`;
+    } else {
+      html += `
+      </div>
+      <p class="mainDash_board_publications_content_text">${post.description}</p>
+      <button class="btn-like mainDash_board_publications_content_starR" value="${doc.id}">
+      <span id="star" class="star"><i class="fa-regular fa-star"></i></span> ${post.likesCounter} Likes</button>
+    </div>`;
+    }
+  });
+  document.getElementById('container_posts').innerHTML = html;
+
+  const btnDelete = document.querySelectorAll('.btnDelete');
+  btnDelete.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (confirm("¿Estás segura de eliminar esta publicación?")) {
+        deletePost(btn.value);
+      }
+    });
+  });
+  const likeBtn = document.querySelectorAll('.btn-like');
+  likeBtn.forEach((btnL) => {
+    btnL.addEventListener('click', async () => { */
 
 
 

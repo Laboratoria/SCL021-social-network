@@ -17,18 +17,28 @@ const register = () => {
   title.textContent = '/GGgirls';
   mainContainer.appendChild(title);
 
+  // slogan 
+
+  const slogan = document.createElement('h2');
+  slogan.innerHTML = 'Bienvenidx a Good Game Girls';
+  mainContainer.appendChild(slogan);
+ 
+  const pForSlogan = document.createElement('h3');
+  pForSlogan.innerHTML = 'La comunidad gamer femenina más grande de Latinoamérica!'
+  mainContainer.appendChild(pForSlogan); 
+
   // Crea form para ingresar datos de Email y Password
   const formRegister = document.createElement('form');
   formRegister.classList.add('formRegister');
   mainContainer.appendChild(formRegister);
 
-  const inputUser = document.createElement('input');
+ /*  const inputUser = document.createElement('input');
   inputUser.setAttribute('value', '');
   inputUser.setAttribute('type', 'text');
   inputUser.setAttribute('id', 'usuario');
   inputUser.setAttribute('placeholder', 'Ingresa nombre de usuario');
   inputUser.setAttribute('maxlenght', '15');
-  mainContainer.appendChild(inputUser);
+  mainContainer.appendChild(inputUser); */
 
   // Crea ingreso de Email
   const inputEmail = document.createElement('input');
@@ -50,7 +60,7 @@ const register = () => {
    inputPassword.setAttribute('value', '');
    inputPassword.setAttribute('type', 'password');
    inputPassword.setAttribute('class', 'transparent-input');
-   inputPassword.setAttribute('id', 'passwordLogin');
+   inputPassword.setAttribute('id', 'passwordRegister');
    inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña');
    inputPassword.setAttribute('minlength', '6');
    inputPassword.setAttribute('maxlength', '12');
@@ -71,7 +81,7 @@ const register = () => {
  
    // funcion de ocultado
    function showPassword() {
-     const x = document.getElementById('passwordLogin');
+     const x = document.getElementById('passwordRegister');
      if (x.type === 'password') {
        x.type = 'text';
      } else {
@@ -106,15 +116,26 @@ const register = () => {
   // Guardar información de usuario para crear cuenta
   buttonForNewAccount.addEventListener('click', (e) => {
     e.preventDefault();
-    const user = document.getElementById('usuario').value;
+   // const user = document.getElementById('usuario').value;
     const email = document.getElementById('emailRegister').value;
     const password = document.getElementById('passwordRegister').value;
     // console.log(email, password);
-    registerEmailPassword(email, password, user);
+    registerEmailPassword(email, password);
     // window.location.hash = "#/posts";
   });
 
   return mainContainer;
 };
+
+// Crear footer
+const footercito = () => {
+  const footer = document.createElement('footer');
+  footer.setAttribute('class', 'footer');
+  footer.innerHTML= `
+  <p>© 2022, todos los derechos reservados.</p>
+  <p>Carla J, Carolina F y Emily N.</p>
+  `
+  return footercito
+  };
 
 export { register };

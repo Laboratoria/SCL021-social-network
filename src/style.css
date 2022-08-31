@@ -52,7 +52,7 @@ b:hover {
 }
 
 .mainContainer p {
-  margin: 20px;
+  margin: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
@@ -82,7 +82,7 @@ b:hover {
   font-size: 15px;
   background: #5f5277;
   border-radius: 10px;
-  width: 65%;
+  width: 80%;
   height: 50px;
   text-align: center;
   flex-direction: column;
@@ -95,7 +95,7 @@ b:hover {
   font-size: 15px;
   background: #5f5277;
   border-radius: 10px;
-  width: 65%;
+  width: 80%;
   height: 50px;
   text-align: center;
   flex-direction: column;
@@ -133,8 +133,8 @@ input[type='checkbox'] {
   border: 1px solid #a85495;
   box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
   padding: 5px;
+  width: 60%;
   height: auto;
-  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -159,8 +159,7 @@ form i {
 
 a {
   text-decoration: none;
-  padding-bottom: 20px;
-
+  padding-bottom: 15px;
 }
 
 dialog {
@@ -209,7 +208,7 @@ button#botoncito {
   margin: 10px 0px 30px;
 }
 
-/*ojitos*/
+/* Show and Hide Password*/
 .ojitocerrado {
   background-image: url(./assets/ojitosabiertos-blanco.png) !important;
   display: inline-block;
@@ -225,29 +224,87 @@ button#botoncito {
 .inputMainContainer {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: auto;
+  padding: 20px;
 }
 
 .inputMainContainer input {
   width: 70%;
 }
 
-
 /* POSTS */
 
-.postsContainer {
+#navbarContainer {
+  position: sticky;
+  top: 0;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 70px;
+  background-color: #411946;
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+}
+#buttonLogOut {
+  margin-right: 20px;
+  height: 40px;
+  background-color: #b1589b;
+}
+.logogg {
+  height: inherit;
+  padding: 10px;
+  margin-left: 20px;
+}
+.postsContainer {
+  width: 95%;
+  margin: auto;
+  height: 100%;
+  background-color: #251a3b;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.userDataContainer {
+  height: 900px;
+  width: 25%;
+  margin-left: 0px;
+  display: none;
+  flex-direction: column;
+  gap: 30px;
+}
+#userDataDiv {
+  height: 300px;
+  width: 100%;
+  margin-left: 0px;
+}
+#trendingDataDiv {
+  height: 600px;
+  width: 100%;
+  margin-left: 0px;
+}
+.divPosts {
+  height: 900px;
+  width: 90%;
+  margin-left: 0px;
+  background-color: #411946;
+  border: solid 1px #b1589b;
+  box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
   padding: 20px;
-  gap: 22px;
+  border-radius: 10px;
+  text-align: center;
 }
-.postsContainer img {
-  height: 150px;
-  width: 150px;
-}
+
+/* .insidePost {
+  background-color: #411946;
+  border: solid 1px #b1589b;
+  box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
+  padding: 20px;
+  border-radius: 10px;
+} */
 
 .postsContainer button {
   background: #656fcb;
@@ -270,10 +327,7 @@ button#botoncito {
   background-color: #6980c7;
 }
 
-#buttonPost {
-}
-
-/* RESPONSIVE */
+/* RESPONSIVE PANTALLAS GRANDES */
 @media only screen and (min-width: 990px) {
   body {
     background-image: url(https://giffiles.alphacoders.com/214/214388.gif);
@@ -283,20 +337,91 @@ button#botoncito {
     background-size: cover;
     backdrop-filter: opacity(20%);
   }
-
   #mainRoute {
     display: flex;
-    justify-content: flex-end;
-    padding: 70px;
+    justify-content: flex-start;
+    flex-direction: column;
   }
-
+  /* Pantalla de Login y Register */
   .mainContainer {
     background: #251a3b;
     border: 2px solid #b1589b;
     box-shadow: 0px 0px 8px 1px #b1589b;
     border-radius: 8px;
     height: 85%;
-    width: 30%;
+    width: 40%;
+    align-self: flex-end;
+    margin-top: 50px;
+    margin-right: 50px;
+  }
+  /* Todo lo de Posts */ 
+   #navbarContainer {
+    position: sticky;
+    top: 0;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 70px;
+    background-color: #411946;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #buttonLogOut {
+    margin-right: 20px;
+    height: 40px;
+    background-color: #b1589b;
+  }
+  .logogg {
+    height: inherit;
+    padding: 10px;
+    margin-left: 20px;
+  }
+  .postsContainer {
+    width: 95%;
+    margin: auto;
+    height: 100%;
+    background-color: #251a3b;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .userDataContainer {
+    height: 900px;
+    width: 25%;
+    margin-left: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  #userDataDiv {
+    height: 300px;
+    width: 100%;
+    margin-left: 0px;
+  }
+  #trendingDataDiv {
+    height: 600px;
+    width: 100%;
+    margin-left: 0px;
+  }
+  .divPosts {
+    height: 900px;
+    width: 70%;
+    margin-left: 0px;
+    text-align: center;
+  }
+  /* Habian dos clases para el mismo div */
+  .insidePost { 
+    background-color: #411946;
+    border: solid 1px #b1589b;
+    box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
+    padding: 20px;
+    border-radius: 10px;
   }
 
   footer {
@@ -309,20 +434,9 @@ button#botoncito {
     bottom: 0;
     padding: 10px;
     background-color: #251a3b;
-    position: fixed; 
-  }
-
-  .postsContainer {
-    width: 100%;
-    height: 100%;
-    background-color: #251a3b;
-  }
-  .logogg {
-    height: 100px;
-    width: 100px;
+    position: fixed;
   }
 }
-
 
 /*FOOTER*/
 footer {
@@ -332,4 +446,3 @@ footer {
   bottom: 0;
   text-align: center;
 }
-
