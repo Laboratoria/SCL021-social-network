@@ -3,8 +3,9 @@
 import { loginEmailPassword, signGoogle, resetPass } from '../lib/firebase.js';
 // importar resetPass
 
-
 const login = () => {
+
+  
   // Crea Div que contiene Titulo mainContainer
   const mainContainer = document.createElement('div');
   mainContainer.classList.add('mainContainer');
@@ -16,18 +17,19 @@ const login = () => {
 
   // Crea parrafo o titulo
   const title = document.createElement('h1');
-  title.textContent = '/GGgirls';
+  title.setAttribute('class', 'tittlepost');
+  title.textContent = 'Good Game Girls';
   mainContainer.appendChild(title);
 
-  // slogan 
+  // slogan
 
   const slogan = document.createElement('h2');
-  slogan.innerHTML = 'Bienvenidx a Good Game Girls';
+  slogan.innerHTML = 'Bienvenidx!';
   mainContainer.appendChild(slogan);
- 
-  const pForSlogan = document.createElement('h3');
-  pForSlogan.innerHTML = 'La comunidad gamer femenina más grande de Latinoamérica!'
-  mainContainer.appendChild(pForSlogan); 
+
+  const pForSlogan = document.createElement('h2');
+  pForSlogan.innerHTML = 'Únete comunidad gamer femenina más grande de Latinoamérica!';
+  mainContainer.appendChild(pForSlogan);
 
   // Crea form para ingresar datos de Email y Password
   const formLogin = document.createElement('form');
@@ -72,7 +74,7 @@ const login = () => {
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
   checkbox.setAttribute('class', 'ojitocerrado');
-  checkbox.setAttribute('id', 'ojitoabierto')
+  checkbox.setAttribute('id', 'ojitoabierto');
 
   // checkbox.setAttribute('value', 'hola');
   checkbox.setAttribute('id', 'checkbox');
@@ -90,78 +92,78 @@ const login = () => {
     }
   }
   checkbox.addEventListener('click', showPassword);
-  
+
   // Olvidaste contraseña
   const forgotPassword = document.createElement('h4');
   forgotPassword.innerHTML = '¿Olvidaste tu contraseña? <b>Recupérala</b>';
   mainContainer.appendChild(forgotPassword);
 
-const ventanaDialog = document.createElement('dialog');
- ventanaDialog.setAttribute('id', 'popUp');
- mainContainer.appendChild(ventanaDialog);
+  const ventanaDialog = document.createElement('dialog');
+  ventanaDialog.setAttribute('id', 'popUp');
+  mainContainer.appendChild(ventanaDialog);
 
- const mainDivDialog = document.createElement('div');
- mainDivDialog .setAttribute('id', 'mainDivDialog');
- ventanaDialog.appendChild(mainDivDialog);
+  const mainDivDialog = document.createElement('div');
+  mainDivDialog.setAttribute('id', 'mainDivDialog');
+  ventanaDialog.appendChild(mainDivDialog);
 
-const botonClosePopUp = document.createElement ('button');
- botonClosePopUp.setAttribute('type', 'button');
- botonClosePopUp.setAttribute('id', 'botonClosePopUp');
- botonClosePopUp.innerHTML = 'X';
- mainDivDialog.appendChild(botonClosePopUp);
+  const botonClosePopUp = document.createElement('button');
+  botonClosePopUp.setAttribute('type', 'button');
+  botonClosePopUp.setAttribute('id', 'botonClosePopUp');
+  botonClosePopUp.innerHTML = 'X';
+  mainDivDialog.appendChild(botonClosePopUp);
 
- const textForDialog = document.createElement('h2');
- textForDialog.setAttribute('id', 'titulo');
- textForDialog.innerHTML = 'Hola!';
- mainDivDialog.appendChild(textForDialog);
+  const textForDialog = document.createElement('h2');
+  textForDialog.setAttribute('id', 'titulo');
+  textForDialog.innerHTML = 'Hola!';
+  mainDivDialog.appendChild(textForDialog);
 
- const textBetween = document.createElement('h3');
- textBetween.setAttribute('id', 'olvidaste');
- textBetween.innerHTML = 'Te ayudaremos a recuperar tu contraseña!';
- mainDivDialog.appendChild(textBetween);
+  const textBetween = document.createElement('h3');
+  textBetween.setAttribute('id', 'olvidaste');
+  textBetween.innerHTML = 'Te ayudaremos a recuperar tu contraseña!';
+  mainDivDialog.appendChild(textBetween);
 
- const pforEmail = document.createElement('p');
- pforEmail.setAttribute('id', 'olvidaste');
- pforEmail.innerHTML = 'Por favor ingresa tu mail en este espacio y enviaremos un correo para que puedas ingresar';
- mainDivDialog.appendChild(pforEmail);
+  const pforEmail = document.createElement('p');
+  pforEmail.setAttribute('id', 'olvidaste');
+  pforEmail.innerHTML = 'Por favor ingresa tu mail en este espacio y enviaremos un correo para que puedas ingresar';
+  mainDivDialog.appendChild(pforEmail);
 
- const emailForForget = document.createElement('input');
- emailForForget.setAttribute('id', 'inputForgetEmail');
- emailForForget.setAttribute('type', 'email');
- emailForForget.setAttribute('placeholder', 'Ingresa tu correo electronico');
- mainDivDialog.appendChild(emailForForget);
+  const emailForForget = document.createElement('input');
+  emailForForget.setAttribute('id', 'inputForgetEmail');
+  emailForForget.setAttribute('type', 'email');
+  emailForForget.setAttribute('placeholder', 'Ingresa tu correo electronico');
+  mainDivDialog.appendChild(emailForForget);
 
- const buttonForForget = document.createElement('button');
- buttonForForget.setAttribute('id', 'botoncito');
- buttonForForget.innerHTML = 'Enviar';
- mainDivDialog.appendChild(buttonForForget);
+  const buttonForForget = document.createElement('button');
+  buttonForForget.setAttribute('id', 'botoncito');
+  buttonForForget.innerHTML = 'Enviar';
+  mainDivDialog.appendChild(buttonForForget);
 
- /* Funciones para recuperar contraseña*/ 
- buttonForForget.addEventListener('click', (e) => {
-  e.preventDefault();
-  const email = document.getElementById('inputForgetEmail').value;
-  const alertaReset = (valid) => {
-    if (valid) {
-      //usar lo que retorna la resetemail
-      alert("Hemos enviado un email para que recuperes tu contraseña! Si no lo encuentras, revisa en spam e intenta ingresar de nuevo");
-    }
-    else {
-      alert("Tu usuario no ha sido verificado, intenta con otro correo");
-    }
-  };
-  resetPass(email,alertaReset);
-});
- 
+  /* Funciones para recuperar contraseña */
+  buttonForForget.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('inputForgetEmail').value;
+    const alertaReset = (valid) => {
+      if (valid) {
+        // usar lo que retorna la resetemail
+        //  alert('Hemos enviado un email para que recuperes tu contraseña! Si no lo encuentras,
+        //  revisa en spam e intenta ingresar de nuevo');
+      } /* else {
+        //  alert('Tu usuario no ha sido verificado, intenta con otro correo');
+      } */
+    };
+    resetPass(email, alertaReset);
+  });
 
- /* Funciones para abrir y cerrar Dialog */ 
-forgotPassword.addEventListener('click', showPopUp);
-function showPopUp (){
-  document.getElementById('popUp').showModal();
-}
-botonClosePopUp.addEventListener('click', closePopUp);
-function closePopUp() {
-  document.getElementById("popUp").close();
-}
+  /* Funciones para abrir y cerrar Dialog */
+  function showPopUp() {
+    document.getElementById('popUp').showModal();
+  }
+
+  forgotPassword.addEventListener('click', showPopUp);
+  function closePopUp() {
+    document.getElementById('popUp').close();
+  }
+  botonClosePopUp.addEventListener('click', closePopUp);
 
   // Botones para Login e inicio de sesión con Google
   const buttonForLogin = document.createElement('button', 'a');
@@ -192,6 +194,15 @@ function closePopUp() {
   linkRegister.setAttribute('id', 'linkRegist');
   registerContainer.appendChild(linkRegister);
 
+   /*const mainRoute = document.getElementById('mainRoute');
+  const footer = document.createElement('footer');
+    footer.setAttribute('class', 'footer');
+    footer.innerHTML = `
+  <p>© 2022, todos los derechos reservados.</p>
+  <p>Carla J, Carolina F y Emily N.</p>
+  `;
+  mainRoute.appendChild(footer); */
+
   // Funcionalidad de botón para Login con addEventListener
   buttonForLogin.addEventListener('click', (e) => {
     e.preventDefault();
@@ -206,8 +217,6 @@ function closePopUp() {
     loginEmailPassword(email, password, alertaLogin);
   });
 
-  
-
   buttonForGoogle.addEventListener('click', signGoogle);
 
   return mainContainer;
@@ -215,13 +224,13 @@ function closePopUp() {
 
 // Crear footer
 const footercito = () => {
-const footer = document.createElement('footer');
-footer.setAttribute('class', 'footer');
-footer.innerHTML= `
-<p>© 2022, todos los derechos reservados.</p>
-<p>Carla J, Carolina F y Emily N.</p>
-`
-return footercito
+  const footer = document.createElement('div');
+  footer.setAttribute('class', 'footer');
+  footer.innerHTML = '© 2022, todos los derechos reservados. Carla J, Carolina F y Emily N.';
+
+  return footer;
 };
 
-export { login };
+//  footercito();
+
+export { login, footercito };

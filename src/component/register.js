@@ -1,4 +1,5 @@
 import { registerEmailPassword } from '../lib/firebase.js';
+import { footercito } from './login.js';
 
 // Crea Div que contiene Titulo titleContainer
 const register = () => {
@@ -10,29 +11,28 @@ const register = () => {
   logo.src = './assets/audifonito-sin-pixelado.png';
   mainContainer.appendChild(logo);
 
- 
-
   // Crea parrafo o titulo
   const title = document.createElement('h1');
-  title.textContent = '/GGgirls';
+  title.setAttribute('class', 'tittlepost');
+  title.textContent = 'Good Game Girls';
   mainContainer.appendChild(title);
 
-  // slogan 
+  // slogan
 
   const slogan = document.createElement('h2');
-  slogan.innerHTML = 'Bienvenidx a Good Game Girls';
+  slogan.innerHTML = 'Bienvenidx!';
   mainContainer.appendChild(slogan);
- 
+
   const pForSlogan = document.createElement('h3');
-  pForSlogan.innerHTML = 'La comunidad gamer femenina más grande de Latinoamérica!'
-  mainContainer.appendChild(pForSlogan); 
+  pForSlogan.innerHTML = 'Únete a la comunidad gamer femenina más grande de Latinoamérica!';
+  mainContainer.appendChild(pForSlogan);
 
   // Crea form para ingresar datos de Email y Password
   const formRegister = document.createElement('form');
   formRegister.classList.add('formRegister');
   mainContainer.appendChild(formRegister);
 
- /*  const inputUser = document.createElement('input');
+  /*  const inputUser = document.createElement('input');
   inputUser.setAttribute('value', '');
   inputUser.setAttribute('type', 'text');
   inputUser.setAttribute('id', 'usuario');
@@ -51,36 +51,35 @@ const register = () => {
   inputEmail.setAttribute('required', '');
   mainContainer.appendChild(inputEmail);
 
-   // Crea ingreso de Password
-   const passwordContainer = document.createElement('div');
-   passwordContainer.setAttribute('id', 'passwordContainer');
-   mainContainer.appendChild(passwordContainer);
- 
-   const inputPassword = document.createElement('input');
-   inputPassword.setAttribute('value', '');
-   inputPassword.setAttribute('type', 'password');
-   inputPassword.setAttribute('class', 'transparent-input');
-   inputPassword.setAttribute('id', 'passwordRegister');
-   inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña');
-   inputPassword.setAttribute('minlength', '6');
-   inputPassword.setAttribute('maxlength', '12');
-   inputPassword.setAttribute('required', '');
- 
-   // mainContainer.appendChild(inputPassword);
- 
-   passwordContainer.appendChild(inputPassword);
- 
-   const checkbox = document.createElement('input');
-   checkbox.setAttribute('type', 'checkbox');
-   checkbox.setAttribute('class', 'ojitocerrado');
-   checkbox.setAttribute('id', 'ojitoabierto')
- 
-   // checkbox.setAttribute('value', 'hola');
-   checkbox.setAttribute('id', 'checkbox');
-   passwordContainer.appendChild(checkbox);
- 
+  // Crea ingreso de Password
+  const passwordContainer = document.createElement('div');
+  passwordContainer.setAttribute('id', 'passwordContainer');
+  mainContainer.appendChild(passwordContainer);
 
-    // funcion de ocultado
+  const inputPassword = document.createElement('input');
+  inputPassword.setAttribute('value', '');
+  inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('class', 'transparent-input');
+  inputPassword.setAttribute('id', 'passwordRegister');
+  inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña');
+  inputPassword.setAttribute('minlength', '6');
+  inputPassword.setAttribute('maxlength', '12');
+  inputPassword.setAttribute('required', '');
+
+  // mainContainer.appendChild(inputPassword);
+
+  passwordContainer.appendChild(inputPassword);
+
+  const checkbox = document.createElement('input');
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.setAttribute('class', 'ojitocerrado');
+  checkbox.setAttribute('id', 'ojitoabierto');
+
+  // checkbox.setAttribute('value', 'hola');
+  checkbox.setAttribute('id', 'checkbox');
+  passwordContainer.appendChild(checkbox);
+
+  // funcion de ocultado
   function showPassword() {
     const logForPassword = document.getElementById('passwordLogin');
     if (logForPassword.type === 'password') {
@@ -118,7 +117,7 @@ const register = () => {
   // Guardar información de usuario para crear cuenta
   buttonForNewAccount.addEventListener('click', (e) => {
     e.preventDefault();
-   // const user = document.getElementById('usuario').value;
+    // const user = document.getElementById('usuario').value;
     const email = document.getElementById('emailRegister').value;
     const password = document.getElementById('passwordRegister').value;
     // console.log(email, password);
@@ -130,14 +129,6 @@ const register = () => {
 };
 
 // Crear footer
-const footercito = () => {
-  const footer = document.createElement('footer');
-  footer.setAttribute('class', 'footer');
-  footer.innerHTML= `
-  <p>© 2022, todos los derechos reservados.</p>
-  <p>Carla J, Carolina F y Emily N.</p>
-  `
-  return footercito
-  };
+footercito();
 
 export { register };

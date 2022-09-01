@@ -71,9 +71,15 @@ b:hover {
 }
 
 .transparent-input {
+  padding: 3%;
   background: transparent !important;
   border: none !important;
   width: 100% !important;
+  height: 100%;
+}
+
+input::placeholder {
+  text-align: left;
 }
 
 #passwordContainer {
@@ -121,11 +127,12 @@ input[type='checkbox'] {
   border: 0;
   border-radius: 10px;
   padding: 15px;
+  margin: auto;
 }
 
 .mainContainer button:hover {
   background-color: #6980c7;
-}
+} 
 
 .registerContainer {
   background: #411946;
@@ -162,8 +169,8 @@ a {
   padding-bottom: 15px;
 }
 
- /* Dialog Pop Up */
- dialog {
+/* Dialog Pop Up */
+dialog {
   width: 60%;
   height: fit-content;
   margin: auto;
@@ -218,10 +225,7 @@ button#botoncito {
   background-size: contain !important;
 }
 
-
-
 /* POSTS */
-
 
 #navbarContainer {
   position: sticky;
@@ -276,6 +280,11 @@ button#botoncito {
   gap: 30px;
 }
 
+#dataUser {
+  text-align: start;
+  width: 85%;
+}
+
 #userDataDiv {
   height: 300px;
   width: 100%;
@@ -309,11 +318,15 @@ button#botoncito {
 } */
 
 .inputMainContainer {
-  display: flex;
   justify-content: space-evenly;
   width: auto;
-  padding: 10px;
-  gap: 10px;
+  padding: 15px;
+  display: flex;
+
+}
+
+.flex {
+  display: flex;
 }
 
 .postsContainer button {
@@ -321,21 +334,19 @@ button#botoncito {
   border: 0;
   border-radius: 10px;
   width: 15%;
-  padding: 15px;
-  height: 50px;
-  align-self: center;
+  padding: 10px;
+  margin: 15px;
+  align-self: flex-end;
 }
 
-.postsContainer input {
+.postsInput {
+  display: flex;
   border: solid 1px #b1589b;
   font-size: 15px;
   background: #5f5277;
   border-radius: 10px;
-  width: 70%;
+  width: 85%;
   height: 100px;
-  text-align: center;
-  align-self: center;
-  align-items: center;
 }
 
 .postsContainer button:hover {
@@ -343,7 +354,7 @@ button#botoncito {
 }
 
 .profilePicturePost {
- display: none;
+  display: none;
 }
 
 /* RESPONSIVE PANTALLAS GRANDES */
@@ -376,8 +387,8 @@ button#botoncito {
     margin-right: 50px;
   }
 
-  /* Todo lo de Posts */ 
-   #navbarContainer {
+  /* Todo lo de Posts */
+  #navbarContainer {
     position: sticky;
     top: 0;
     margin-bottom: 30px;
@@ -402,6 +413,14 @@ button#botoncito {
     margin-left: 20px;
   }
 
+  .tittlepost{
+    font-family: 'Londrina Solid';
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .postsContainer {
     width: 95%;
     margin: auto;
@@ -412,7 +431,6 @@ button#botoncito {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-bottom: 20px;
-    align-items: center;
     padding: 20px;
     border-radius: 10px;
   }
@@ -446,7 +464,7 @@ button#botoncito {
   }
 
   /* Habian dos clases para el mismo div */
-  .insidePost { 
+  .insidePost {
     background-color: #411946;
     border: solid 1px #b1589b;
     box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
@@ -454,55 +472,21 @@ button#botoncito {
     border-radius: 10px;
   }
 
-  .inputMainContainer {
-    display: flex;
-    justify-content: center;
-    width: auto;
-    flex-wrap: wrap;
-    padding: 15px;
-    gap: 15px;
-  }
-
-  .postsContainer button {
-    background: #656fcb;
-    border: 0;
-    border-radius: 15px;
-    width: 15%;
-    padding: 15px;
-    height: 50px;
-    align-self: center;
-  }
-  
-  /* Vista de Posts en grande */
-  .postsContainer input {
-    border: solid 1px #b1589b;
-    font-size: 15px;
-    background: #5f5277;
-    border-radius: 10px;
-    width: 65%;
-    height: 130px;
-    text-align: center;
-    align-self: center;
-  }
-  
   .postsContainer button:hover {
     background-color: #6980c7;
   }
-  
+
   .profilePicturePost {
-    display: flex;
+    display: block;
     border: solid 1px #b1589b;
     background: #5f5277;
-    border-radius: 5px;
-    width: 11%;
-    height: 130px;
-    background-size: cover;
+    border-radius: 50%;
+    background-size: auto;
     background-attachment: fixed;
   }
 
- 
-  footer {
-    /*position: absolute; */
+  /* .footer {
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -512,14 +496,19 @@ button#botoncito {
     padding: 10px;
     background-color: #251a3b;
     position: fixed;
-  }
+  } */
 }
 
-/*FOOTER*/
-footer {
+/*FOOTER*/  
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 50px;
   position: relative;
   bottom: 0;
   text-align: center;
+  background-color: #251a3b;
+  opacity: 90%;
 }
