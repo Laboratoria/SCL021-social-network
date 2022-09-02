@@ -10,6 +10,14 @@ import {
   sendPasswordResetEmail,
   sendEmailVerification,
 } from './firebasemodules.js';
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  Timestamp,
+} from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
+
 import { app } from './firebaseconfig.js';
 
 // -----------Firebase Login autorización
@@ -140,7 +148,35 @@ const resetPass = (email, callback) => {
     });
 };
 
+const db = getFirestore();
+
+//TAREAS PARA MAÑANA
+//ir a buscar el input y ponerlo en description
+//trabajar en las reglas de firestore para que pida autenticación
+//enchufar los otros atributos, no sé (?)
+//TAREA EMOCIONANTE es crear funcion que imprima posts
+//que los appendchildee y que sea un foreach para cada post del database
+//jejeje saludos emi <3
+
+const newPosts = async () => {
+  const user = auth.currentUser;
+  const userName = user.displayName;
+  if (user !== null) {
+    const docRef = await addDoc(collection(db, "google"), {
+      name: user.displayName,
+      email: user.email,
+      uid: user.uid,
+      description: 'description',
+      likes: [],
+      likesCount: 0,
+      date: Timestamp.fromDate(new Date()), 
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } 
+};
+
 export {
+  db,
   app,
   auth,
   loginEmailPassword,
@@ -150,4 +186,5 @@ export {
   signGoogle,
   getUserData,
   resetPass,
+  newPosts
 };

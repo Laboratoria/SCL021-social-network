@@ -1,4 +1,4 @@
-import { auth, logOut } from '../lib/firebase.js';
+import { auth, logOut, newPosts} from '../lib/firebase.js';
 
 // main route
 
@@ -62,7 +62,7 @@ const posts = () => {
     showName = emailAdress.substring(0, emailAdress.lastIndexOf('@'));
   }
   // if displayName = null, mostrar email hasta la @
-  dataUser.innerHTML = `<span class="h4bold">¡Hola</span> ${showName}! <br> <span class="h4"><b>¿Qué estás jugando?</b></span>`;
+  dataUser.innerHTML = `<span class="h4bold">¡Hola</span> ${showName}! <span class="h4"><b>¿Qué estás jugando?</b></span>`;
   // prueba
   // console.log(auth.currentUser);
   divPosts.appendChild(dataUser);
@@ -105,6 +105,8 @@ const posts = () => {
   buttonPost.setAttribute('id', 'buttonPost');
   buttonPost.innerHTML = 'Postear';
   inputSubContainer.appendChild(buttonPost);
+
+  buttonPost.addEventListener('click', newPosts)
 
   // Funcionalidad
   buttonForLogOut.addEventListener('click', () => {

@@ -18,16 +18,17 @@ const login = () => {
   // Crea parrafo o titulo
   const title = document.createElement('h1');
   title.setAttribute('class', 'tittlepost');
-  title.textContent = 'Good Game Girls';
+  title.textContent = 'GG Girls';
   mainContainer.appendChild(title);
 
   // slogan
 
-  const slogan = document.createElement('h2');
+  const slogan = document.createElement('p');
   slogan.innerHTML = 'Bienvenidx!';
+  slogan.setAttribute('id', 'slogan');
   mainContainer.appendChild(slogan);
 
-  const pForSlogan = document.createElement('h2');
+  const pForSlogan = document.createElement('p');
   pForSlogan.innerHTML = 'Únete comunidad gamer femenina más grande de Latinoamérica!';
   mainContainer.appendChild(pForSlogan);
 
