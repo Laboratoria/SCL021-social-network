@@ -1,4 +1,6 @@
-import { auth, logOut, newPosts } from '../lib/firebase.js';
+import {
+  auth, logOut, newPosts, readPosts,
+} from '../lib/firebase.js';
 
 // main route
 
@@ -42,10 +44,69 @@ const posts = () => {
   userDataDiv.classList.add('insidePost');
   userDataContainer.appendChild(userDataDiv);
 
+  // trends
   const trendingDataDiv = document.createElement('div');
   trendingDataDiv.setAttribute('id', 'trendingDataDiv');
   trendingDataDiv.classList.add('insidePost');
   userDataContainer.appendChild(trendingDataDiv);
+
+  const trendingGames = document.createElement('h2');
+  trendingGames.innerHTML = '<span class="juegofav">¿Cuál es tu juego favorito?</span>';
+  trendingDataDiv.appendChild(trendingGames);
+
+  const trendingtittle = document.createElement('h3');
+  trendingGames.innerHTML = '<span> 🔥¡Vota por tu juego favorito!🔥 </span>';
+  trendingDataDiv.appendChild(trendingtittle);
+
+  const trendingPlace1 = document.createElement('button');
+  trendingPlace1.setAttribute('type', 'click');
+  trendingPlace1.innerHTML = 'Leage Of Legends';
+  trendingDataDiv.appendChild(trendingPlace1);
+
+  /* buttonForLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('emailLogin').value;
+    const password = document.getElementById('passwordLogin').value;
+    // console.log(email, password);
+    const alertaLogin = (valid) => {
+      if (valid) {
+        window.location.hash = '#/posts';
+      }
+    };
+    loginEmailPassword(email, password, alertaLogin);
+  });
+
+  buttonForGoogle.addEventListener('click', signGoogle);
+
+  return mainContainer; */
+
+  const trendingPlace2 = document.createElement('button');
+  trendingPlace2.setAttribute('type', 'click');
+  trendingPlace2.innerHTML = 'Valorant';
+  trendingDataDiv.appendChild(trendingPlace2);
+
+  // funcion de calculo lalala
+
+  const trendingPlace3 = document.createElement('button');
+  trendingPlace3.setAttribute('type', 'click');
+  trendingPlace3.innerHTML = 'Fortnite';
+  trendingDataDiv.appendChild(trendingPlace3);
+
+  // funcion de calculo lala
+
+  const trendingPlace4 = document.createElement('button');
+  trendingPlace4.setAttribute('type', 'click');
+  trendingPlace4.innerHTML = 'Stray';
+  trendingDataDiv.appendChild(trendingPlace4);
+
+  // funcion de calculo lala
+
+  const trendingPlace5 = document.createElement('button');
+  trendingPlace5.setAttribute('type', 'click');
+  trendingPlace5.innerHTML = 'Overwatch 2';
+  trendingDataDiv.appendChild(trendingPlace5);
+
+  // funcion de calculo lalala
 
   // Crea Div padre en donde se publica y muestran los Posts
   const divPosts = document.createElement('div');
@@ -62,7 +123,7 @@ const posts = () => {
     showName = emailAdress.substring(0, emailAdress.lastIndexOf('@'));
   }
   // if displayName = null, mostrar email hasta la @
-  dataUser.innerHTML = `<span class="h4bold">¡Hola</span> ${showName}! <span class="h4"><b>¿Qué estás jugando?</b></span>`;
+  dataUser.innerHTML = `<span class="h4bold">¡Hola!</span> ${showName}! <span class="h4"><b>¿Qué estás jugando?</b></span>`;
   // prueba
   // console.log(auth.currentUser);
   divPosts.appendChild(dataUser);
@@ -91,7 +152,6 @@ const posts = () => {
 
   const inputForPost = document.createElement('textarea');
   inputForPost.setAttribute('id', 'postInput');
-  inputForPost.setAttribute('', 'postInput');
   inputForPost.setAttribute('class', 'transparent-input');
   inputForPost.setAttribute('placeholder', 'Cuéntanos...');
   inputSubContainer.appendChild(inputForPost);
@@ -101,8 +161,19 @@ const posts = () => {
   buttonPost.innerHTML = 'Postear';
   inputSubContainer.appendChild(buttonPost);
 
-  const post = document.getElementById('postInput').value;
-  buttonPost.addEventListener('click', newPosts(post));
+  const allPosts = document.createElement('div');
+  allPosts.setAttribute('class', 'allPosts');
+  // allPosts.innerHTML = `${}`;
+  divPosts.appendChild(allPosts);
+
+  readPosts();
+
+  buttonPost.addEventListener('click', (e) => {
+    e.preventDefault();
+    const posts = document.getElementById('postInput').value;
+    newPosts(posts);
+    inputForPost.innerHTML = '';
+  });
 
   // Funcionalidad
   buttonForLogOut.addEventListener('click', () => {
