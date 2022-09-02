@@ -1,5 +1,15 @@
 /* eslint import/no-unresolved: [2, { ignore: ['gstatic'] }] */
 import {
+  getFirestore,
+  collection,
+  addDoc,
+  Timestamp,
+  /* getDocs, */
+  query,
+  orderBy,
+  onSnapshot,
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+import {
   getAuth,
   createUserWithEmailAndPassword,
   signOut,
@@ -10,13 +20,6 @@ import {
   sendPasswordResetEmail,
   sendEmailVerification,
 } from './firebasemodules.js';
-
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  Timestamp,
-} from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
 
 import { app } from './firebaseconfig.js';
 
@@ -150,29 +153,51 @@ const resetPass = (email, callback) => {
 
 const db = getFirestore();
 
-//TAREAS PARA MAÑANA
-//ir a buscar el input y ponerlo en description
-//trabajar en las reglas de firestore para que pida autenticación
-//enchufar los otros atributos, no sé (?)
-//TAREA EMOCIONANTE es crear funcion que imprima posts
-//que los appendchildee y que sea un foreach para cada post del database
-//jejeje saludos emi <3
+// TAREAS PARA MAÑANA
+// ir a buscar el input y ponerlo en description
+// trabajar en las reglas de firestore para que pida autenticación
+// enchufar los otros atributos, no sé (?)
+// TAREA EMOCIONANTE es crear funcion que imprima posts
+// que los appendchildee y que sea un foreach para cada post del database
+// jejeje saludos emi <3
 
 const newPosts = async (textInput) => {
   const user = auth.currentUser;
   const userName = user.displayName;
   if (user !== null) {
-    const docRef = await addDoc(collection(db, "google"), {
+    const docRef = await addDoc(collection(db, 'google'), {
       name: user.displayName,
       email: user.email,
       uid: user.uid,
       description: [textInput],
       likes: [],
       likesCount: 0,
-      date: Timestamp.fromDate(new Date()), 
+      date: Timestamp.fromDate(new Date()),
     });
-    console.log("Document written with ID: ", docRef.id);
-  } 
+    console.log('Document written with ID: ', docRef.id);
+  }
+};
+
+/* const getPosts = await getDocs(collection(db, 'google'));
+getPosts.forEach((doc) => {
+  console.log(doc.id, " => ", doc.data())
+
+  return doc.data();
+}); */
+
+const readPosts = () => {
+  const q = query(collection(db, 'google'), orderBy('datePosted', 'desc'));
+  onSnapshot(q, (querySnapshot) => {
+    const posts = [];
+    querySnapshot.forEach((document) => {
+      console.log(document.id);
+      /* const element = {};
+      element.id = document.id;
+      element.data = document.data();
+      posts.push(element); */
+    });
+    // console.log(posts);
+  });
 };
 
 export {
@@ -186,5 +211,7 @@ export {
   signGoogle,
   getUserData,
   resetPass,
-  newPosts
+  newPosts,
+  /* getPosts, */
+  readPosts,
 };
