@@ -1,4 +1,4 @@
-import { auth, logOut, newPosts} from '../lib/firebase.js';
+import { auth, logOut, newPosts } from '../lib/firebase.js';
 
 // main route
 
@@ -74,13 +74,6 @@ const posts = () => {
 
   let showPicture = auth.currentUser.photoURL;
 
-  // console.log(showPicture);
-
-  /* const profileNull = document.createElement('img');
-  profileNull.setAttribute('class', 'nulito');
-  profileNull.src = './assets/audifonito-sin-pixelado.png'; */
-  // inputMainContainer.appendChild(profileNull);
-
   if (showPicture == null) {
     const profileNull = './assets/audifonito-sin-pixelado.png';
     showPicture = profileNull;
@@ -97,6 +90,8 @@ const posts = () => {
   inputMainContainer.appendChild(inputSubContainer);
 
   const inputForPost = document.createElement('textarea');
+  inputForPost.setAttribute('id', 'postInput');
+  inputForPost.setAttribute('', 'postInput');
   inputForPost.setAttribute('class', 'transparent-input');
   inputForPost.setAttribute('placeholder', 'Cuéntanos...');
   inputSubContainer.appendChild(inputForPost);
@@ -106,7 +101,8 @@ const posts = () => {
   buttonPost.innerHTML = 'Postear';
   inputSubContainer.appendChild(buttonPost);
 
-  buttonPost.addEventListener('click', newPosts)
+  const post = document.getElementById('postInput').value;
+  buttonPost.addEventListener('click', newPosts(post));
 
   // Funcionalidad
   buttonForLogOut.addEventListener('click', () => {
@@ -116,21 +112,4 @@ const posts = () => {
   return postsContainer;
 };
 
-// fotico de perfil
-
-/* export const newPost = () => {
-  const containerPost = document.getElementById('postContainer');
-  containerPost.innerHTML = '';
-  const postContent = (data) => {
-    let themePost = `<div class="home__publicaciones">
-    <div class="containerImgUsuaria">
-      <img class="home__imgUsuaria" src="${data.element.data.photo}" alt="Img-perfil">
-    </div>
-    <div class="home__inputPublicar" id="editarPost">
-     <div class="containerNameUsarieYdelete">
-        <h3 class="nombreUsuarie">${data.element.data.name}</h3>
-        `
-return newPost
-
-  }}; */
 export { posts };

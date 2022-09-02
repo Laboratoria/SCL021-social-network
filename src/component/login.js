@@ -18,7 +18,7 @@ const login = () => {
   // Crea parrafo o titulo
   const title = document.createElement('h1');
   title.setAttribute('class', 'tittlepost');
-  title.textContent = 'GG Girls';
+  title.textContent = 'Good Game Girls';
   mainContainer.appendChild(title);
 
   // slogan
@@ -31,11 +31,6 @@ const login = () => {
   const pForSlogan = document.createElement('p');
   pForSlogan.innerHTML = 'Únete comunidad gamer femenina más grande de Latinoamérica!';
   mainContainer.appendChild(pForSlogan);
-
-  // Crea form para ingresar datos de Email y Password
-  const formLogin = document.createElement('form');
-  formLogin.classList.add('formLogin');
-  mainContainer.appendChild(formLogin);
 
   // Crea ingreso de Email
   const emailContainer = document.createElement('div');

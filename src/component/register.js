@@ -28,9 +28,9 @@ const register = () => {
   mainContainer.appendChild(pForSlogan);
 
   // Crea form para ingresar datos de Email y Password
-  const formRegister = document.createElement('form');
-  formRegister.classList.add('formRegister');
-  mainContainer.appendChild(formRegister);
+  const emailContainer = document.createElement('div');
+  emailContainer.setAttribute('id', 'emailContainer');
+  mainContainer.appendChild(emailContainer);
 
   /*  const inputUser = document.createElement('input');
   inputUser.setAttribute('value', '');
@@ -45,11 +45,12 @@ const register = () => {
   inputEmail.setAttribute('value', '');
   inputEmail.setAttribute('type', 'email');
   inputEmail.setAttribute('id', 'emailRegister');
+  inputEmail.setAttribute('class', 'transparent-input');
   inputEmail.setAttribute('placeholder', 'Ingresa tu correo');
   inputEmail.setAttribute('size', '25');
   inputEmail.setAttribute('maxlength', '40');
   inputEmail.setAttribute('required', '');
-  mainContainer.appendChild(inputEmail);
+  emailContainer.appendChild(inputEmail);
 
   // Crea ingreso de Password
   const passwordContainer = document.createElement('div');

@@ -158,7 +158,7 @@ const db = getFirestore();
 //que los appendchildee y que sea un foreach para cada post del database
 //jejeje saludos emi <3
 
-const newPosts = async () => {
+const newPosts = async (textInput) => {
   const user = auth.currentUser;
   const userName = user.displayName;
   if (user !== null) {
@@ -166,7 +166,7 @@ const newPosts = async () => {
       name: user.displayName,
       email: user.email,
       uid: user.uid,
-      description: 'description',
+      description: [textInput],
       likes: [],
       likesCount: 0,
       date: Timestamp.fromDate(new Date()), 
