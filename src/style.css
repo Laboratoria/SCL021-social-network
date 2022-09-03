@@ -531,4 +531,35 @@ button#botoncito {
 
 .juegofav{
   font-family: 'Do Hyeon', sans-serif;
+  font-size: small;
+}
+
+.fav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  font-size: 25px;
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+.buttontrend{
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  border: 0;
+  border-radius: 15px;
+  width: 10%;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.trendingDataDiv{
+  background-size: contain;
+}
+
+.divforplaces{
+  visibility: hidden;
 }

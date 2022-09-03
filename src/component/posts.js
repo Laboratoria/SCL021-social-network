@@ -1,5 +1,5 @@
 import {
-  auth, logOut, newPosts, readPosts,
+  auth, logOut, newPosts, displayPosts,
 } from '../lib/firebase.js';
 
 // main route
@@ -54,16 +54,45 @@ const posts = () => {
   trendingGames.innerHTML = '<span class="juegofav">¿Cuál es tu juego favorito?</span>';
   trendingDataDiv.appendChild(trendingGames);
 
-  const trendingtittle = document.createElement('h3');
-  trendingGames.innerHTML = '<span> 🔥¡Vota por tu juego favorito!🔥 </span>';
+  const trendingtittle = document.createElement('h4');
+  trendingGames.innerHTML = '<span class="fav"> 🔥¡Vota por tu juego favorito!🔥 </span>';
   trendingDataDiv.appendChild(trendingtittle);
 
+  // puestos en ranking
+  const divForPlaces = document.createElement('div');
+  divForPlaces.setAttribute('class', 'divforplaces');
+  trendingDataDiv.appendChild(divForPlaces);
+
+  const placeTrend = document.createElement('h4');
+  placeTrend.innerHTML = '<span class="placetrend">1er puesto </span>';
+  divForPlaces.appendChild(placeTrend);
+
+  const placeTrend2 = document.createElement('h4');
+  placeTrend2.innerHTML = '<span class="placetrend">2do puesto </span>';
+  divForPlaces.appendChild(placeTrend2);
+
+  const placeTrend3 = document.createElement('h4');
+  placeTrend3.innerHTML = '<span class="placetrend">3er puesto </span>';
+  divForPlaces.appendChild(placeTrend3);
+
+  const placeTrend4 = document.createElement('h4');
+  placeTrend4.innerHTML = '<span class="placetrend">4to puesto </span>';
+  divForPlaces.appendChild(placeTrend4);
+
+  const placeTrend5 = document.createElement('h4');
+  placeTrend5.innerHTML = '<span class="placetrend">5to puesto </span>';
+  divForPlaces.appendChild(placeTrend5);
+
+  // button para hacer el calculo trend
   const trendingPlace1 = document.createElement('button');
+  trendingPlace1.setAttribute('class', 'buttontrend');
   trendingPlace1.setAttribute('type', 'click');
   trendingPlace1.innerHTML = 'Leage Of Legends';
   trendingDataDiv.appendChild(trendingPlace1);
 
-  /* buttonForLogin.addEventListener('click', (e) => {
+  //let firstP lace = 0;
+
+  /* buttontrend.addEventListener('click', (e) => {
     e.preventDefault();
     const email = document.getElementById('emailLogin').value;
     const password = document.getElementById('passwordLogin').value;
@@ -81,32 +110,44 @@ const posts = () => {
   return mainContainer; */
 
   const trendingPlace2 = document.createElement('button');
+  trendingPlace2.setAttribute('class', 'buttontrend');
   trendingPlace2.setAttribute('type', 'click');
   trendingPlace2.innerHTML = 'Valorant';
   trendingDataDiv.appendChild(trendingPlace2);
 
   // funcion de calculo lalala
+  
+  // let secondPlace = 0;
 
   const trendingPlace3 = document.createElement('button');
+  trendingPlace3.setAttribute('class', 'buttontrend');
   trendingPlace3.setAttribute('type', 'click');
   trendingPlace3.innerHTML = 'Fortnite';
   trendingDataDiv.appendChild(trendingPlace3);
 
   // funcion de calculo lala
+  
+  // let thirdPlace = 0;
 
   const trendingPlace4 = document.createElement('button');
+  trendingPlace4.setAttribute('class', 'buttontrend');
   trendingPlace4.setAttribute('type', 'click');
-  trendingPlace4.innerHTML = 'Stray';
+  trendingPlace4.innerHTML = 'Minecraft';
   trendingDataDiv.appendChild(trendingPlace4);
 
   // funcion de calculo lala
 
+  // let fourthPlace = 0;
+  
   const trendingPlace5 = document.createElement('button');
+  trendingPlace5.setAttribute('class', 'buttontrend');
   trendingPlace5.setAttribute('type', 'click');
   trendingPlace5.innerHTML = 'Overwatch 2';
   trendingDataDiv.appendChild(trendingPlace5);
 
   // funcion de calculo lalala
+
+  // let fifthPlace = 0;
 
   // Crea Div padre en donde se publica y muestran los Posts
   const divPosts = document.createElement('div');
@@ -161,12 +202,17 @@ const posts = () => {
   buttonPost.innerHTML = 'Postear';
   inputSubContainer.appendChild(buttonPost);
 
+
   const allPosts = document.createElement('div');
   allPosts.setAttribute('class', 'allPosts');
-  // allPosts.innerHTML = `${}`;
+  allPosts.setAttribute('id', 'allPosts');
   divPosts.appendChild(allPosts);
-
-  readPosts();
+  //const posteos = displayPosts;
+  //let otrosposts = posteos.toString();
+  //allPosts.innerHTML = displayPosts();
+  //let resultado = displayPosts();
+  //console.log(displayPosts());
+  displayPosts();
 
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();

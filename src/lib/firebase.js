@@ -4,10 +4,11 @@ import {
   collection,
   addDoc,
   Timestamp,
-  /* getDocs, */
   query,
+  getDocs,
   orderBy,
   onSnapshot,
+  where,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 import {
   getAuth,
@@ -177,28 +178,41 @@ const newPosts = async (textInput) => {
     console.log('Document written with ID: ', docRef.id);
   }
 };
-
-/* const getPosts = await getDocs(collection(db, 'google'));
-getPosts.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data())
-
-  return doc.data();
-}); */
-
-const readPosts = () => {
-  const q = query(collection(db, 'google'), orderBy('datePosted', 'desc'));
-  onSnapshot(q, (querySnapshot) => {
-    const posts = [];
-    querySnapshot.forEach((document) => {
-      console.log(document.id);
-      /* const element = {};
-      element.id = document.id;
-      element.data = document.data();
-      posts.push(element); */
-    });
-    // console.log(posts);
+// FRANKENWINI FUNCIONA las tkm 
+const displayPosts = async () => {
+  const posts = query(collection(db, "google"));
+  const querySnapShot = await getDocs(posts);
+  let html = "";
+  querySnapShot.forEach ((doc) => {
+    const post = doc.data();
+    html += `
+        <h6>${post.name} publicó: ${post.description}</h6>`;
+    console.log(post);
+    return post 
   });
-};
+  document.getElementById('allPosts').innerHTML = html;
+} 
+
+
+/* const displayPosts = async () => {
+  querySnapshot = await getDocs(collection(db, "google"))
+  .then(querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      const posts = doc.data();
+      console.log(posts);
+      return posts
+  }
+    ))
+  .catch((error) =>{
+    //const errorCode = error.code;
+    const errorMessage = error.message;
+    return errorMessage;
+  }
+ )
+} */
+
+
+
 
 export {
   db,
@@ -212,6 +226,5 @@ export {
   getUserData,
   resetPass,
   newPosts,
-  /* getPosts, */
-  readPosts,
+  displayPosts,
 };
