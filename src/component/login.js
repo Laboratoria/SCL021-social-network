@@ -5,7 +5,6 @@ import { loginEmailPassword, signGoogle, resetPass } from '../lib/firebase.js';
 
 const login = () => {
 
-  
   // Crea Div que contiene Titulo mainContainer
   const mainContainer = document.createElement('div');
   mainContainer.classList.add('mainContainer');

@@ -178,6 +178,22 @@ const newPosts = async (textInput) => {
     console.log('Document written with ID: ', docRef.id);
   }
 };
+
+
+
+
+const displayPosts = async () => {
+  const posts = query(collection(db, "google"));
+  const querySnapShot = await getDocs(posts);
+  let todosPosts = [];
+  querySnapShot.forEach((doc) => {
+    todosPosts.push(doc.data())
+  })
+  return todosPosts;
+} 
+
+
+/*
 // FRANKENWINI FUNCIONA las tkm 
 const displayPosts = async () => {
   const posts = query(collection(db, "google"));
@@ -185,14 +201,11 @@ const displayPosts = async () => {
   let html = "";
   querySnapShot.forEach ((doc) => {
     const post = doc.data();
-    html += `
-        <h6>${post.name} publicó: ${post.description}</h6>`;
-    console.log(post);
-    return post 
+    html += "hola";
+        
   });
-  document.getElementById('allPosts').innerHTML = html;
-} 
 
+} */
 
 /* const displayPosts = async () => {
   querySnapshot = await getDocs(collection(db, "google"))

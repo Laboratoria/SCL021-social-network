@@ -64,62 +64,54 @@ const posts = () => {
   trendingDataDiv.appendChild(divForPlaces);
 
   const placeTrend = document.createElement('h4');
-  placeTrend.innerHTML = '<span class="placetrend">1er puesto </span>';
+  placeTrend.setAttribute('id', 'graficaPrimero');
+  placeTrend.innerHTML = '<span class="placetrend">Primero</span>';
   divForPlaces.appendChild(placeTrend);
 
   const placeTrend2 = document.createElement('h4');
-  placeTrend2.innerHTML = '<span class="placetrend">2do puesto </span>';
+  placeTrend2.setAttribute('id', 'graficaSegundo');
+  placeTrend2.innerHTML = '<span class="placetrend">Segundo</span>';
   divForPlaces.appendChild(placeTrend2);
 
   const placeTrend3 = document.createElement('h4');
-  placeTrend3.innerHTML = '<span class="placetrend">3er puesto </span>';
+  placeTrend3.setAttribute('id', 'graficaTercero');
+  placeTrend3.innerHTML = '<span class="placetrend">Tercero</span>';
   divForPlaces.appendChild(placeTrend3);
 
   const placeTrend4 = document.createElement('h4');
-  placeTrend4.innerHTML = '<span class="placetrend">4to puesto </span>';
+  placeTrend4.setAttribute('id', 'graficaCuarto');
+  placeTrend4.innerHTML = '<span class="placetrend">Cuarto</span>';
   divForPlaces.appendChild(placeTrend4);
 
   const placeTrend5 = document.createElement('h4');
-  placeTrend5.innerHTML = '<span class="placetrend">5to puesto </span>';
+  placeTrend5.setAttribute('id', 'graficaQuinto');
+  placeTrend5.innerHTML = '<span class="placetrend">Quinto</span>';
   divForPlaces.appendChild(placeTrend5);
 
   // button para hacer el calculo trend
   const trendingPlace1 = document.createElement('button');
   trendingPlace1.setAttribute('class', 'buttontrend');
   trendingPlace1.setAttribute('type', 'click');
+  trendingPlace1.setAttribute('value', 'Primero');
   trendingPlace1.innerHTML = 'Leage Of Legends';
   trendingDataDiv.appendChild(trendingPlace1);
 
-  //let firstP lace = 0;
-
-  /* buttontrend.addEventListener('click', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('emailLogin').value;
-    const password = document.getElementById('passwordLogin').value;
-    // console.log(email, password);
-    const alertaLogin = (valid) => {
-      if (valid) {
-        window.location.hash = '#/posts';
-      }
-    };
-    loginEmailPassword(email, password, alertaLogin);
-  });
-
-  buttonForGoogle.addEventListener('click', signGoogle);
-
-  return mainContainer; */
+   let firstPlace = 0;
+   let counterVotes = 0;
 
   const trendingPlace2 = document.createElement('button');
   trendingPlace2.setAttribute('class', 'buttontrend');
+  trendingPlace2.setAttribute('value', 'Segundo');
   trendingPlace2.setAttribute('type', 'click');
   trendingPlace2.innerHTML = 'Valorant';
   trendingDataDiv.appendChild(trendingPlace2);
 
   // funcion de calculo lalala
   
-  // let secondPlace = 0;
+   let secondPlace = 0;
 
   const trendingPlace3 = document.createElement('button');
+  trendingPlace3.setAttribute('value', 'Tercero');
   trendingPlace3.setAttribute('class', 'buttontrend');
   trendingPlace3.setAttribute('type', 'click');
   trendingPlace3.innerHTML = 'Fortnite';
@@ -127,9 +119,10 @@ const posts = () => {
 
   // funcion de calculo lala
   
-  // let thirdPlace = 0;
+   let thirdPlace = 0;
 
   const trendingPlace4 = document.createElement('button');
+  trendingPlace4.setAttribute('value', 'Cuarto');
   trendingPlace4.setAttribute('class', 'buttontrend');
   trendingPlace4.setAttribute('type', 'click');
   trendingPlace4.innerHTML = 'Minecraft';
@@ -137,9 +130,10 @@ const posts = () => {
 
   // funcion de calculo lala
 
-  // let fourthPlace = 0;
+  let fourthPlace = 0;
   
   const trendingPlace5 = document.createElement('button');
+  trendingPlace5.setAttribute('value', 'Quinto');
   trendingPlace5.setAttribute('class', 'buttontrend');
   trendingPlace5.setAttribute('type', 'click');
   trendingPlace5.innerHTML = 'Overwatch 2';
@@ -147,7 +141,65 @@ const posts = () => {
 
   // funcion de calculo lalala
 
-  // let fifthPlace = 0;
+  let fifthPlace = 0;
+
+  function counter(votes){
+    if (votes == "Primero") {
+      counterVotes = (counterVotes + 5);
+      firstPlace = (firstPlace + 5); 
+    }else if(votes == "Segundo") {
+      counterVotes == (counterVotes + 5);
+      secondPlace = (secondPlace + 5);
+    }else if(votes == "Tercero"){
+      counterVotes == (counterVotes + 5);
+      thirdPlace = (thirdPlace + 5);
+    }else if(votes == "Cuarto"){
+      counterVotes == (counterVotes + 5);
+      fourthPlace = (fourthPlace + 5);
+    }else if(votes == "Quinto"){
+      counterVotes == (counterVotes + 5);
+      fifthPlace = (fifthPlace + 5);
+    }
+
+    document.getElementById('graficaPrimero').style.width = firstPlace + "%";
+    document.getElementById('graficaPrimero').innerHTML = `<h3> + firstPlace + %</h3>`;
+
+    document.getElementById('graficaSegundo').style.width = secondPlace + "%";
+    document.getElementById('graficaSegundo').innerHTML = `<h3> + secondPlace + %</h3>`;
+
+    document.getElementById('graficaTercero').style.width = thirdPlace + "%";
+    document.getElementById('graficaTercero').innerHTML = `<h3> + thirdPlace + %</h3>`;
+
+    document.getElementById('graficaCuarto').style.width = fourthPlace + "%";
+    document.getElementById('graficaCuarto').innerHTML = `<h3> + fourthPlace + %</h3>`;
+
+    document.getElementById('graficaQuinto').style.width = fifthPlace + "%";
+    document.getElementById('graficaQuinto').innerHTML = `<h3> + fifthPlace + %</h3>`;
+
+  }
+
+  if (counterVotes == 100){
+    document.getElementsByClassName('buttontrend').style.display = 'none';
+    document.getElementsByClassName('divforplaces').style.display = 'block';
+  }
+  
+    trendingPlace1.addEventListener('click', counter);
+    trendingPlace2.addEventListener('click', counter);
+    trendingPlace3.addEventListener('click', counter);
+    trendingPlace4.addEventListener('click', counter);
+    trendingPlace5.addEventListener('click', counter);
+
+  /* function showPassword() {
+    const logForPassword = document.getElementById('passwordLogin');
+    if (logForPassword.type === 'password') {
+      logForPassword.type = 'text';
+      checkbox.setAttribute('class', 'ojitocerrado');
+    } else {
+      logForPassword.type = 'password';
+      checkbox.setAttribute('class', 'ojitoabierto');
+    }
+  }
+  checkbox.addEventListener('click', showPassword); */
 
   // Crea Div padre en donde se publica y muestran los Posts
   const divPosts = document.createElement('div');
@@ -212,7 +264,28 @@ const posts = () => {
   //allPosts.innerHTML = displayPosts();
   //let resultado = displayPosts();
   //console.log(displayPosts());
-  displayPosts();
+  let info = displayPosts().then((value) => {
+    value.forEach((doc) => {
+      divPosts.innerHTML += `${doc.name} <br>`
+    })
+  }
+  )
+  //console.log(info);
+  
+  /* if (allPosts!= '') {
+  let html = "";
+  const querySnapShot = getDocs(posts);
+  querySnapShot.forEach ((doc) => {
+    const post = doc.data();
+    html += `
+        <h6>${post.name} publicó: ${post.description}</h6>`;
+    console.log(post);
+    return post 
+  }); */
+  // `<h6>${post.name} publicó: ${post.description}</h6>`
+  //let posteos = displayPosts()
+  //document.getElementById('allPosts').innerHTML = posteos;
+  
 
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();
