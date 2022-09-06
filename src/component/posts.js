@@ -96,8 +96,8 @@ const posts = () => {
   trendingPlace1.innerHTML = 'Leage Of Legends';
   trendingDataDiv.appendChild(trendingPlace1);
 
-   let firstPlace = 0;
-   let counterVotes = 0;
+  let firstPlace = 0;
+  let counterVotes = 0;
 
   const trendingPlace2 = document.createElement('button');
   trendingPlace2.setAttribute('class', 'buttontrend');
@@ -107,8 +107,8 @@ const posts = () => {
   trendingDataDiv.appendChild(trendingPlace2);
 
   // funcion de calculo lalala
-  
-   let secondPlace = 0;
+
+  let secondPlace = 0;
 
   const trendingPlace3 = document.createElement('button');
   trendingPlace3.setAttribute('value', 'Tercero');
@@ -118,8 +118,8 @@ const posts = () => {
   trendingDataDiv.appendChild(trendingPlace3);
 
   // funcion de calculo lala
-  
-   let thirdPlace = 0;
+
+  let thirdPlace = 0;
 
   const trendingPlace4 = document.createElement('button');
   trendingPlace4.setAttribute('value', 'Cuarto');
@@ -131,7 +131,7 @@ const posts = () => {
   // funcion de calculo lala
 
   let fourthPlace = 0;
-  
+
   const trendingPlace5 = document.createElement('button');
   trendingPlace5.setAttribute('value', 'Quinto');
   trendingPlace5.setAttribute('class', 'buttontrend');
@@ -143,51 +143,50 @@ const posts = () => {
 
   let fifthPlace = 0;
 
-  function counter(votes){
-    if (votes == "Primero") {
-      counterVotes = (counterVotes + 5);
-      firstPlace = (firstPlace + 5); 
-    }else if(votes == "Segundo") {
-      counterVotes == (counterVotes + 5);
-      secondPlace = (secondPlace + 5);
-    }else if(votes == "Tercero"){
-      counterVotes == (counterVotes + 5);
-      thirdPlace = (thirdPlace + 5);
-    }else if(votes == "Cuarto"){
-      counterVotes == (counterVotes + 5);
-      fourthPlace = (fourthPlace + 5);
-    }else if(votes == "Quinto"){
-      counterVotes == (counterVotes + 5);
-      fifthPlace = (fifthPlace + 5);
+  function counter(votes) {
+    if (votes == 'Primero') {
+      counterVotes += 5;
+      firstPlace += 5;
+    } else if (votes == 'Segundo') {
+      counterVotes == counterVotes + 5;
+      secondPlace += 5;
+    } else if (votes == 'Tercero') {
+      counterVotes == counterVotes + 5;
+      thirdPlace += 5;
+    } else if (votes == 'Cuarto') {
+      counterVotes == counterVotes + 5;
+      fourthPlace += 5;
+    } else if (votes == 'Quinto') {
+      counterVotes == counterVotes + 5;
+      fifthPlace += 5;
     }
 
-    document.getElementById('graficaPrimero').style.width = firstPlace + "%";
-    document.getElementById('graficaPrimero').innerHTML = `<h3> + firstPlace + %</h3>`;
+    document.getElementById('graficaPrimero').style.width = `${firstPlace}%`;
+    document.getElementById('graficaPrimero').innerHTML = `<h3> + ${firstPlace} + %</h3>`;
 
-    document.getElementById('graficaSegundo').style.width = secondPlace + "%";
-    document.getElementById('graficaSegundo').innerHTML = `<h3> + secondPlace + %</h3>`;
+    document.getElementById('graficaSegundo').style.width = `${secondPlace}%`;
+    document.getElementById('graficaSegundo').innerHTML = `<h3> + ${secondPlace} + %</h3>`;
 
-    document.getElementById('graficaTercero').style.width = thirdPlace + "%";
-    document.getElementById('graficaTercero').innerHTML = `<h3> + thirdPlace + %</h3>`;
+    document.getElementById('graficaTercero').style.width = `${thirdPlace}%`;
+    document.getElementById('graficaTercero').innerHTML = `<h3> + ${thirdPlace} + %</h3>`;
 
-    document.getElementById('graficaCuarto').style.width = fourthPlace + "%";
-    document.getElementById('graficaCuarto').innerHTML = `<h3> + fourthPlace + %</h3>`;
+    document.getElementById('graficaCuarto').style.width = `${fourthPlace}%`;
+    document.getElementById('graficaCuarto').innerHTML = `<h3> + ${fourthPlace} + %</h3>`;
 
-    document.getElementById('graficaQuinto').style.width = fifthPlace + "%";
-    document.getElementById('graficaQuinto').innerHTML = `<h3> + fifthPlace + %</h3>`;
-
+    document.getElementById('graficaQuinto').style.width = `${fifthPlace}%`;
+    document.getElementById('graficaQuinto').innerHTML = `<h3> + ${fifthPlace} + %</h3>`;
   }
 
-  if (counterVotes == 100){
+  if (counterVotes == 100) {
     document.getElementsByClassName('buttontrend').style.display = 'none';
     document.getElementsByClassName('divforplaces').style.display = 'block';
   }
-  
-    trendingPlace1.addEventListener('click', counter);
-    trendingPlace2.addEventListener('click', counter);
-    trendingPlace3.addEventListener('click', counter);
-    trendingPlace4.addEventListener('click', counter);
-    trendingPlace5.addEventListener('click', counter);
+
+  trendingPlace1.addEventListener('click', counter);
+  trendingPlace2.addEventListener('click', counter);
+  trendingPlace3.addEventListener('click', counter);
+  trendingPlace4.addEventListener('click', counter);
+  trendingPlace5.addEventListener('click', counter);
 
   /* function showPassword() {
     const logForPassword = document.getElementById('passwordLogin');
@@ -254,24 +253,29 @@ const posts = () => {
   buttonPost.innerHTML = 'Postear';
   inputSubContainer.appendChild(buttonPost);
 
-
   const allPosts = document.createElement('div');
   allPosts.setAttribute('class', 'allPosts');
   allPosts.setAttribute('id', 'allPosts');
   divPosts.appendChild(allPosts);
-  //const posteos = displayPosts;
-  //let otrosposts = posteos.toString();
-  //allPosts.innerHTML = displayPosts();
-  //let resultado = displayPosts();
-  //console.log(displayPosts());
-  let info = displayPosts().then((value) => {
+
+  // Función para traer todo los datos de los posts y creación de Div para contenerlos
+  displayPosts().then((value) => {
     value.forEach((doc) => {
-      divPosts.innerHTML += `${doc.name} <br>`
-    })
-  }
-  )
-  //console.log(info);
-  
+      // PRIMERO DIV NOMBRE
+      const postName = document.createElement('div');
+      postName.setAttribute('id', 'postName');
+      allPosts.appendChild(postName);
+
+      document.getElementById(doc.id).textContent += doc.name;
+      
+      // divPosts.innerHTML += `${doc.name} <br>`;
+    });
+  });
+      // const postPicture = document.createElement('img')
+  // DIV PARA POSTS
+
+  // console.log(info);
+
   /* if (allPosts!= '') {
   let html = "";
   const querySnapShot = getDocs(posts);
@@ -280,12 +284,11 @@ const posts = () => {
     html += `
         <h6>${post.name} publicó: ${post.description}</h6>`;
     console.log(post);
-    return post 
+    return post
   }); */
   // `<h6>${post.name} publicó: ${post.description}</h6>`
-  //let posteos = displayPosts()
-  //document.getElementById('allPosts').innerHTML = posteos;
-  
+  // let posteos = displayPosts()
+  // document.getElementById('allPosts').innerHTML = posteos;
 
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();

@@ -162,6 +162,8 @@ const db = getFirestore();
 // que los appendchildee y que sea un foreach para cada post del database
 // jejeje saludos emi <3
 
+// ----------- Guardar Posts
+
 const newPosts = async (textInput) => {
   const user = auth.currentUser;
   const userName = user.displayName;
@@ -179,8 +181,7 @@ const newPosts = async (textInput) => {
   }
 };
 
-
-
+// ----------- Mostrar Posts 
 
 const displayPosts = async () => {
   const posts = query(collection(db, "google"));
@@ -191,40 +192,6 @@ const displayPosts = async () => {
   })
   return todosPosts;
 } 
-
-
-/*
-// FRANKENWINI FUNCIONA las tkm 
-const displayPosts = async () => {
-  const posts = query(collection(db, "google"));
-  const querySnapShot = await getDocs(posts);
-  let html = "";
-  querySnapShot.forEach ((doc) => {
-    const post = doc.data();
-    html += "hola";
-        
-  });
-
-} */
-
-/* const displayPosts = async () => {
-  querySnapshot = await getDocs(collection(db, "google"))
-  .then(querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      const posts = doc.data();
-      console.log(posts);
-      return posts
-  }
-    ))
-  .catch((error) =>{
-    //const errorCode = error.code;
-    const errorMessage = error.message;
-    return errorMessage;
-  }
- )
-} */
-
-
 
 
 export {
