@@ -261,17 +261,50 @@ const posts = () => {
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
   displayPosts().then((value) => {
     value.forEach((doc) => {
-      // PRIMERO DIV NOMBRE
-      const postName = document.createElement('div');
-      postName.setAttribute('id', 'postName');
-      allPosts.appendChild(postName);
+      // DIV PIC
+      // HAY QUE IR A BUSCAR A CADA USER CON SU DOC.UID
+      // LUEGO DE ESTO SACAR LA PHOTOURL
+      // DEBE HABER ALGUNA FUNCION DE FIREBASE QUE SIRVA PARA ESO JJJ
+      // const postPic = document.createElement('img');
+      // const postPicId = doc.date;
+      // console.log(doc);
+      // postName.setAttribute('id', postPicId);
+      // postName.setAttribute('id', postPicId);
+      // postName.referrerPolicy = 'no-referrer';
+      // allPosts.appendChild(postPic);
 
-      document.getElementById(doc.id).textContent += doc.name;
+      // function para picture (?)
+
+      // DIV DATE
+      /* const postDate = document.createElement('div');
+      const postDateId = doc.date;
+      console.log(doc);
+      postDate.setAttribute('id', postDateId);
+      allPosts.appendChild(postDate);
+      document.getElementById(postDateId).textContent += doc.date; */
+
+      // DIV NOMBRE
+      const postName = document.createElement('div');
+      const postNameId = doc.date;
+      console.log(doc);
+      postName.setAttribute('id', postNameId);
+      allPosts.appendChild(postName);
+      document.getElementById(postNameId).textContent += doc.name;
+
+      // convertir el date en dia y hora jejeps
+      // DIV POST
+      const postDesc = document.createElement('div');
+      const postDescId = doc.date;
       
+      console.log(doc);
+      postName.appendChild(postDesc);
+      document.getElementById(postDescId).textContent += doc.description;
+
       // divPosts.innerHTML += `${doc.name} <br>`;
+      // description es [textInput]
     });
   });
-      // const postPicture = document.createElement('img')
+  // const postPicture = document.createElement('img')
   // DIV PARA POSTS
 
   // console.log(info);
