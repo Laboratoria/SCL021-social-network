@@ -559,3 +559,21 @@ button#botoncito {
 .trendingDataDiv{
   background-size: contain;
 }
+
+.allPosts{
+  width: 100%;
+  height: auto;
+  border: 0; 
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; 
+  background: red; 
+  background-size: contain;
+  padding: 20px; 
+}
+.allPosts div {
+  background-color: white;
+  color:  black;
+}
