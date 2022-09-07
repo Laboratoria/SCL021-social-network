@@ -4,7 +4,6 @@ import { loginEmailPassword, signGoogle, resetPass } from '../lib/firebase.js';
 // importar resetPass
 
 const login = () => {
-
   // Crea Div que contiene Titulo mainContainer
   const mainContainer = document.createElement('div');
   mainContainer.classList.add('mainContainer');
@@ -17,7 +16,7 @@ const login = () => {
   // Crea parrafo o titulo
   const title = document.createElement('h1');
   title.setAttribute('class', 'tittlepost');
-  title.textContent = 'Good Game Girls';
+  title.textContent = '/GGgirls';
   mainContainer.appendChild(title);
 
   // slogan
@@ -28,7 +27,7 @@ const login = () => {
   mainContainer.appendChild(slogan);
 
   const pForSlogan = document.createElement('p');
-  pForSlogan.innerHTML = 'Únete comunidad gamer femenina más grande de Latinoamérica!';
+  pForSlogan.innerHTML = 'Únete a la comunidad gamer femenina más grande de Latinoamérica!';
   mainContainer.appendChild(pForSlogan);
 
   // Crea ingreso de Email
@@ -189,7 +188,7 @@ const login = () => {
   linkRegister.setAttribute('id', 'linkRegist');
   registerContainer.appendChild(linkRegister);
 
-   /*const mainRoute = document.getElementById('mainRoute');
+  /* const mainRoute = document.getElementById('mainRoute');
   const footer = document.createElement('footer');
     footer.setAttribute('class', 'footer');
     footer.innerHTML = `

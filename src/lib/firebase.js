@@ -181,18 +181,31 @@ const newPosts = async (textInput) => {
   }
 };
 
-// ----------- Mostrar Posts 
+// Busca foto del autor post
+/*
+const getPostPic = (uid) => {
+getAuth()
+  .getUser(uid).getPhotoUrl()
+  .then((photoUrl) => {
+    console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
+  })
+  .catch((error) => {
+    console.log('Error fetching user data:', error);
+  });
+  }
+*/
+
+// ----------- Mostrar Posts
 
 const displayPosts = async () => {
-  const posts = query(collection(db, "google"));
+  const posts = query(collection(db, 'google'));
   const querySnapShot = await getDocs(posts);
-  let todosPosts = [];
+  const todosPosts = [];
   querySnapShot.forEach((doc) => {
-    todosPosts.push(doc.data())
-  })
+    todosPosts.push(doc.data());
+  });
   return todosPosts;
-} 
-
+};
 
 export {
   db,
@@ -207,4 +220,5 @@ export {
   resetPass,
   newPosts,
   displayPosts,
+ /* getPostPic, */
 };
