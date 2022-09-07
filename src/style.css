@@ -539,6 +539,7 @@ button#botoncito {
   align-items: center;
   justify-content: center;
   padding: 5px;
+  margin-bottom: 20px;
   font-size: 25px;
   font-family: 'Do Hyeon', sans-serif;
 }
@@ -550,7 +551,7 @@ button#botoncito {
   border: 0;
   border-radius: 15px;
   width: 10%;
-  height: 10%;
+  height: 9%;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -562,18 +563,47 @@ button#botoncito {
 
 .allPosts{
   width: 100%;
-  height: auto;
+  height: 80%;
+  gap:10px;
   border: 0; 
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; 
-  background: red; 
-  background-size: contain;
+  background: rgb(27, 19, 19);
   padding: 20px; 
+  overflow-y: auto;
 }
-.allPosts div {
+
+#divPostMain {
   background-color: white;
-  color:  black;
+  color: black;
+  height: 250px !important;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: solid 3px turquoise;
+}
+#divPostMain div {
+  color: black;
+  
+  background-color: purple;
+  display: flex;
+  flex-direction: column;
+}
+#postPic{
+  height: 200px;
+  width: 15%;
+  background-color: green;
+}
+
+#timeStamp {
+  color:black;
+
+}
+
+.socialmedia{
+  gap: 20px
 }

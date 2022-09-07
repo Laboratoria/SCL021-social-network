@@ -44,6 +44,22 @@ const posts = () => {
   userDataDiv.classList.add('insidePost');
   userDataContainer.appendChild(userDataDiv);
 
+  const follow = document.createElement('h4');
+  follow.innerHTML = '<span class="fav"> 👾¡Siguenos y disfruta del contenido que tanto te gusta!👾 <br /> </span>';
+  userDataDiv.appendChild(follow);
+
+  const socialMediaTwitter = document.createElement('h3');
+  socialMediaTwitter.innerHTML = `<i class="fa-brands fa-square-twitter"></i><span class="socialmedia"> Twitter @goodgamegirls </span>`;
+  userDataDiv.appendChild(socialMediaTwitter);
+
+  const socialMediaFacebook = document.createElement('h3');
+  socialMediaFacebook.innerHTML = `<i class="fa-brands fa-square-facebook"></i><span class="socialmedia"> Facebook /goodgamegirls </span>`;
+  userDataDiv.appendChild(socialMediaFacebook);
+
+  const socialMediaInstagram = document.createElement('h3');
+  socialMediaInstagram.innerHTML = `<i class="fa-brands fa-square-instagram"></i><span class="socialmedia"> Instagram @goodgamegirls.cl </span>`;
+  userDataDiv.appendChild(socialMediaInstagram);
+
   // trends
   const trendingDataDiv = document.createElement('div');
   trendingDataDiv.setAttribute('id', 'trendingDataDiv');
@@ -51,15 +67,14 @@ const posts = () => {
   userDataContainer.appendChild(trendingDataDiv);
 
   const trendingGames = document.createElement('h2');
-  trendingGames.innerHTML = '<span class="juegofav">¿Cuál es tu juego favorito?</span>';
   trendingDataDiv.appendChild(trendingGames);
 
   const trendingtittle = document.createElement('h4');
-  trendingGames.innerHTML = '<span class="fav"> 🔥¡Vota por tu juego favorito!🔥 </span>';
+  trendingGames.innerHTML = '<span class="fav"> 🔥¡Nuestras recomendaciones de juegos!🔥 <br /> </span>';
   trendingDataDiv.appendChild(trendingtittle);
 
   // puestos en ranking
-  const divForPlaces = document.createElement('div');
+  /*const divForPlaces = document.createElement('div');
   divForPlaces.setAttribute('class', 'divforplaces');
   trendingDataDiv.appendChild(divForPlaces);
 
@@ -86,62 +101,76 @@ const posts = () => {
   const placeTrend5 = document.createElement('h4');
   placeTrend5.setAttribute('id', 'graficaQuinto');
   placeTrend5.innerHTML = '<span class="placetrend">Quinto</span>';
-  divForPlaces.appendChild(placeTrend5);
+  divForPlaces.appendChild(placeTrend5); */
 
   // button para hacer el calculo trend
   const trendingPlace1 = document.createElement('button');
   trendingPlace1.setAttribute('class', 'buttontrend');
   trendingPlace1.setAttribute('type', 'click');
   trendingPlace1.setAttribute('value', 'Primero');
-  trendingPlace1.innerHTML = 'Leage Of Legends';
+  trendingPlace1.innerHTML = '1. Leage Of Legends';
   trendingDataDiv.appendChild(trendingPlace1);
 
-  let firstPlace = 0;
-  let counterVotes = 0;
+  // let firstPlace = 0;
+  // let counterVotes = 0;
 
   const trendingPlace2 = document.createElement('button');
   trendingPlace2.setAttribute('class', 'buttontrend');
   trendingPlace2.setAttribute('value', 'Segundo');
   trendingPlace2.setAttribute('type', 'click');
-  trendingPlace2.innerHTML = 'Valorant';
+  trendingPlace2.innerHTML = '2. Valorant';
   trendingDataDiv.appendChild(trendingPlace2);
 
   // funcion de calculo lalala
 
-  let secondPlace = 0;
+  // let secondPlace = 0;
 
   const trendingPlace3 = document.createElement('button');
   trendingPlace3.setAttribute('value', 'Tercero');
   trendingPlace3.setAttribute('class', 'buttontrend');
   trendingPlace3.setAttribute('type', 'click');
-  trendingPlace3.innerHTML = 'Fortnite';
+  trendingPlace3.innerHTML = '3. Fortnite';
   trendingDataDiv.appendChild(trendingPlace3);
 
   // funcion de calculo lala
 
-  let thirdPlace = 0;
+  // let thirdPlace = 0;
 
   const trendingPlace4 = document.createElement('button');
   trendingPlace4.setAttribute('value', 'Cuarto');
   trendingPlace4.setAttribute('class', 'buttontrend');
   trendingPlace4.setAttribute('type', 'click');
-  trendingPlace4.innerHTML = 'Minecraft';
+  trendingPlace4.innerHTML = '4. Minecraft';
   trendingDataDiv.appendChild(trendingPlace4);
 
   // funcion de calculo lala
 
-  let fourthPlace = 0;
+  // let fourthPlace = 0;
 
   const trendingPlace5 = document.createElement('button');
   trendingPlace5.setAttribute('value', 'Quinto');
   trendingPlace5.setAttribute('class', 'buttontrend');
   trendingPlace5.setAttribute('type', 'click');
-  trendingPlace5.innerHTML = 'Overwatch 2';
+  trendingPlace5.innerHTML = '5. Overwatch 2';
   trendingDataDiv.appendChild(trendingPlace5);
 
+  const trendingPlace6 = document.createElement('button');
+  trendingPlace6.setAttribute('value', 'Quinto');
+  trendingPlace6.setAttribute('class', 'buttontrend');
+  trendingPlace6.setAttribute('type', 'click');
+  trendingPlace6.innerHTML = '6. Roblox';
+  trendingDataDiv.appendChild(trendingPlace6);
+
+  const trendingPlace7 = document.createElement('button');
+  trendingPlace7.setAttribute('value', 'Quinto');
+  trendingPlace7.setAttribute('class', 'buttontrend');
+  trendingPlace7.setAttribute('type', 'click');
+  trendingPlace7.innerHTML = '7. Fall Guys';
+  trendingDataDiv.appendChild(trendingPlace7);
+  
   // funcion de calculo lalala
 
-  let fifthPlace = 0;
+ /* let fifthPlace = 0;
 
   function counter(votes) {
     if (votes == 'Primero') {
@@ -180,13 +209,13 @@ const posts = () => {
   if (counterVotes == 100) {
     document.getElementsByClassName('buttontrend').style.display = 'none';
     document.getElementsByClassName('divforplaces').style.display = 'block';
-  }
+  } */
 
-  trendingPlace1.addEventListener('click', counter);
+  /*trendingPlace1.addEventListener('click', counter);
   trendingPlace2.addEventListener('click', counter);
   trendingPlace3.addEventListener('click', counter);
   trendingPlace4.addEventListener('click', counter);
-  trendingPlace5.addEventListener('click', counter);
+  trendingPlace5.addEventListener('click', counter); */
 
   /* function showPassword() {
     const logForPassword = document.getElementById('passwordLogin');
@@ -266,7 +295,7 @@ const posts = () => {
       // LUEGO DE ESTO SACAR LA PHOTOURL
       // DEBE HABER ALGUNA FUNCION DE FIREBASE QUE SIRVA PARA ESO JJJ
       // const postPic = document.createElement('img');
-      // const postPicId = doc.date;
+      // const postforDate = doc.date;
       // console.log(doc);
       // postName.setAttribute('id', postPicId);
       // postName.setAttribute('id', postPicId);
@@ -274,31 +303,46 @@ const posts = () => {
       // allPosts.appendChild(postPic);
 
       // function para picture (?)
+      //DIV Principal 
+
 
       // DIV DATE
-      /* const postDate = document.createElement('div');
-      const postDateId = doc.date;
-      console.log(doc);
-      postDate.setAttribute('id', postDateId);
-      allPosts.appendChild(postDate);
-      document.getElementById(postDateId).textContent += doc.date; */
 
+      const divPostMain = document.createElement('div');
+      divPostMain.setAttribute('id','divPostMain');
+      divPostMain.setAttribute('class','divPostMain');
+      allPosts.appendChild(divPostMain);
+
+      const postPic = document.createElement('img');
+      postPic.setAttribute('id','postPic');
+      divPostMain.appendChild(postPic);
+
+      /* const postDate = document.createElement('div');
+      postDate.setAttribute('id', 'postDateId');
+      doc.date = new Date;
+      document.getElementById('postDateId').textContent += new Date; 
+      divPostMain.appendChild(postDate); */
+    
       // DIV NOMBRE
       const postName = document.createElement('div');
-      const postNameId = doc.date;
-      console.log(doc);
+      let postNameId = doc.date;
       postName.setAttribute('id', postNameId);
-      allPosts.appendChild(postName);
-      document.getElementById(postNameId).textContent += doc.name;
+      
+      divPostMain.appendChild(postName);
+      document.getElementById(postNameId).textContent += doc.name + "";
+
+      const postDescripction = document.createElement('div');
+      const postDescripctionId = doc.date;
+      postName.setAttribute('id', postDescripctionId);
+      divPostMain.appendChild(postDescripction);
+      document.getElementById(postDescripctionId).textContent += doc.description;
 
       // convertir el date en dia y hora jejeps
       // DIV POST
-      const postDesc = document.createElement('div');
+     /* const postDesc = document.createElement('div');
       const postDescId = doc.date;
-      
-      console.log(doc);
       postName.appendChild(postDesc);
-      document.getElementById(postDescId).textContent += doc.description;
+      document.getElementById(postDescId).textContent += doc.description; */
 
       // divPosts.innerHTML += `${doc.name} <br>`;
       // description es [textInput]
