@@ -605,5 +605,18 @@ button#botoncito {
 }
 
 .socialmedia{
-  gap: 20px
+  gap: 20px;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.games{
+    margin: auto; 
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-family: 'Do Hyeon', sans-serif;
+
 }

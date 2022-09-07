@@ -45,19 +45,19 @@ const posts = () => {
   userDataContainer.appendChild(userDataDiv);
 
   const follow = document.createElement('h4');
-  follow.innerHTML = '<span class="fav"> 👾¡Siguenos y disfruta del contenido que tanto te gusta!👾 <br /> </span>';
+  follow.innerHTML = '<span class="games"> 👾¡Siguenos y disfruta del contenido que tanto te gusta!👾 <br /> </span>';
   userDataDiv.appendChild(follow);
 
   const socialMediaTwitter = document.createElement('h3');
-  socialMediaTwitter.innerHTML = `<i class="fa-brands fa-square-twitter"></i><span class="socialmedia"> Twitter @goodgamegirls </span>`;
+  socialMediaTwitter.innerHTML = `<span class="socialmedia"><i class="fa-brands fa-square-twitter"></i> Twitter @goodgamegirls </span>`;
   userDataDiv.appendChild(socialMediaTwitter);
 
   const socialMediaFacebook = document.createElement('h3');
-  socialMediaFacebook.innerHTML = `<i class="fa-brands fa-square-facebook"></i><span class="socialmedia"> Facebook /goodgamegirls </span>`;
+  socialMediaFacebook.innerHTML = `<span class="socialmedia"><i class="fa-brands fa-square-facebook"></i> Facebook /goodgamegirls </span>`;
   userDataDiv.appendChild(socialMediaFacebook);
 
   const socialMediaInstagram = document.createElement('h3');
-  socialMediaInstagram.innerHTML = `<i class="fa-brands fa-square-instagram"></i><span class="socialmedia"> Instagram @goodgamegirls.cl </span>`;
+  socialMediaInstagram.innerHTML = `<span class="socialmedia"><i class="fa-brands fa-square-instagram"></i> Instagram @goodgamegirls.cl </span>`;
   userDataDiv.appendChild(socialMediaInstagram);
 
   // trends
