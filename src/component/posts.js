@@ -370,11 +370,35 @@ const posts = () => {
       likePosts.innerHTML += `<i class="fa-regular fa-heart"></i>`;
       divPostContent.appendChild(likePosts);
 
+      /* <div class="likes-border"> 
+              <button  class="btn-like" value=${doc.id}>
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm4.186 10.74L12 16.926L7.814 12.74a2.745 2.745 0 0 1 0-3.907a2.745 2.745 0 0 1 3.906 0l.28.279l.279-.279a2.745 2.745 0 0 1 3.906 0a2.745 2.745 0 0 1 .001 3.907z"/></svg> 
+            </button>
+            <span id="like-count" class="like-count"> ${posts.numberLike}Me gusta</span> 
+            </div>
+      
+      const btnLike = postContainer.querySelectorAll('.likes');
+        console.log(likes);
+        likes.forEach((like) => {
+          console.log(likes);
+          like.addEventListener('click', () => {
+          // id = e.target.dataset.id;
+            console.log('ola');
+            //const idLike = e.target.dataset.id;
+            const userId =auth.currentUser.uid;
+            likePost(like.value, userId);
+            console.log(id);
+          });
+        });
+
+        });
+
+      }   */
       // DIV COMMENTS
       const commentsPosts = document.createElement('span');
       commentsPosts.setAttribute('id', 'comments');
-      commentsPosts.innerHTML += `<i class="fa-regular fa-comment"></i>`;
-      divPostContent.appendChild(commentsPosts);
+      commentsPosts.innerHTML += `<i class="fa-regular fa-message-lines"></i>;
+      divPostContent.appendChild(commentsPosts`;
 
     });
   });
@@ -383,7 +407,7 @@ const posts = () => {
 
   // console.log(info);
 
-  /* if (allPosts!= '') {
+  /*if (allPosts!= '') {
   let html = "";
   const querySnapShot = getDocs(posts);
   querySnapShot.forEach ((doc) => {
@@ -392,7 +416,7 @@ const posts = () => {
         <h6>${post.name} publicó: ${post.description}</h6>`;
     console.log(post);
     return post
-  }); */
+  });  */
   // `<h6>${post.name} publicó: ${post.description}</h6>`
   // let posteos = displayPosts()
   // document.getElementById('allPosts').innerHTML = posteos;

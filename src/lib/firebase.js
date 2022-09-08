@@ -181,6 +181,28 @@ const newPosts = async (textInput) => {
   }
 };
 
+
+// LIKES 
+
+/*//dar like a post
+  export const likePost = async (id, userId)=>{
+   const postRef = doc(db,'post',id);
+   const docLike = await getDoc(postRef);
+   const dataLike = docLike.data();
+  console.log(dataLike)
+   const likesCount = dataLike.numberLike;
+   if((dataLike.like).includes(userId)){
+    await updateDoc(postRef,{
+    like:arrayRemove(userId),
+    numberLike: likesCount  -1,
+    });
+   }else{
+     await updateDoc(postRef,{
+      like:arrayUnion(userId),
+      numberLike: likesCount  +1,
+     });
+   }
+  } */ 
 // Busca foto del autor post
 /*
 const getPostPic = (uid) => {
