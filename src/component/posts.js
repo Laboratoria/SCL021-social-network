@@ -1,5 +1,5 @@
 import {
-  auth, logOut, newPosts, displayPosts,
+  auth, logOut, newPosts, displayPosts, /*getPostPic,*/
 } from '../lib/firebase.js';
 
 // main route
@@ -45,19 +45,19 @@ const posts = () => {
   userDataContainer.appendChild(userDataDiv);
 
   const follow = document.createElement('h4');
-  follow.innerHTML = '<span class="games"> 👾¡Siguenos y disfruta del contenido que tanto te gusta!👾 <br /> </span>';
+  follow.innerHTML = '<span class="games"> ¡Siguenos y disfruta del contenido que tanto te gusta! <br /> </span>';
   userDataDiv.appendChild(follow);
 
   const socialMediaTwitter = document.createElement('h3');
-  socialMediaTwitter.innerHTML = `<span class="socialmedia"><i class="fa-brands fa-square-twitter"></i> Twitter @goodgamegirls </span>`;
+  socialMediaTwitter.innerHTML = '<span class="socialmedia"><i class="fa-brands fa-square-twitter"></i> Twitter @goodgamegirls </span>';
   userDataDiv.appendChild(socialMediaTwitter);
 
   const socialMediaFacebook = document.createElement('h3');
-  socialMediaFacebook.innerHTML = `<span class="socialmedia"><i class="fa-brands fa-square-facebook"></i> Facebook /goodgamegirls </span>`;
+  socialMediaFacebook.innerHTML = '<span class="socialmedia"><i class="fa-brands fa-square-facebook"></i> Facebook /goodgamegirls </span>';
   userDataDiv.appendChild(socialMediaFacebook);
 
   const socialMediaInstagram = document.createElement('h3');
-  socialMediaInstagram.innerHTML = `<span class="socialmedia"><i class="fa-brands fa-square-instagram"></i> Instagram @goodgamegirls.cl </span>`;
+  socialMediaInstagram.innerHTML = '<span class="socialmedia"><i class="fa-brands fa-square-instagram"></i> Instagram @goodgamegirls.cl </span>';
   userDataDiv.appendChild(socialMediaInstagram);
 
   // trends
@@ -74,7 +74,7 @@ const posts = () => {
   trendingDataDiv.appendChild(trendingtittle);
 
   // puestos en ranking
-  /*const divForPlaces = document.createElement('div');
+  /* const divForPlaces = document.createElement('div');
   divForPlaces.setAttribute('class', 'divforplaces');
   trendingDataDiv.appendChild(divForPlaces);
 
@@ -167,10 +167,10 @@ const posts = () => {
   trendingPlace7.setAttribute('type', 'click');
   trendingPlace7.innerHTML = '7. Fall Guys';
   trendingDataDiv.appendChild(trendingPlace7);
-  
+
   // funcion de calculo lalala
 
- /* let fifthPlace = 0;
+  /* let fifthPlace = 0;
 
   function counter(votes) {
     if (votes == 'Primero') {
@@ -211,7 +211,7 @@ const posts = () => {
     document.getElementsByClassName('divforplaces').style.display = 'block';
   } */
 
-  /*trendingPlace1.addEventListener('click', counter);
+  /* trendingPlace1.addEventListener('click', counter);
   trendingPlace2.addEventListener('click', counter);
   trendingPlace3.addEventListener('click', counter);
   trendingPlace4.addEventListener('click', counter);
@@ -303,49 +303,79 @@ const posts = () => {
       // allPosts.appendChild(postPic);
 
       // function para picture (?)
-      //DIV Principal 
-
+      // DIV Principal
+      // getPostPic(doc.uid);
 
       // DIV DATE
 
       const divPostMain = document.createElement('div');
-      divPostMain.setAttribute('id','divPostMain');
-      divPostMain.setAttribute('class','divPostMain');
+      divPostMain.setAttribute('id', 'divPostMain');
+      divPostMain.setAttribute('class', 'divPostMain');
       allPosts.appendChild(divPostMain);
 
-      const postPic = document.createElement('img');
-      postPic.setAttribute('id','postPic');
+      const postPic = document.createElement('div');
+      postPic.innerHTML= 'IMAGEN';
+      postPic.setAttribute('id', 'postPic');
       divPostMain.appendChild(postPic);
-
+      // DATE
+      const divPostContent= document.createElement('div');
+      divPostContent.setAttribute('id', 'divPostContent');
+      divPostContent.setAttribute('class', 'divPostContent');
+      divPostMain.appendChild(divPostContent);
       /* const postDate = document.createElement('div');
       postDate.setAttribute('id', 'postDateId');
       doc.date = new Date;
-      document.getElementById('postDateId').textContent += new Date; 
+      document.getElementById('postDateId').textContent += new Date;
       divPostMain.appendChild(postDate); */
-    
       // DIV NOMBRE
+      const postIdentifier = doc.date;
       const postName = document.createElement('div');
-      let postNameId = doc.date;
-      postName.setAttribute('id', postNameId);
-      
-      divPostMain.appendChild(postName);
-      document.getElementById(postNameId).textContent += doc.name + "";
+      const nameId = `${postIdentifier}name`;
+      postName.setAttribute('class', 'postName');
+      postName.setAttribute('id', nameId);
+      divPostContent.appendChild(postName);
+      document.getElementById(nameId).textContent += `${doc.name} `;
 
-      const postDescripction = document.createElement('div');
-      const postDescripctionId = doc.date;
-      postName.setAttribute('id', postDescripctionId);
-      divPostMain.appendChild(postDescripction);
-      document.getElementById(postDescripctionId).textContent += doc.description;
+      // DIV DATE
+      const postDate = document.createElement('div');
+      const descDate = `${postIdentifier}date`;
+      postDate.setAttribute('id', descDate);
+      postDate.setAttribute('class', 'postDate');
+      divPostContent.appendChild(postDate);
+      console.log(doc.date.seconds);
+      const docToDate = new Date(doc.date.seconds * 1000);
+      const day = docToDate.getDay();
+      const month = docToDate.getMonth() + 1;
+      const year = docToDate.getFullYear();
+      const hour = docToDate.getHours();
+      const minute = docToDate.getMinutes();
+      const timeFormat = `Publicado el ${day}.${month}.${year} a las ${hour}:${minute}`;
+      const finalDate = timeFormat;
+      document.getElementById(descDate).textContent += finalDate;
 
+      // DIV DESCRIPTION
+      const postDesc = document.createElement('div');
+      const descId = `${postIdentifier}desc`;
+      postDesc.setAttribute('id', descId);
+      postDesc.setAttribute('class', 'postDesc');
+      divPostContent.appendChild(postDesc);
+      document.getElementById(descId).textContent += doc.description;
       // convertir el date en dia y hora jejeps
-      // DIV POST
-     /* const postDesc = document.createElement('div');
-      const postDescId = doc.date;
-      postName.appendChild(postDesc);
-      document.getElementById(postDescId).textContent += doc.description; */
-
       // divPosts.innerHTML += `${doc.name} <br>`;
       // description es [textInput]
+
+      // DIV LIKES
+      const likePosts = document.createElement('span');
+      likePosts.setAttribute('id', 'likes');
+      likePosts.innerHTML += `<i class="fa-regular fa-heart"></i>`;
+      divPostContent.appendChild(likePosts);
+
+      // DIV COMMENTS
+      const commentsPosts = document.createElement('span');
+      commentsPosts.setAttribute('id', 'comments');
+      commentsPosts.innerHTML += `<i class="fa-regular fa-comment"></i>`;
+      divPostContent.appendChild(commentsPosts);
+
     });
   });
   // const postPicture = document.createElement('img')
