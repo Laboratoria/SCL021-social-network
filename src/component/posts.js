@@ -1,5 +1,5 @@
 import {
-  auth, logOut, newPosts, displayPosts, /*getPostPic,*/
+  auth, logOut, newPosts, displayPosts, likePost,
 } from '../lib/firebase.js';
 
 // main route
@@ -308,27 +308,30 @@ const posts = () => {
 
       // DIV DATE
 
+      const postIdentifier = doc.date;
+
       const divPostMain = document.createElement('div');
-      divPostMain.setAttribute('id', 'divPostMain');
+      divPostMain.setAttribute('id', postIdentifier);
       divPostMain.setAttribute('class', 'divPostMain');
       allPosts.appendChild(divPostMain);
 
-      const postPic = document.createElement('div');
-      postPic.innerHTML= 'IMAGEN';
-      postPic.setAttribute('id', 'postPic');
-      divPostMain.appendChild(postPic);
-      // DATE
-      const divPostContent= document.createElement('div');
-      divPostContent.setAttribute('id', 'divPostContent');
-      divPostContent.setAttribute('class', 'divPostContent');
+      const divPostPic = document.createElement('div');
+      divPostPic.setAttribute('id', `${postIdentifier}pix`);
+      divPostPic.setAttribute('class', 'divPostPic');
+      divPostMain.appendChild(divPostPic);
+
+      const picUrl = document.createElement('img');
+      picUrl.setAttribute('id', 'picUrl');
+      picUrl.setAttribute('referrerPolicy', 'no-referrer');
+      picUrl.setAttribute('src', `${doc.pfp} `);
+      divPostPic.appendChild(picUrl);
+
+      //
+      const divPostContent = document.createElement('div');
+      divPostContent.setAttribute('class', 'contentBox');
       divPostMain.appendChild(divPostContent);
-      /* const postDate = document.createElement('div');
-      postDate.setAttribute('id', 'postDateId');
-      doc.date = new Date;
-      document.getElementById('postDateId').textContent += new Date;
-      divPostMain.appendChild(postDate); */
+
       // DIV NOMBRE
-      const postIdentifier = doc.date;
       const postName = document.createElement('div');
       const nameId = `${postIdentifier}name`;
       postName.setAttribute('class', 'postName');
@@ -351,7 +354,7 @@ const posts = () => {
       const minute = docToDate.getMinutes();
       const timeFormat = `Publicado el ${day}.${month}.${year} a las ${hour}:${minute}`;
       const finalDate = timeFormat;
-      document.getElementById(descDate).textContent += finalDate;
+      postDate.textContent += finalDate;
 
       // DIV DESCRIPTION
       const postDesc = document.createElement('div');
@@ -365,17 +368,42 @@ const posts = () => {
       // description es [textInput]
 
       // DIV LIKES
+      /* <div class="likes-border">
+              <button  class="btn-like" value=${doc.id}>
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm4.186 10.74L12 16.926L7.814 12.74a2.745 2.745 0 0 1 0-3.907a2.745 2.745 0 0 1 3.906 0l.28.279l.279-.279a2.745 2.745 0 0 1 3.906 0a2.745 2.745 0 0 1 .001 3.907z"/></svg>
+            </button>
+            <span id="like-count" class="like-count"> ${postDesc.numberLike}Me gusta</span>
+            </div>
+            </div>
+
+             //dar like a los post
+        const btnLike = postContainer.querySelectorAll('.btn-like');
+        console.log(btnLike);
+        btnLike.forEach((like) => {
+          console.log(btnLike);
+          like.addEventListener('click', () => {
+          // id = e.target.dataset.id;
+            console.log('ola');
+            //const idLike = e.target.dataset.id;
+            const userId =auth.currentUser.uid;
+            likePost(like.value, userId);
+            console.log(id);
+          });
+        });
+
+      });
+    }  */
+
       const likePosts = document.createElement('span');
-      likePosts.setAttribute('id', 'likes');
-      likePosts.innerHTML += `<i class="fa-regular fa-heart"></i>`;
+      likePosts.setAttribute('id', 'btn-like');
+      likePosts.innerHTML += '<i class="fa-regular fa-heart"></i>';
       divPostContent.appendChild(likePosts);
 
       // DIV COMMENTS
       const commentsPosts = document.createElement('span');
       commentsPosts.setAttribute('id', 'comments');
-      commentsPosts.innerHTML += `<i class="fa-regular fa-comment"></i>`;
+      commentsPosts.innerHTML += '<i class="fa-regular fa-comment"></i>';
       divPostContent.appendChild(commentsPosts);
-
     });
   });
   // const postPicture = document.createElement('img')

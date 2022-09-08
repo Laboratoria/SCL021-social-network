@@ -176,24 +176,11 @@ const newPosts = async (textInput) => {
       likes: [],
       likesCount: 0,
       date: Timestamp.fromDate(new Date()),
+      pfp: user.photoURL,
     });
     console.log('Document written with ID: ', docRef.id);
   }
 };
-
-// Busca foto del autor post
-/*
-const getPostPic = (uid) => {
-getAuth()
-  .getUser(uid).getPhotoUrl()
-  .then((photoUrl) => {
-    console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
-  })
-  .catch((error) => {
-    console.log('Error fetching user data:', error);
-  });
-  }
-*/
 
 // ----------- Mostrar Posts
 
@@ -205,6 +192,27 @@ const displayPosts = async () => {
     todosPosts.push(doc.data());
   });
   return todosPosts;
+};
+
+// ---------- Likes ------
+// dar like a post
+const likePost = async (id, userId) => {
+  const postRef = doc(db, 'post', id);
+  const docLike = await getDoc(postRef);
+  const dataLike = docLike.data();
+  console.log(dataLike);
+  const likesCount = dataLike.numberLike;
+  if (dataLike.like.includes(userId)) {
+    await updateDoc(postRef, {
+      like: arrayRemove(userId),
+      numberLike: likesCount - 1,
+    });
+  } else {
+    await updateDoc(postRef, {
+      like: arrayUnion(userId),
+      numberLike: likesCount + 1,
+    });
+  }
 };
 
 export {
@@ -220,5 +228,6 @@ export {
   resetPass,
   newPosts,
   displayPosts,
- /* getPostPic, */
+  likePost,
+  /* getPostPic, */
 };
