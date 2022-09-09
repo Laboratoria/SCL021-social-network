@@ -49,15 +49,15 @@ const posts = () => {
   userDataDiv.appendChild(follow);
 
   const socialMediaTwitter = document.createElement('h3');
-  socialMediaTwitter.innerHTML = '<span class="socialmedia"><i class="fa-brands fa-square-twitter"></i> Twitter @goodgamegirls </span>';
+  socialMediaTwitter.innerHTML = '<span class="socialmedia"><img src="./assets/twitteer.png"> Twitter @goodgamegirls </span>';
   userDataDiv.appendChild(socialMediaTwitter);
 
   const socialMediaFacebook = document.createElement('h3');
-  socialMediaFacebook.innerHTML = '<span class="socialmedia"><i class="fa-brands fa-square-facebook"></i> Facebook /goodgamegirls </span>';
+  socialMediaFacebook.innerHTML = '<span class="socialmedia"><img src="./assets/faceboook.png"> Facebook /goodgamegirls </span>';
   userDataDiv.appendChild(socialMediaFacebook);
 
   const socialMediaInstagram = document.createElement('h3');
-  socialMediaInstagram.innerHTML = '<span class="socialmedia"><i class="fa-brands fa-square-instagram"></i> Instagram @goodgamegirls.cl </span>';
+  socialMediaInstagram.innerHTML = '<span class="socialmedia"><img src="./assets/instagramm.png"> Instagram @goodgamegirls.cl </span>';
   userDataDiv.appendChild(socialMediaInstagram);
 
   // trends
@@ -290,23 +290,6 @@ const posts = () => {
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
   displayPosts().then((value) => {
     value.forEach((doc) => {
-      // DIV PIC
-      // HAY QUE IR A BUSCAR A CADA USER CON SU DOC.UID
-      // LUEGO DE ESTO SACAR LA PHOTOURL
-      // DEBE HABER ALGUNA FUNCION DE FIREBASE QUE SIRVA PARA ESO JJJ
-      // const postPic = document.createElement('img');
-      // const postforDate = doc.date;
-      // console.log(doc);
-      // postName.setAttribute('id', postPicId);
-      // postName.setAttribute('id', postPicId);
-      // postName.referrerPolicy = 'no-referrer';
-      // allPosts.appendChild(postPic);
-
-      // function para picture (?)
-      // DIV Principal
-      // getPostPic(doc.uid);
-
-      // DIV DATE
 
       const postIdentifier = doc.date;
 
@@ -356,6 +339,37 @@ const posts = () => {
       const finalDate = timeFormat;
       postDate.textContent += finalDate;
 
+      // DIV EDIT 
+      const editDiv = document.createElement('div');
+      editDiv.setAttribute('class', 'edit')
+      postDate.appendChild(editDiv);
+
+      const editedPosts = document.createElement('img');
+      editedPosts.setAttribute('class', 'editedPosts')
+      editedPosts.setAttribute('id', 'btn-edit');
+      editedPosts.setAttribute('src', './assets/edit.png');
+      editDiv.appendChild(editedPosts);
+
+
+      // DIV DELETE
+      const deleteDiv = document.createElement('div');
+      deleteDiv.setAttribute('class', 'delete')
+      editDiv.appendChild(deleteDiv);
+
+      const deletePosts = document.createElement('img');
+      deletePosts.setAttribute('class', 'deletePosts')
+      deletePosts.setAttribute('id', 'btn-delete');
+      deletePosts.setAttribute('src', './assets/bin.png');
+      deletePosts.setAttribute('type', 'click');
+      editDiv.appendChild(deletePosts);
+      
+    
+      buttonForGoogle.addEventListener('click', signGoogle);
+      alert('Estas segurx que quieres borrar este post?')
+     return mainContainer;
+  })
+    
+
       // DIV DESCRIPTION
       const postDesc = document.createElement('div');
       const descId = `${postIdentifier}desc`;
@@ -363,41 +377,29 @@ const posts = () => {
       postDesc.setAttribute('class', 'postDesc');
       divPostContent.appendChild(postDesc);
       document.getElementById(descId).textContent += doc.description;
-      // convertir el date en dia y hora jejeps
-      // divPosts.innerHTML += `${doc.name} <br>`;
-      // description es [textInput]
 
       // DIV LIKES
-      /* <div class="likes-border">
-              <button  class="btn-like" value=${doc.id}>
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm4.186 10.74L12 16.926L7.814 12.74a2.745 2.745 0 0 1 0-3.907a2.745 2.745 0 0 1 3.906 0l.28.279l.279-.279a2.745 2.745 0 0 1 3.906 0a2.745 2.745 0 0 1 .001 3.907z"/></svg>
-            </button>
-            <span id="like-count" class="like-count"> ${postDesc.numberLike}Me gusta</span>
-            </div>
-            </div>
+      const likeDiv = document.createElement('div');
+      likeDiv.setAttribute('class', 'likeIcons')
+      divPostContent.appendChild(likeDiv);
 
-             //dar like a los post
-        const btnLike = postContainer.querySelectorAll('.btn-like');
-        console.log(btnLike);
-        btnLike.forEach((like) => {
-          console.log(btnLike);
-          like.addEventListener('click', () => {
-          // id = e.target.dataset.id;
-            console.log('ola');
-            //const idLike = e.target.dataset.id;
-            const userId =auth.currentUser.uid;
-            likePost(like.value, userId);
-            console.log(id);
-          });
-        });
-
-      });
-    }  */
-
-      const likePosts = document.createElement('span');
+      const likePosts = document.createElement('img');
+      likePosts.setAttribute('class', 'emptyLike')
       likePosts.setAttribute('id', 'btn-like');
-      likePosts.innerHTML += '<i class="fa-regular fa-heart"></i>';
-      divPostContent.appendChild(likePosts);
+      likePosts.setAttribute('src', './assets/heart.png');
+      likeDiv.appendChild(likePosts);
+     
+      likePosts.addEventListener('click', (e) => {
+        e.preventDefault();
+        likePost();
+      });
+
+      // COMMENTS 
+
+      const commentPosts = document.createElement('img');
+      commentPosts.setAttribute('id', 'btn-comment');
+      commentPosts.setAttribute('src', './assets/commeents.png');
+      likeDiv.appendChild(commentPosts);
 
       /* <div class="likes-border"> 
               <button  class="btn-like" value=${doc.id}>
@@ -428,8 +430,7 @@ const posts = () => {
       commentsPosts.setAttribute('id', 'comments');
       commentsPosts.innerHTML += '<i class="fa-regular fa-comment"></i>';
       divPostContent.appendChild(commentsPosts);
-    });
-  });
+    
   // const postPicture = document.createElement('img')
   // DIV PARA POSTS
 
@@ -461,7 +462,8 @@ const posts = () => {
     logOut();
   });
 
-  return postsContainer;
-};
+  return postsContainer
+});
+}
 
-export { posts };
+export { posts }
