@@ -122,7 +122,7 @@ const login = () => {
   mainDivDialog.appendChild(pforEmail);
 
   const emailForForget = document.createElement('input');
-  emailForForget.setAttribute('id', 'inputForgetEmail');
+  emailForForget.setAttribute('id', 'emailContainer');
   emailForForget.setAttribute('type', 'email');
   emailForForget.setAttribute('placeholder', 'Ingresa tu correo electronico');
   mainDivDialog.appendChild(emailForForget);

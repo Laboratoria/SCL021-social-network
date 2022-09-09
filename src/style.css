@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,600;1,400&family=Rubik+Glitch&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -7,31 +6,22 @@
   color: white;
   box-sizing: border-box;
 }
-
 body {
   background-color: #251a3a;
 }
-
-header {
-  width: 800px;
-  height: 500px;
-}
-
 h4 {
   font-weight: normal;
 }
-
 b:hover {
+  /* Hovers de Registrate*/
   text-decoration: underline;
 }
-
 .logo-gggirls {
   background: url('./assets/logo-gggirls.png') no-repeat;
 }
-
-/*LOGIN */
-
+/*LOGIN COMPLETO, SE REUTILIZA EN REGISTER*/
 .mainContainer {
+  background-color: #251a3a;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -40,37 +30,22 @@ b:hover {
   padding: 20px;
   gap: 15px;
 }
-
 .mainContainer img {
   height: 100px;
   width: 100px;
 }
-
 .mainContainer h1 {
   font-size: 35px;
-
 }
-
 .mainContainer p {
   font-size: 15px;
   color: white;
   text-shadow: 0.5px 0.5px 3px rgba(177, 88, 155, 0.8);
 }
-
-#slogan{
+#slogan {
+  /* display None en modo pequeño */
   display: none;
 }
-
- /* .mainContainer input {
-  border: solid 1px #b1589b;
-  font-size: 15px;
-  background: #5f5277;
-  border-radius: 10px;
-  width: 65%;
-  height: 50px;
-  text-align: center;
-}  */
-
 .transparent-input {
   padding: 3%;
   background: transparent !important;
@@ -78,25 +53,11 @@ b:hover {
   width: 100% !important;
   height: 100%;
 }
-
 input::placeholder {
   text-align: left;
 }
-
-#passwordContainer {
-  display: flex;
-  border: solid 1px #b1589b;
-  font-size: 15px;
-  background: #5f5277;
-  border-radius: 10px;
-  width: 85%;
-  height: 50px;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
 #emailContainer {
+  /* Igual en Register */
   display: flex;
   border: solid 1px #b1589b;
   font-size: 15px;
@@ -108,7 +69,19 @@ input::placeholder {
   flex-direction: column;
   justify-content: center;
 }
-
+#passwordContainer {
+  /* Igual en Register */
+  display: flex;
+  border: solid 1px #b1589b;
+  font-size: 15px;
+  background: #5f5277;
+  border-radius: 10px;
+  width: 85%;
+  height: 50px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
 input[type='checkbox'] {
   width: 15px;
   height: 15px;
@@ -118,11 +91,9 @@ input[type='checkbox'] {
   align-self: flex-end;
   appearance: none;
 }
-
 ::placeholder {
   color: white;
 }
-
 .mainContainer button {
   background: #656fcb;
   border: 0;
@@ -130,11 +101,10 @@ input[type='checkbox'] {
   padding: 15px;
   margin: auto;
 }
-
 .mainContainer button:hover {
   background-color: #6980c7;
-} 
-
+}
+/* Cajita de Registro */
 .registerContainer {
   background: #411946;
   border-radius: 5px;
@@ -148,44 +118,28 @@ input[type='checkbox'] {
   justify-content: center;
   align-items: center;
 }
-
 .registerContainer p {
   background: #411946;
   font-size: 15px;
   opacity: 50%;
 }
-
-form i {
-  margin-left: -30px;
-  cursor: pointer;
-}
-
-#linkRegister {
-  color: white;
-  opacity: 100%;
-}
-
 a {
   text-decoration: none;
   padding-bottom: 15px;
 }
-
 /* Dialog Pop Up */
 dialog {
-  width: 60%;
+  width: 100%;
   height: fit-content;
   margin: auto;
   border-radius: 10px;
   background: #251a3a;
   border: 1px solid #a85495;
   box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
-  padding: 5px;
+  padding: 3px;
 }
-
-::backdrop, /* for native <dialog> */
+::backdrop,
 dialog + .backdrop {
-  /* for dialog-polyfill */
-  /* a transparent shade of gray */
   background-color: rgba(0, 0, 0, 0.3);
 }
 #mainDivDialog {
@@ -193,74 +147,64 @@ dialog + .backdrop {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   padding: 10px;
 }
 #mainDivDialog p {
   margin: 10px;
 }
 #botonClosePopUp {
-  width: 10%;
-  align-self: flex-end;
+  padding: 0;
+  width: 5%;
+  margin-right: 10px;
   background-color: transparent;
   border: none;
 }
-#titulo {
-  margin: 0px;
-}
-
-button#botoncito {
-  margin: 10px 0px 30px;
-}
-
 /* Show and Hide Password*/
 .ojitocerrado {
   background-image: url(./assets/ojitosabiertos-blanco.png) !important;
   display: inline-block;
   background-size: contain !important;
 }
-
 .ojitoabierto {
   background-image: url(./assets/ojitoscerrados-blanco.png) !important;
   display: inline-block;
   background-size: contain !important;
 }
-
 /* POSTS */
-
 #navbarContainer {
   position: sticky;
   top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   width: 100%;
-  height: 70px;
+  height: 50px;
   background-color: #411946;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-
+.tittlepost {
+  font-size: 20px;
+}
 #buttonLogOut {
   margin-right: 20px;
-  height: 40px;
+  height: 30px;
   background-color: #b1589b;
   border: 0;
   border-radius: 15px;
-  padding: 15px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .logogg {
   height: inherit;
   padding: 10px;
   margin-left: 20px;
 }
-
 .postsContainer {
-  width: 95%;
+  width: 100%;
   margin: auto;
   height: 100%;
   background-color: #251a3b;
@@ -271,7 +215,6 @@ button#botoncito {
   margin-bottom: 20px;
   align-items: center;
 }
-
 .userDataContainer {
   height: 900px;
   width: 25%;
@@ -280,64 +223,43 @@ button#botoncito {
   flex-direction: column;
   gap: 30px;
 }
-
 #dataUser {
   text-align: center;
   width: 100%;
   margin-left: auto;
 }
-
 #userDataDiv {
   height: 300px;
   width: 100%;
   margin-left: 0px;
 }
-
 #trendingDataDiv {
   height: 600px;
   width: 100%;
   margin-left: 0px;
 }
-
 .divPosts {
   height: 900px;
-  width: 90%;
+  width: 95%;
   margin-left: 0px;
   background-color: #411946;
   border: solid 1px #b1589b;
   box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
-  padding: 20px;
+  padding: 12px;
   border-radius: 10px;
   text-align: center;
 }
-
-/* .insidePost {
-  background-color: #411946;
-  border: solid 1px #b1589b;
-  box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
-  padding: 20px;
-  border-radius: 10px;
-} */
-
 .inputMainContainer {
-  justify-content: space-evenly;
   width: auto;
-  padding: 15px;
-  display: flex;
-
-}
-
-.flex {
+  padding: 10px;
   display: flex;
 }
-
 .postsContainer button {
   background: #656fcb;
   border: 0;
   border-radius: 10px;
   width: auto;
   padding: 10px;
-  margin: 15px;
   align-self: flex-end;
 }
 
@@ -347,19 +269,80 @@ button#botoncito {
   font-size: 15px;
   background: #5f5277;
   border-radius: 10px;
+  height: 80px;
   width: 100%;
-  height: 100px;
 }
-
-.postsContainer button:hover {
-  background-color: #6980c7;
-}
-
 .profilePicturePost {
-  display: none;
-  margin: 0px 15px 0px 0px;
+  height: 70px;
+  width: 70px;
+  align-self: center;
+  margin: 0px 10px 0px 0px;
+}
+.allPosts {
+  width: 100%;
+  height: 80%;
+  gap: 10px;
+  border: 0;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+  overflow-y: auto;
 }
 
+.divPostMain {
+  height: 300px !important;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: solid 1px #b1589b;
+  box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+  background-color: #411946;
+}
+
+.contentBox {
+  display: flex;
+  width: 85%;
+  flex-wrap: wrap;
+}
+.divPostPic {
+  display: flex;
+  height: 50px;
+  width: 15%;
+}
+
+#picUrl {
+  height: 100%;
+  width: 100%;
+} /* CArlitaa se ve feo pq estaba haciendo la screen de cel primerp aaaa tranquii que hacemos?
+ */
+.divPostContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.postName {
+  text-align: center;
+  align-self: flex-start;
+  height: 50px;
+  width: 50%;
+  color: black;
+}
+.postDate {
+  color: black;
+  width: 40%;
+  padding: 10px;
+}
+.postDesc {
+  color: white;
+}
 /* RESPONSIVE PANTALLAS GRANDES */
 @media only screen and (min-width: 990px) {
   body {
@@ -379,7 +362,6 @@ button#botoncito {
 
   /* Pantalla de Login y Register */
   .mainContainer {
-    background: #251a3b;
     border: 2px solid #b1589b;
     box-shadow: 0px 0px 8px 1px #b1589b;
     border-radius: 8px;
@@ -388,9 +370,9 @@ button#botoncito {
     align-self: flex-end;
     margin-top: 50px;
     margin-right: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     padding: 35px;
-    gap:30px;
+    gap: 30px;
   }
   .registerContainer {
     height: 100px;
@@ -422,7 +404,7 @@ button#botoncito {
     margin-left: 20px;
   }
 
-  .tittlepost{
+  .tittlepost {
     font-family: 'Do Hyeon', sans-serif;
     font-size: xx-large;
     display: flex;
@@ -432,6 +414,7 @@ button#botoncito {
 
   .postsContainer {
     width: 95%;
+    max-width: fit-content;
     margin: auto;
     height: 100%;
     background-color: #251a3b;
@@ -471,7 +454,71 @@ button#botoncito {
     margin-left: 0px;
     text-align: center;
   }
+  .allPosts {
+    width: 100%;
+    height: 80%;
+    gap: 10px;
+    border: 0;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    overflow-y: auto;
+  }
 
+  .divPostMain {
+    margin: auto;
+    height: 300px !important;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px #b1589b;
+    box-shadow: 0px 0px 5px 1px rgb(168 84 149 / 45%);
+    padding: 25px;
+    border-radius: 10px;
+    color: white;
+    background-color: #411946;
+  }
+
+  .divPostPic {
+    display: flex;
+    height: 80px;
+    width: 80px;
+    align-self: center;
+  }
+
+  #picUrl {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+  } /* CArlitaa se ve feo pq estaba haciendo la screen de cel primerp aaaa tranquii que hacemos?
+   */
+  .divPostContent {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .postName {
+    text-align: left;
+    width: 50%;
+    color: white;
+    padding: 10px;
+  }
+  .postDate {
+    color: white;
+    width: 50%;
+  }
+  .postDesc {
+    color: white;
+    width: 100%;
+    background: purple;
+    border-radius: 10px;
+    text-align: left;
+    padding: 10px;
+  }
   /* Habian dos clases para el mismo div */
   .insidePost {
     background-color: #411946;
@@ -494,25 +541,18 @@ button#botoncito {
     background-attachment: fixed;
   }
 
-.postsInput{
-  width: 85%;
+  .postsInput {
+    width: 85%;
+  }
+}
+.contentBox {
+  display: inline-flex;
+  width: 90%;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-  /* .footer {
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    bottom: 0;
-    padding: 10px;
-    background-color: #251a3b;
-    position: fixed;
-  } */
-}
-
-/*FOOTER*/  
+/*FOOTER*/
 .footer {
   display: flex;
   justify-content: center;
@@ -524,17 +564,17 @@ button#botoncito {
   text-align: center;
   background-color: #251a3b;
   opacity: 90%;
+  padding: 5px;
 }
-
 
 /* TRENDS */
 
-.juegofav{
+.juegofav {
   font-family: 'Do Hyeon', sans-serif;
   font-size: small;
 }
 
-.fav{
+.fav {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -544,7 +584,7 @@ button#botoncito {
   font-family: 'Do Hyeon', sans-serif;
 }
 
-.buttontrend{
+.buttontrend {
   display: flex;
   flex-direction: column;
   font-size: large;
@@ -557,74 +597,11 @@ button#botoncito {
   margin: auto;
 }
 
-.trendingDataDiv{
+.trendingDataDiv {
   background-size: contain;
 }
 
-.allPosts{
-  width: 100%;
-  height: 80%;
-  gap:10px;
-  border: 0; 
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center; 
-  background: rgb(27, 19, 19);
-  padding: 20px; 
-  overflow-y: auto;
-}
-
-#divPostMain {
-  background-color: white;
-  color: black;
-  height: 300px !important;
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: solid 3px turquoise;
-}
-
-#postPic{
-  height: 200px;
-  width: 15%;
-  background-color: green;
-
-}
-
-.divPostContent{
-  width: 85%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.postName{
-  text-align: center;
-align-self: flex-start;
-height: 50px;
-width: 60%;
-color: black;
-background-color: purple;
-}
-
-.postDate{
-  color: black;
-  height: 50px;
-  width:40%;
-  background-color: rgb(9, 34, 255);
-}
-
-.postDesc{
-  color: black;
-  height: 150px;
-  width: 100%;
-  background-color: yellow;
-}
-
-.socialmedia{
+.socialmedia {
   gap: 20px;
   font-size: large;
   display: flex;
@@ -632,12 +609,12 @@ background-color: purple;
   align-items: center;
 }
 
-.games{
-    margin: auto; 
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    color: #656fcb; 
-    font-family: 'Do Hyeon', sans-serif;
-
+.games {
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #656fcb;
+  font-family: 'Do Hyeon', sans-serif;
+  padding-bottom: 30px;
 }
