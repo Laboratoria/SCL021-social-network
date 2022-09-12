@@ -190,7 +190,7 @@ const displayPosts = async () => {
 // dar like a post
 const likePost = async (id, userId) => {
   const postRef = doc(db, 'post', id);
-  const docLike = await getDoc(postRef);
+  const docLike = await getDocs(postRef);
   const dataLike = docLike.data();
   console.log(dataLike);
   const likesCount = dataLike.numberLike;

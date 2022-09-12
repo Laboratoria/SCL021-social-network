@@ -1,5 +1,5 @@
 import {
-  auth, logOut, newPosts, displayPosts, likePost,
+  auth, logOut, newPosts, displayPosts, likePost
 } from '../lib/firebase.js';
 
 // main route
@@ -288,8 +288,8 @@ const posts = () => {
   divPosts.appendChild(allPosts);
 
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
-  displayPosts().then((value) => {
-    value.forEach((doc) => {
+ displayPosts().then((value) => {
+    value.forEach((doc) => { 
 
       const postIdentifier = doc.date;
 
@@ -328,7 +328,7 @@ const posts = () => {
       postDate.setAttribute('id', descDate);
       postDate.setAttribute('class', 'postDate');
       divPostContent.appendChild(postDate);
-      console.log(doc.date.seconds);
+      // console.log(doc.date.seconds);
       const docToDate = new Date(doc.date.seconds * 1000);
       const day = docToDate.getDay();
       const month = docToDate.getMonth() + 1;
@@ -339,75 +339,87 @@ const posts = () => {
       const finalDate = timeFormat;
       postDate.textContent += finalDate;
 
-      // DIV EDIT 
+      // DIV EDIT
       const editDiv = document.createElement('div');
-      editDiv.setAttribute('class', 'edit')
+      editDiv.setAttribute('class', 'edit');
       postDate.appendChild(editDiv);
 
       const editedPosts = document.createElement('img');
-      editedPosts.setAttribute('class', 'editedPosts')
+      editedPosts.setAttribute('class', 'editedPosts');
       editedPosts.setAttribute('id', 'btn-edit');
       editedPosts.setAttribute('src', './assets/edit.png');
       editDiv.appendChild(editedPosts);
 
-
       // DIV DELETE
       const deleteDiv = document.createElement('div');
-      deleteDiv.setAttribute('class', 'delete')
+      deleteDiv.setAttribute('class', 'delete');
       editDiv.appendChild(deleteDiv);
 
       const deletePosts = document.createElement('img');
-      deletePosts.setAttribute('class', 'deletePosts')
+      deletePosts.setAttribute('class', 'deletePosts');
       deletePosts.setAttribute('id', 'btn-delete');
       deletePosts.setAttribute('src', './assets/bin.png');
       deletePosts.setAttribute('type', 'click');
       editDiv.appendChild(deletePosts);
+    
+       /* buttonForGoogle.addEventListener('click', signGoogle);
+       alert('Estas segurx que quieres borrar este post?')
+       return mainContainer;   */
       
-    
-      buttonForGoogle.addEventListener('click', signGoogle);
-      alert('Estas segurx que quieres borrar este post?')
-     return mainContainer;
-  })
-    
+ 
+    // DIV DESCRIPTION
+    const postDesc = document.createElement('div');
+    const descId = `${postIdentifier}desc`;
+    postDesc.setAttribute('id', descId);
+    postDesc.setAttribute('class', 'postDesc');
+    divPostContent.appendChild(postDesc);
+    document.getElementById(descId).textContent += doc.description;
 
-      // DIV DESCRIPTION
-      const postDesc = document.createElement('div');
-      const descId = `${postIdentifier}desc`;
-      postDesc.setAttribute('id', descId);
-      postDesc.setAttribute('class', 'postDesc');
-      divPostContent.appendChild(postDesc);
-      document.getElementById(descId).textContent += doc.description;
+    // DIV LIKES
+    const likeDiv = document.createElement('div');
+    likeDiv.setAttribute('class', 'likeIcons');
+    divPostContent.appendChild(likeDiv);
 
-      // DIV LIKES
-      const likeDiv = document.createElement('div');
-      likeDiv.setAttribute('class', 'likeIcons')
-      divPostContent.appendChild(likeDiv);
+    const likePosts = document.createElement('img');
+   // likePost.setAttribute('type', 'likecito')
+    likePosts.setAttribute('class', 'emptyLike');
+    likePosts.setAttribute('id', 'btn-like');
+    likePosts.setAttribute('src', './assets/heart.png');
+    likeDiv.appendChild(likePosts);
 
-      const likePosts = document.createElement('img');
-      likePosts.setAttribute('class', 'emptyLike')
-      likePosts.setAttribute('id', 'btn-like');
-      likePosts.setAttribute('src', './assets/heart.png');
-      likeDiv.appendChild(likePosts);
-     
-      likePosts.addEventListener('click', (e) => {
+     likePosts.addEventListener('click', (e) => {
         e.preventDefault();
         likePost();
       });
 
-      // COMMENTS 
+      // funcion corazon llenito
 
-      const commentPosts = document.createElement('img');
-      commentPosts.setAttribute('id', 'btn-comment');
-      commentPosts.setAttribute('src', './assets/commeents.png');
-      likeDiv.appendChild(commentPosts);
+   /* function likePostsFunc() {
+        const likeForPost = document.getElementById('passwordLogin');
+        if (likeForPost.type === 'password') {
+          likeForPost.type = 'text';
+          likecito.setAttribute('class', 'emptyLike');
+        } else {
+          likeForPost.type = 'password';
+          likecito.setAttribute('id', 'btn-like');
+        }
+      }
+      likecito.addEventListener('click', likePostsFunc); */
 
-      /* <div class="likes-border"> 
+    // COMMENTS
+
+    const commentPosts = document.createElement('img');
+    commentPosts.setAttribute('id', 'btn-comment');
+    commentPosts.setAttribute('src', './assets/commeents.png');
+    likeDiv.appendChild(commentPosts);
+
+  /* <div class="likes-border">
               <button  class="btn-like" value=${doc.id}>
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm4.186 10.74L12 16.926L7.814 12.74a2.745 2.745 0 0 1 0-3.907a2.745 2.745 0 0 1 3.906 0l.28.279l.279-.279a2.745 2.745 0 0 1 3.906 0a2.745 2.745 0 0 1 .001 3.907z"/></svg> 
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm4.186 10.74L12 16.926L7.814 12.74a2.745 2.745 0 0 1 0-3.907a2.745 2.745 0 0 1 3.906 0l.28.279l.279-.279a2.745 2.745 0 0 1 3.906 0a2.745 2.745 0 0 1 .001 3.907z"/></svg>
             </button>
-            <span id="like-count" class="like-count"> ${posts.numberLike}Me gusta</span> 
+            <span id="like-count" class="like-count"> ${posts.numberLike}Me gusta</span>
             </div>
-      
+
       const btnLike = postContainer.querySelectorAll('.likes');
         console.log(likes);
         likes.forEach((like) => {
@@ -425,18 +437,18 @@ const posts = () => {
         });
 
       }   */
-      // DIV COMMENTS
-      const commentsPosts = document.createElement('span');
-      commentsPosts.setAttribute('id', 'comments');
-      commentsPosts.innerHTML += '<i class="fa-regular fa-comment"></i>';
-      divPostContent.appendChild(commentsPosts);
-    
-  // const postPicture = document.createElement('img')
-  // DIV PARA POSTS
+    // DIV COMMENTS
+    const commentsPosts = document.createElement('span');
+    commentsPosts.setAttribute('id', 'comments');
+    commentsPosts.innerHTML += '<i class="fa-regular fa-comment"></i>';
+    divPostContent.appendChild(commentsPosts);
+   
+    // const postPicture = document.createElement('img')
+    // DIV PARA POSTS
 
-  // console.log(info);
+    // console.log(info);
 
-  /*if (allPosts!= '') {
+    /* if (allPosts!= '') {
   let html = "";
   const querySnapShot = getDocs(posts);
   querySnapShot.forEach ((doc) => {
@@ -446,24 +458,24 @@ const posts = () => {
     console.log(post);
     return post
   });  */
-  // `<h6>${post.name} publicó: ${post.description}</h6>`
-  // let posteos = displayPosts()
-  // document.getElementById('allPosts').innerHTML = posteos;
-
-  buttonPost.addEventListener('click', (e) => {
-    e.preventDefault();
-    const posts = document.getElementById('postInput').value;
-    newPosts(posts);
-    inputForPost.innerHTML = '';
+    // `<h6>${post.name} publicó: ${post.description}</h6>`
+    // let posteos = displayPosts()
+    // document.getElementById('allPosts').innerHTML = posteos;
   });
-
-  // Funcionalidad
-  buttonForLogOut.addEventListener('click', () => {
-    logOut();
-  });
-
-  return postsContainer
 });
-}
+    buttonPost.addEventListener('click', (e) => {
+      e.preventDefault();
+      const posts = document.getElementById('postInput').value;
+      newPosts(posts);
+      inputForPost.innerHTML = '';
+    });
 
-export { posts }
+    // Funcionalidad
+    buttonForLogOut.addEventListener('click', () => {
+      logOut();
+      console.log(buttonForLogOut)});
+ 
+    return postsContainer;
+};
+
+export { posts };

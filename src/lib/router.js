@@ -23,7 +23,7 @@ const myRouter = (hash) => {
       rootBox.appendChild(posts());
       break;
     default:
-      rootBox.innerHTML = '<video src="../assets/pagenotfound.mp4" autoplay muted loop source></video>';
+      rootBox.innerHTML = '<video src="../assets/pagenotfound.mp4" autoplay muted loop source></video><video src="../assets/gameover.mp3" autoplay muted loop source></video>';
   }
 };
 
