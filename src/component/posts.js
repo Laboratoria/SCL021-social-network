@@ -380,7 +380,7 @@ const posts = () => {
             deletePosts.addEventListener ('click',  (e) => {
               // console.log(btn)
               const id = auth.currentUser.uid;
-               console.log(id);
+               // console.log(id);
                const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
                  if(deleteAlert == true){
                deletePost(id)
