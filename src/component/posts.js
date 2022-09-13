@@ -289,8 +289,6 @@ const posts = () => {
   divPosts.appendChild(allPosts);
 
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
-
-  // Función para traer todo los datos de los posts y creación de Div para contenerlos
   displayPosts().then(
     (value) => {
       value.forEach((doc) => {
@@ -371,6 +369,7 @@ const posts = () => {
         editedPosts.setAttribute('id', 'btn-edit');
         editedPosts.setAttribute('src', './assets/edit.png');
         editDiv.appendChild(editedPosts);
+
         // DIV DELETE
         const deleteDiv = document.createElement('div');
         deleteDiv.setAttribute('class', 'delete');
@@ -389,8 +388,7 @@ const posts = () => {
        return mainContainer;   */
 
         // Caroooo
-        deletePosts.addEventListener('click', (e) => {
-          // console.log(btn)
+        deletePosts.addEventListener('click', () => {
           const id = auth.currentUser.uid;
           console.log(id);
           const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?');
@@ -400,7 +398,18 @@ const posts = () => {
           } else {
             alert('post no eliminado!');
           }
-        });
+        }); 
+
+        /* document.querySelectorAll('#btn-delete').forEach (element=>element.addEventListener('click', (e)  => {
+          let id = auth.currentUser.uid;
+          console.log (id)
+          if (confirm ('¿Estás seguro que quieres eliminar este post?') == true ){
+            deletePost(id)
+          }
+          else {
+            alert('post no eliminado!');
+          }
+        })) */
 
         /* document.querySelectorAll('#btn-delete').forEach((element) => element.addEventListener('click', (e) => {
           const id = e.target.dataset.id;
@@ -428,18 +437,16 @@ const posts = () => {
             }) */
 
         // carito la conflictiva dhvshvfbhsvbfvh
-        deletePosts.addEventListener('click', (e) => {
+      /*  deletePosts.addEventListener('click', (e) => {
           // console.log(btn)
-          const id = auth.currentUser.uid;
+          const id = e.target.dataset.id;
           // console.log(id);
           const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?');
           if (deleteAlert == true) {
             deletePost(id);
             alert('se borro tu post');
-          } else {
-            alert('post no eliminado!');
           }
-        });
+        }); */
 
         // DIV DESCRIPTION
         const postDesc = document.createElement('div');
@@ -469,7 +476,7 @@ const posts = () => {
         });
 
         // COMMENTS
-
+        
         const commentPosts = document.createElement('img');
         editedPosts.setAttribute('class', 'ico');
         commentPosts.setAttribute('id', 'btn-comment');
@@ -526,7 +533,8 @@ const posts = () => {
         // document.getElementById('allPosts').innerHTML = posteos;
       });
     } /* fin del post */,
-  );
+  )
+
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();
     const posts = document.getElementById('postInput').value;

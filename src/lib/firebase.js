@@ -226,10 +226,9 @@ const likePost = async (id) => {
 };
 
 // ------------ Delete post ----------
-
-const deletePost = (id) => {
-  deleteDoc(doc(db, 'google', id));
-};
+function deletePost(id) {
+  deleteDoc(doc(db, 'google', id))
+}
 
 // ------------ Edit Post ------------
 
