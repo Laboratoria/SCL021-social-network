@@ -1,5 +1,5 @@
 import {
-  auth, logOut, newPosts, displayPosts, likePost
+  auth, logOut, newPosts, displayPosts, likePost, deletePost,
 } from '../lib/firebase.js';
 
 // main route
@@ -238,6 +238,7 @@ const posts = () => {
   dataUser.setAttribute('id', 'dataUser');
   // console.log(auth.currentUser.displayName);
   let showName = auth.currentUser.displayName;
+  const showId = auth.currentUser.uid;
 
   if (showName == null) {
     const emailAdress = auth.currentUser.email;
@@ -288,132 +289,150 @@ const posts = () => {
   divPosts.appendChild(allPosts);
 
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
- displayPosts().then((value) => {
-    value.forEach((doc) => { 
+  displayPosts().then(
+    (value) => {
+      value.forEach((doc) => {
+        const postIdentifier = doc.date;
 
-      const postIdentifier = doc.date;
+        const divPostMain = document.createElement('div');
+        divPostMain.setAttribute('id', postIdentifier);
+        divPostMain.setAttribute('class', 'divPostMain');
+        allPosts.appendChild(divPostMain);
 
-      const divPostMain = document.createElement('div');
-      divPostMain.setAttribute('id', postIdentifier);
-      divPostMain.setAttribute('class', 'divPostMain');
-      allPosts.appendChild(divPostMain);
+        const divPostPic = document.createElement('div');
+        divPostPic.setAttribute('id', `${postIdentifier}pix`);
+        divPostPic.setAttribute('class', 'divPostPic');
+        divPostMain.appendChild(divPostPic);
 
-      const divPostPic = document.createElement('div');
-      divPostPic.setAttribute('id', `${postIdentifier}pix`);
-      divPostPic.setAttribute('class', 'divPostPic');
-      divPostMain.appendChild(divPostPic);
+        const picUrl = document.createElement('img');
+        picUrl.setAttribute('id', 'picUrl');
+        picUrl.setAttribute('referrerPolicy', 'no-referrer');
+        picUrl.setAttribute('src', `${doc.pfp} `);
+        divPostPic.appendChild(picUrl);
 
-      const picUrl = document.createElement('img');
-      picUrl.setAttribute('id', 'picUrl');
-      picUrl.setAttribute('referrerPolicy', 'no-referrer');
-      picUrl.setAttribute('src', `${doc.pfp} `);
-      divPostPic.appendChild(picUrl);
+        //
+        const divPostContent = document.createElement('div');
+        divPostContent.setAttribute('class', 'contentBox');
+        divPostMain.appendChild(divPostContent);
 
-      //
-      const divPostContent = document.createElement('div');
-      divPostContent.setAttribute('class', 'contentBox');
-      divPostMain.appendChild(divPostContent);
+        // DIV NOMBRE
+        const postName = document.createElement('div');
+        const nameId = `${postIdentifier}name`;
+        postName.setAttribute('class', 'postName');
+        postName.setAttribute('id', nameId);
+        divPostContent.appendChild(postName);
+        document.getElementById(nameId).textContent += `${doc.name} `;
 
-      // DIV NOMBRE
-      const postName = document.createElement('div');
-      const nameId = `${postIdentifier}name`;
-      postName.setAttribute('class', 'postName');
-      postName.setAttribute('id', nameId);
-      divPostContent.appendChild(postName);
-      document.getElementById(nameId).textContent += `${doc.name} `;
+        // DIV DATE
+        const postDate = document.createElement('div');
+        const descDate = `${postIdentifier}date`;
+        postDate.setAttribute('id', descDate);
+        postDate.setAttribute('class', 'postDate');
+        divPostContent.appendChild(postDate);
+        // console.log(doc.date.seconds);
+        const docToDate = new Date(doc.date.seconds * 1000);
+        const day = docToDate.getDay();
+        const month = docToDate.getMonth() + 1;
+        const year = docToDate.getFullYear();
+        const hour = docToDate.getHours();
+        const minute = docToDate.getMinutes();
+        const timeFormat = `Publicado el ${day}.${month}.${year} a las ${hour}:${minute}`;
+        const finalDate = timeFormat;
+        postDate.textContent += finalDate;
+        // DIV EDIT
+        const editDiv = document.createElement('div');
+        editDiv.setAttribute('class', 'edit');
+        postDate.appendChild(editDiv);
 
-      // DIV DATE
-      const postDate = document.createElement('div');
-      const descDate = `${postIdentifier}date`;
-      postDate.setAttribute('id', descDate);
-      postDate.setAttribute('class', 'postDate');
-      divPostContent.appendChild(postDate);
-      // console.log(doc.date.seconds);
-      const docToDate = new Date(doc.date.seconds * 1000);
-      const day = docToDate.getDay();
-      const month = docToDate.getMonth() + 1;
-      const year = docToDate.getFullYear();
-      const hour = docToDate.getHours();
-      const minute = docToDate.getMinutes();
-      const timeFormat = `Publicado el ${day}.${month}.${year} a las ${hour}:${minute}`;
-      const finalDate = timeFormat;
-      postDate.textContent += finalDate;
+        const editedPosts = document.createElement('img');
+        editedPosts.setAttribute('class', 'icons');
+        editedPosts.setAttribute('id', 'editedPosts');
+        editedPosts.setAttribute('id', 'btn-edit');
+        editedPosts.setAttribute('src', './assets/edit.png');
+        editDiv.appendChild(editedPosts);
+        // DIV DELETE
+        const deleteDiv = document.createElement('div');
+        deleteDiv.setAttribute('class', 'delete');
+        editDiv.appendChild(deleteDiv);
 
-      // DIV EDIT
-      const editDiv = document.createElement('div');
-      editDiv.setAttribute('class', 'edit');
-      postDate.appendChild(editDiv);
-
-      const editedPosts = document.createElement('img');
-      editedPosts.setAttribute('class', 'editedPosts');
-      editedPosts.setAttribute('id', 'btn-edit');
-      editedPosts.setAttribute('src', './assets/edit.png');
-      editDiv.appendChild(editedPosts);
-
-      // DIV DELETE
-      const deleteDiv = document.createElement('div');
-      deleteDiv.setAttribute('class', 'delete');
-      editDiv.appendChild(deleteDiv);
-
-      const deletePosts = document.createElement('img');
-      deletePosts.setAttribute('class', 'deletePosts');
-      deletePosts.setAttribute('id', 'btn-delete');
-      deletePosts.setAttribute('src', './assets/bin.png');
-      deletePosts.setAttribute('type', 'click');
-      editDiv.appendChild(deletePosts);
-    
-       /* buttonForGoogle.addEventListener('click', signGoogle);
+        const deletePosts = document.createElement('img');
+        // deletePosts.setAttribute('class', 'deletePosts');
+        deletePosts.setAttribute('class', 'icons');
+        deletePosts.setAttribute('id', 'btn-delete');
+        // deletePosts.setAttribute(`data-id='${doc.id}`)
+        deletePosts.setAttribute('src', './assets/bin.png');
+        deletePosts.setAttribute('type', 'click');
+        editDiv.appendChild(deletePosts);
+        /* buttonForGoogle.addEventListener('click', signGoogle);
        alert('Estas segurx que quieres borrar este post?')
        return mainContainer;   */
-      
- 
-    // DIV DESCRIPTION
-    const postDesc = document.createElement('div');
-    const descId = `${postIdentifier}desc`;
-    postDesc.setAttribute('id', descId);
-    postDesc.setAttribute('class', 'postDesc');
-    divPostContent.appendChild(postDesc);
-    document.getElementById(descId).textContent += doc.description;
 
-    // DIV LIKES
-    const likeDiv = document.createElement('div');
-    likeDiv.setAttribute('class', 'likeIcons');
-    divPostContent.appendChild(likeDiv);
+       /* document.querySelectorAll('#btn-delete').forEach((element) => element.addEventListener('click', (e) => {
+          const id = e.target.dataset.id;
+          if (confirm('¿Quieres borrar este post?') === true) {
+            deletePost(id);
+          } else if(deletePost(id) == true ){
+            alert('Se ha eliminado tu post!')
+          } else(deletePost(id) == false){
+            alert('No se pudo eliminar tu post! Intenta nuevamente')
+          }
+        })); */
 
-    const likePosts = document.createElement('img');
-   // likePost.setAttribute('type', 'likecito')
-    likePosts.setAttribute('class', 'emptyLike');
-    likePosts.setAttribute('id', 'btn-like');
-    likePosts.setAttribute('src', './assets/heart.png');
-    likeDiv.appendChild(likePosts);
+         /* const btnDelete = editDiv.document.getElementById('btn-delete');
+         // console.log(btnDelete);
+        btnDelete.forEach(buttonPost => {
+          buttonPost.addEventListener('click',  (e) => {
+            //console.log(deletePosts)
+            id = e.target.dataset.id;
+            //console.log(id);
+            const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
+              if(deleteAlert == true){
+            deletePost(id)
+            alert('Se ha eliminado tu post')
+          }else{
+            alert('No se pudo eliminar tu post! Intenta nuevamente')
+          }
 
-     likePosts.addEventListener('click', (e) => {
-        e.preventDefault();
-        likePost();
-      });
+              })
+            }) // perdón te comenté!!!! (no te ) */
 
-      // funcion corazon llenito
+        // DIV DESCRIPTION
+        const postDesc = document.createElement('div');
+        const descId = `${postIdentifier}desc`;
+        postDesc.setAttribute('id', descId);
+        postDesc.setAttribute('class', 'postDesc');
+        divPostContent.appendChild(postDesc);
+        document.getElementById(descId).textContent += doc.description;
 
-   /* function likePostsFunc() {
-        const likeForPost = document.getElementById('passwordLogin');
-        if (likeForPost.type === 'password') {
-          likeForPost.type = 'text';
-          likecito.setAttribute('class', 'emptyLike');
-        } else {
-          likeForPost.type = 'password';
-          likecito.setAttribute('id', 'btn-like');
-        }
-      }
-      likecito.addEventListener('click', likePostsFunc); */
+        // DIV LIKES
+        const likeDiv = document.createElement('div');
+        likeDiv.setAttribute('class', 'likeIcons');
+        divPostContent.appendChild(likeDiv);
 
-    // COMMENTS
+        const likePosts = document.createElement('img');
+        // likePost.setAttribute('type', 'likecito')
+        likePosts.setAttribute('class', 'emptyLike');
+        likePosts.setAttribute('id', 'btn-like');
+        likePosts.setAttribute('src', './assets/heart.png');
+        likeDiv.appendChild(likePosts);
 
-    const commentPosts = document.createElement('img');
-    commentPosts.setAttribute('id', 'btn-comment');
-    commentPosts.setAttribute('src', './assets/commeents.png');
-    likeDiv.appendChild(commentPosts);
+        likePosts.addEventListener('click', (e) => {
+          e.preventDefault();
+          // el id es el id del autor
+          // userid es el del currentuser
+          // img es el <3
+          likePost(doc.id);
+        });
 
-  /* <div class="likes-border">
+        // COMMENTS
+
+        const commentPosts = document.createElement('img');
+        editedPosts.setAttribute('class', 'ico');
+        commentPosts.setAttribute('id', 'btn-comment');
+        commentPosts.setAttribute('src', './assets/commeents.png');
+        likeDiv.appendChild(commentPosts);
+
+        /* <div class="likes-border">
               <button  class="btn-like" value=${doc.id}>
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm4.186 10.74L12 16.926L7.814 12.74a2.745 2.745 0 0 1 0-3.907a2.745 2.745 0 0 1 3.906 0l.28.279l.279-.279a2.745 2.745 0 0 1 3.906 0a2.745 2.745 0 0 1 .001 3.907z"/></svg>
             </button>
@@ -437,18 +456,18 @@ const posts = () => {
         });
 
       }   */
-    // DIV COMMENTS
-    const commentsPosts = document.createElement('span');
-    commentsPosts.setAttribute('id', 'comments');
-    commentsPosts.innerHTML += '<i class="fa-regular fa-comment"></i>';
-    divPostContent.appendChild(commentsPosts);
-   
-    // const postPicture = document.createElement('img')
-    // DIV PARA POSTS
+        // DIV COMMENTS
+        const commentsPosts = document.createElement('span');
+        commentsPosts.setAttribute('id', 'comments');
+        commentsPosts.innerHTML += '<i class="fa-regular fa-comment"></i>';
+        divPostContent.appendChild(commentsPosts);
 
-    // console.log(info);
+        // const postPicture = document.createElement('img')
+        // DIV PARA POSTS
 
-    /* if (allPosts!= '') {
+        // console.log(info);
+
+        /* if (allPosts!= '') {
   let html = "";
   const querySnapShot = getDocs(posts);
   querySnapShot.forEach ((doc) => {
@@ -458,24 +477,26 @@ const posts = () => {
     console.log(post);
     return post
   });  */
-    // `<h6>${post.name} publicó: ${post.description}</h6>`
-    // let posteos = displayPosts()
-    // document.getElementById('allPosts').innerHTML = posteos;
+        // `<h6>${post.name} publicó: ${post.description}</h6>`
+        // let posteos = displayPosts()
+        // document.getElementById('allPosts').innerHTML = posteos;
+      });
+    } /* fin del post */,
+  );
+  buttonPost.addEventListener('click', (e) => {
+    e.preventDefault();
+    const posts = document.getElementById('postInput').value;
+    newPosts(posts);
+    inputForPost.innerHTML = '';
   });
-});
-    buttonPost.addEventListener('click', (e) => {
-      e.preventDefault();
-      const posts = document.getElementById('postInput').value;
-      newPosts(posts);
-      inputForPost.innerHTML = '';
-    });
 
-    // Funcionalidad
-    buttonForLogOut.addEventListener('click', () => {
-      logOut();
-      console.log(buttonForLogOut)});
- 
-    return postsContainer;
+  // Funcionalidad
+  buttonForLogOut.addEventListener('click', () => {
+    logOut();
+    console.log(buttonForLogOut);
+  });
+
+  return postsContainer;
 };
 
 export { posts };

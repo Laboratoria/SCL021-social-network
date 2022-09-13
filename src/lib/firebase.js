@@ -3,12 +3,14 @@ import {
   getFirestore,
   collection,
   addDoc,
+  doc,
   Timestamp,
   query,
   getDocs,
   orderBy,
   onSnapshot,
   where,
+  deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 import {
   getAuth,
@@ -111,6 +113,7 @@ const logOut = () => {
 };
 
 // ----------- Ingreso con Google
+
 const signGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -137,6 +140,7 @@ const signGoogle = () => {
 };
 
 // ----------- Reestablecer contraseña olvidada
+
 const resetPass = (email, callback) => {
   sendPasswordResetEmail(auth, email)
     .then((userCredential) => {
@@ -158,7 +162,7 @@ const db = getFirestore();
 
 const newPosts = async (textInput) => {
   const user = auth.currentUser;
-  const userName = user.displayName;
+  // const userName = user.displayName;
   if (user !== null) {
     const docRef = await addDoc(collection(db, 'google'), {
       name: user.displayName,
@@ -171,6 +175,7 @@ const newPosts = async (textInput) => {
       pfp: user.photoURL,
     });
     console.log('Document written with ID: ', docRef.id);
+    return docRef.uid;
   }
 };
 
@@ -181,31 +186,59 @@ const displayPosts = async () => {
   const querySnapShot = await getDocs(posts);
   const todosPosts = [];
   querySnapShot.forEach((doc) => {
-    todosPosts.push(doc.data());
+    todosPosts.push({ ...doc.data(), id: doc.id });
   });
   return todosPosts;
 };
 
 // ---------- Likes ------
-// dar like a post
-const likePost = async (id, userId) => {
-  const postRef = doc(db, 'post', id);
-  const docLike = await getDocs(postRef);
-  const dataLike = docLike.data();
-  console.log(dataLike);
+
+const likePost = async (id) => {
+  const postId = [id].toString();
+  console.log(postId);
+  let userIdentification = getUserData();
+  userIdentification = userIdentification.uid;
+  const postRef = doc(db, 'google', postId);
+  //const docPost = await getDocs(postRef);
+  //const dataLike = docPost.data();
+  //console.log(dataLike);
   const likesCount = dataLike.numberLike;
-  if (dataLike.like.includes(userId)) {
-    await updateDoc(postRef, {
-      like: arrayRemove(userId),
-      numberLike: likesCount - 1,
-    });
+  if (dataLike.like.includes(userIdentification.uid)) {
+    await updateDoc(
+      postRef,
+      {
+        like: arrayRemove(userIdentification.uid),
+        //numberLike: likesCount - 1,
+      },
+      /* [img].setAttribute('src', './assets/heart.png') */
+    );
+    console.log('docPost', docPost);
   } else {
-    await updateDoc(postRef, {
-      like: arrayUnion(userId),
-      numberLike: likesCount + 1,
-    });
+    await updateDoc(
+      postRef,
+      {
+        like: arrayUnion(userIdentification.uid),
+        //numberLike: likesCount + 1,
+      },
+      /* [img].setAttribute('src', './assets/heart-filled.png') */
+    );
   }
 };
+
+// ------------ Delete post ----------
+
+const deletePost = (id) => {
+  deleteDoc(doc(db, 'google', id));
+};
+
+// ------------ Edit Post ------------
+
+/* export const editPost = (id, newDescription) =>
+  updateDoc(doc(db,'post', id) , newDescription) */
+
+// ----------- Comment Post -------
+
+/* wakala comentarios jijijijiji */
 
 export {
   db,
@@ -221,5 +254,6 @@ export {
   newPosts,
   displayPosts,
   likePost,
+  deletePost,
   /* getPostPic, */
 };
