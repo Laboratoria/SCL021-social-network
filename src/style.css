@@ -577,7 +577,6 @@ dialog + .backdrop {
     width: 55%;
     height: 30px;
     font-size: 15px;
-    padding: 10px;
     align-items: center;
     gap:10px;
   }
@@ -601,7 +600,9 @@ dialog + .backdrop {
     padding: 5px;
   }
   .likeIcons{
-    gap:15px;
+    gap:15px; 
+    margin-right: 5px;
+
   }
   .icons{
     width: 25px;
