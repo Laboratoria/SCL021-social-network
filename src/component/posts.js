@@ -357,7 +357,7 @@ const posts = () => {
 
         const deletePosts = document.createElement('img');
         // deletePosts.setAttribute('class', 'deletePosts');
-        deletePosts.setAttribute('class', 'icons');
+       // deletePosts.setAttribute('class', 'icons');
         deletePosts.setAttribute('id', 'btn-delete');
         // deletePosts.setAttribute(`data-id='${doc.id}`)
         deletePosts.setAttribute('src', './assets/bin.png');
@@ -367,13 +367,26 @@ const posts = () => {
        alert('Estas segurx que quieres borrar este post?')
        return mainContainer;   */
 
+// Caroooo
+       deletePosts.addEventListener ('click',  (e) => {
+        // console.log(btn)
+        const id = auth.currentUser.uid;
+         console.log(id);
+         const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
+           if(deleteAlert == true){
+         deletePost(id)
+         alert('se borro tu post')
+       }else{
+         alert('post no eliminado!')
+       }
+      }) 
+
        /* document.querySelectorAll('#btn-delete').forEach((element) => element.addEventListener('click', (e) => {
           const id = e.target.dataset.id;
           if (confirm('¿Quieres borrar este post?') === true) {
             deletePost(id);
          } else if(deletePost(id).forEach(element) == true ){
-            alert('Se ha eliminado tu post!')
-          } )*/
+            alert('Se ha eliminado tu post!'
 
           const btnDelete = editDiv.document.getElementById('btn-delete');
          console.log(btnDelete);
@@ -391,10 +404,9 @@ const posts = () => {
           }
 
               })
-            }) 
+            }) */
 
         // DIV DESCRIPTION
-        const postDesc = document.createElement('div');
         const descId = `${postIdentifier}desc`;
         postDesc.setAttribute('id', descId);
         postDesc.setAttribute('class', 'postDesc');
@@ -412,7 +424,6 @@ const posts = () => {
         likePosts.setAttribute('id', 'btn-like');
         likePosts.setAttribute('src', './assets/heart.png');
         likeDiv.appendChild(likePosts);
-
         likePosts.addEventListener('click', (e) => {
           e.preventDefault();
           // el id es el id del autor
