@@ -357,7 +357,7 @@ const posts = () => {
 
         const deletePosts = document.createElement('img');
         // deletePosts.setAttribute('class', 'deletePosts');
-       // deletePosts.setAttribute('class', 'icons');
+        deletePosts.setAttribute('class', 'icons');
         deletePosts.setAttribute('id', 'btn-delete');
         // deletePosts.setAttribute(`data-id='${doc.id}`)
         deletePosts.setAttribute('src', './assets/bin.png');
@@ -377,6 +377,7 @@ const posts = () => {
             alert('No se pudo eliminar tu post! Intenta nuevamente')
           }
         })); */
+        
             deletePosts.addEventListener ('click',  (e) => {
               // console.log(btn)
               const id = auth.currentUser.uid;
@@ -390,6 +391,7 @@ const posts = () => {
              }
             })
             
+
         // DIV DESCRIPTION
         const postDesc = document.createElement('div');
         const descId = `${postIdentifier}desc`;
