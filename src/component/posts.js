@@ -289,7 +289,27 @@ const posts = () => {
   divPosts.appendChild(allPosts);
 
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
+
+  // Función para traer todo los datos de los posts y creación de Div para contenerlos
   displayPosts().then(
+    (value) => {
+      value.forEach((doc) => {
+        const postIdentifier = doc.date;
+        const divPostMain = document.createElement('div');
+        divPostMain.setAttribute('id', postIdentifier);
+        divPostMain.setAttribute('class', 'divPostMain');
+        allPosts.appendChild(divPostMain);
+        const divPostPic = document.createElement('div');
+        divPostPic.setAttribute('id', `${postIdentifier}pix`);
+        divPostPic.setAttribute('class', 'divPostPic');
+        divPostMain.appendChild(divPostPic);
+        const picUrl = document.createElement('img');
+        picUrl.setAttribute('id', 'picUrl');
+        picUrl.setAttribute('referrerPolicy', 'no-referrer');
+        picUrl.setAttribute('src', `${doc.pfp} `);
+        divPostPic.appendChild(picUrl);
+
+        /*  displayPosts().then(
     (value) => {
       value.forEach((doc) => {
         const postIdentifier = doc.date;
@@ -308,7 +328,7 @@ const posts = () => {
         picUrl.setAttribute('id', 'picUrl');
         picUrl.setAttribute('referrerPolicy', 'no-referrer');
         picUrl.setAttribute('src', `${doc.pfp} `);
-        divPostPic.appendChild(picUrl);
+        divPostPic.appendChild(picUrl); */
 
         //
         const divPostContent = document.createElement('div');
@@ -339,6 +359,7 @@ const posts = () => {
         const timeFormat = `Publicado el ${day}.${month}.${year} a las ${hour}:${minute}`;
         const finalDate = timeFormat;
         postDate.textContent += finalDate;
+
         // DIV EDIT
         const editDiv = document.createElement('div');
         editDiv.setAttribute('class', 'edit');
@@ -367,21 +388,21 @@ const posts = () => {
        alert('Estas segurx que quieres borrar este post?')
        return mainContainer;   */
 
-// Caroooo
-       deletePosts.addEventListener ('click',  (e) => {
-        // console.log(btn)
-        const id = auth.currentUser.uid;
-         console.log(id);
-         const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
-           if(deleteAlert == true){
-         deletePost(id)
-         alert('se borro tu post')
-       }else{
-         alert('post no eliminado!')
-       }
-      }) 
+        // Caroooo
+        deletePosts.addEventListener('click', (e) => {
+          // console.log(btn)
+          const id = auth.currentUser.uid;
+          console.log(id);
+          const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?');
+          if (deleteAlert == true) {
+            deletePost(id);
+            alert('se borro tu post');
+          } else {
+            alert('post no eliminado!');
+          }
+        });
 
-       /* document.querySelectorAll('#btn-delete').forEach((element) => element.addEventListener('click', (e) => {
+        /* document.querySelectorAll('#btn-delete').forEach((element) => element.addEventListener('click', (e) => {
           const id = e.target.dataset.id;
           if (confirm('¿Quieres borrar este post?') === true) {
             deletePost(id);
@@ -402,29 +423,26 @@ const posts = () => {
           }else{
             alert('No se pudo eliminar tu post! Intenta nuevamente')
           }
-<<<<<<< HEAD
 
               })
             }) */
-=======
-        })); */
-        
-            deletePosts.addEventListener ('click',  (e) => {
-              // console.log(btn)
-              const id = auth.currentUser.uid;
-               // console.log(id);
-               const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
-                 if(deleteAlert == true){
-               deletePost(id)
-               alert('se borro tu post')
-             }else{
-               alert('post no eliminado!')
-             }
-            })
-            
->>>>>>> cfa9a247bf100b14e7c31b712a13196a79cea48d
+
+        // carito la conflictiva dhvshvfbhsvbfvh
+        deletePosts.addEventListener('click', (e) => {
+          // console.log(btn)
+          const id = auth.currentUser.uid;
+          // console.log(id);
+          const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?');
+          if (deleteAlert == true) {
+            deletePost(id);
+            alert('se borro tu post');
+          } else {
+            alert('post no eliminado!');
+          }
+        });
 
         // DIV DESCRIPTION
+        const postDesc = document.createElement('div');
         const descId = `${postIdentifier}desc`;
         postDesc.setAttribute('id', descId);
         postDesc.setAttribute('class', 'postDesc');
