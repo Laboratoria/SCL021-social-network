@@ -377,24 +377,20 @@ const posts = () => {
             alert('No se pudo eliminar tu post! Intenta nuevamente')
           }
         })); */
-
-         /* const btnDelete = editDiv.document.getElementById('btn-delete');
-         // console.log(btnDelete);
-        btnDelete.forEach(buttonPost => {
-          buttonPost.addEventListener('click',  (e) => {
-            //console.log(deletePosts)
-            id = e.target.dataset.id;
-            //console.log(id);
-            const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
-              if(deleteAlert == true){
-            deletePost(id)
-            alert('Se ha eliminado tu post')
-          }else{
-            alert('No se pudo eliminar tu post! Intenta nuevamente')
-          }
-
-              })
-            }) // perdón te comenté!!!! (no te ) */
+        
+            deletePosts.addEventListener ('click',  (e) => {
+              // console.log(btn)
+              const id = auth.currentUser.uid;
+               // console.log(id);
+               const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
+                 if(deleteAlert == true){
+               deletePost(id)
+               alert('se borro tu post')
+             }else{
+               alert('post no eliminado!')
+             }
+            })
+            
 
         // DIV DESCRIPTION
         const postDesc = document.createElement('div');
