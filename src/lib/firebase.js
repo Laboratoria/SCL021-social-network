@@ -233,7 +233,7 @@ const deletePost = (id) => {
 
 // ------------ Edit Post ------------
 
-/* export const editPost = (id, newDescription) =>
+/*const editPost = (id, newDescription) =>
   updateDoc(doc(db,'post', id) , newDescription) */
 
 // ----------- Comment Post -------

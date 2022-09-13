@@ -371,15 +371,12 @@ const posts = () => {
           const id = e.target.dataset.id;
           if (confirm('¿Quieres borrar este post?') === true) {
             deletePost(id);
-          } else if(deletePost(id) == true ){
+         } else if(deletePost(id).forEach(element) == true ){
             alert('Se ha eliminado tu post!')
-          } else(deletePost(id) == false){
-            alert('No se pudo eliminar tu post! Intenta nuevamente')
-          }
-        })); */
+          } )*/
 
-         /* const btnDelete = editDiv.document.getElementById('btn-delete');
-         // console.log(btnDelete);
+          const btnDelete = editDiv.document.getElementById('btn-delete');
+         console.log(btnDelete);
         btnDelete.forEach(buttonPost => {
           buttonPost.addEventListener('click',  (e) => {
             //console.log(deletePosts)
@@ -394,7 +391,7 @@ const posts = () => {
           }
 
               })
-            }) // perdón te comenté!!!! (no te ) */
+            }) 
 
         // DIV DESCRIPTION
         const postDesc = document.createElement('div');
