@@ -434,7 +434,7 @@ dialog + .backdrop {
 .emptyLike{
   background-image: url(./assets/heart.png);
 }
-#btn-like{
+.fullLike{
   background-image: url(./assets/heart-filled.png);
 } 
 /* RESPONSIVE PANTALLAS GRANDES */
@@ -470,7 +470,7 @@ dialog + .backdrop {
     height: 100px;
   }
   .transparent-input{
-    font-size: 20px;
+    font-size: 16px;
   }
   .mainContainer button{
     font-size: 15px;

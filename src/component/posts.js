@@ -1,10 +1,11 @@
 import {
-  auth, 
-  logOut, 
-  newPosts, 
-  displayPosts, 
-  likePost, 
-  deletePost
+  auth,
+  logOut,
+  newPosts,
+  displayPosts,
+  likePost,
+  deletePost,
+ /* likesCountRef, */
 } from '../lib/firebase.js';
 
 // main route
@@ -160,19 +161,25 @@ const posts = () => {
   trendingDataDiv.appendChild(trendingPlace5);
 
   const trendingPlace6 = document.createElement('button');
-  trendingPlace6.setAttribute('value', 'Quinto');
+  trendingPlace6.setAttribute('value', 'Sexto');
   trendingPlace6.setAttribute('class', 'buttontrend');
   trendingPlace6.setAttribute('type', 'click');
   trendingPlace6.innerHTML = '6. Roblox';
   trendingDataDiv.appendChild(trendingPlace6);
 
   const trendingPlace7 = document.createElement('button');
-  trendingPlace7.setAttribute('value', 'Quinto');
+  trendingPlace7.setAttribute('value', 'Septimo');
   trendingPlace7.setAttribute('class', 'buttontrend');
   trendingPlace7.setAttribute('type', 'click');
   trendingPlace7.innerHTML = '7. Fall Guys';
   trendingDataDiv.appendChild(trendingPlace7);
 
+  const trendingPlace8 = document.createElement('button');
+  trendingPlace8.setAttribute('value', 'Octavo');
+  trendingPlace8.setAttribute('class', 'buttontrend');
+  trendingPlace8.setAttribute('type', 'click');
+  trendingPlace8.innerHTML = '8. Resident Evil 7';
+  trendingDataDiv.appendChild(trendingPlace8);
   // funcion de calculo lalala
 
   /* let fifthPlace = 0;
@@ -296,9 +303,8 @@ const posts = () => {
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
   displayPosts().then(
     (value) => {
-       console.log(value)
+      console.log(value);
       value.forEach((doc) => {
-        console.log("doc",doc)
         const postIdentifier = doc.date;
         const divPostMain = document.createElement('div');
         divPostMain.setAttribute('id', postIdentifier);
@@ -314,27 +320,9 @@ const posts = () => {
         picUrl.setAttribute('src', `${doc.pfp} `);
         divPostPic.appendChild(picUrl);
 
-        /*  displayPosts().then(
-    (value) => {
-      value.forEach((doc) => {
-        const postIdentifier = doc.date;
+        const likecitos = `${doc.likesCount} `;
 
-        const divPostMain = document.createElement('div');
-        divPostMain.setAttribute('id', postIdentifier);
-        divPostMain.setAttribute('class', 'divPostMain');
-        allPosts.appendChild(divPostMain);
-
-        const divPostPic = document.createElement('div');
-        divPostPic.setAttribute('id', `${postIdentifier}pix`);
-        divPostPic.setAttribute('class', 'divPostPic');
-        divPostMain.appendChild(divPostPic);
-
-        const picUrl = document.createElement('img');
-        picUrl.setAttribute('id', 'picUrl');
-        picUrl.setAttribute('referrerPolicy', 'no-referrer');
-        picUrl.setAttribute('src', `${doc.pfp} `);
-        divPostPic.appendChild(picUrl); */
-
+        
         //
         const divPostContent = document.createElement('div');
         divPostContent.setAttribute('class', 'contentBox');
@@ -397,7 +385,7 @@ const posts = () => {
         // Caroooo
         deletePosts.addEventListener('click', () => {
           const id = doc.id;
-          console.log("estes es el id",id);
+          console.log('estes es el id', id);
           const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?');
           if (deleteAlert == true) {
             deletePost(id);
@@ -405,7 +393,7 @@ const posts = () => {
           } else {
             alert('post no eliminado!');
           }
-        }); 
+        });
 
         // DIV DESCRIPTION
         const postDesc = document.createElement('div');
@@ -424,20 +412,32 @@ const posts = () => {
         // likePost.setAttribute('type', 'likecito')
         likePosts.setAttribute('class', 'emptyLike');
         likePosts.setAttribute('id', 'btn-like');
-        likePosts.setAttribute('src', './assets/heart.png')
+        likePosts.setAttribute('src', './assets/heart.png');
         likeDiv.appendChild(likePosts);
+
         likePosts.addEventListener('click', (e) => {
           e.preventDefault();
           // el id es el id del autor
           // userid es el del currentuser
           // img es el <3
           likePost(doc.id);
+          const id = doc.id;
+          console.log(id)
+          likeCounter.textContent = '';
+          likeCounter.textContent += (parseInt(likecitos) + 1);
         });
 
 
+        const likeCounter = document.createElement('p');
+        likeCounter.setAttribute('id', 'likeCounter ');
+        likeCounter.textContent += likecitos;
+        likeDiv.appendChild(likeCounter);
+
+        //counter likecitos
+  
 
         // COMMENTS
-        
+
         const commentPosts = document.createElement('img');
         editedPosts.setAttribute('class', 'ico');
         commentPosts.setAttribute('id', 'btn-comment');
@@ -470,7 +470,7 @@ const posts = () => {
         // document.getElementById('allPosts').innerHTML = posteos;
       });
     } /* fin del post */,
-  )
+  );
 
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();
