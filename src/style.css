@@ -104,8 +104,7 @@ input[type='checkbox'] {
 .mainContainer button:hover {
   background-color: #6980c7;
 }
-/* Cajita de Registro */
-.registerContainer {
+.registerContainer {/* Cajita de Registro */
   background: #411946;
   border-radius: 5px;
   border: 1px solid #a85495;
@@ -127,8 +126,7 @@ a {
   text-decoration: none;
   padding-bottom: 15px;
 }
-/* Dialog Pop Up */
-dialog {
+dialog {/* Dialog Pop Up */
   width: 100%;
   height: fit-content;
   margin: auto;
@@ -160,8 +158,7 @@ dialog + .backdrop {
   background-color: transparent;
   border: none;
 }
-/* Show and Hide Password*/
-.ojitocerrado {
+.ojitocerrado {/* Show and Hide Password*/
   background-image: url(./assets/ojitosabiertos-blanco.png) !important;
   display: inline-block;
   background-size: contain !important;
@@ -262,7 +259,6 @@ dialog + .backdrop {
   padding: 8px;
   margin: 5px;
   align-self: flex-end;
- 
 }
 .postsInput {
   display: flex;
@@ -383,8 +379,7 @@ dialog + .backdrop {
   height: 25px;
   filter: invert(1);
 }
-/* TRENDS */
-.juegofav {
+.juegofav {/* TRENDS */
   font-family: 'Do Hyeon', sans-serif;
   font-size: small;
 }
@@ -436,11 +431,9 @@ dialog + .backdrop {
   padding-bottom: 30px;
   margin-top: 30px;
 }
-
 .emptyLike{
   background-image: url(./assets/heart.png);
 }
-
 #btn-like{
   background-image: url(./assets/heart-filled.png);
 } 
@@ -476,6 +469,12 @@ dialog + .backdrop {
   .registerContainer {
     height: 100px;
   }
+  .transparent-input{
+    font-size: 20px;
+  }
+  .mainContainer button{
+    font-size: 15px;
+  }
   /* Todo lo de Posts */
   #navbarContainer {
     position: sticky;
@@ -489,7 +488,6 @@ dialog + .backdrop {
     justify-content: space-between;
     align-items: center;
   }
-
   #buttonLogOut {
     margin-right: 20px;
     height: 40px;

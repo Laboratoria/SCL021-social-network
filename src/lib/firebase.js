@@ -2,6 +2,7 @@
 import {
   getFirestore,
   arrayUnion,
+  arrayRemove,
   collection,
   addDoc,
   doc,
@@ -28,6 +29,7 @@ import {
 } from './firebasemodules.js';
 
 import { app } from './firebaseconfig.js';
+import { div } from 'prelude-ls';
 
 // -----------Firebase Login autorización
 const auth = getAuth();
@@ -210,22 +212,25 @@ const likePost = async (id) => {
     await updateDoc(
       postRef,
       {
-        like: arrayRemove(userIdentification),
-        likesCount: likesCount - 1,
+        likes: arrayRemove(userIdentification),
       },
-      document.getElementsByClassName('emptyLike').setAttribute('id', 'btn-like')
+      document.getElementById('btn-like').setAttribute('class', 'emptyLike')
     );
     console.log('docPost', docPost);
   } else {
     await updateDoc(
       postRef,
       {
-        like: arrayUnion(userIdentification),
-        likesCount: likesCount + 1,
+        likes: arrayUnion(userIdentification),
       },
       document.getElementById('btn-like').classList.remove('class', 'emptyLike')
     );
   }
+  await updateDoc(
+  postRef,{
+    likesCount: likes.length,
+  }
+  );
 };
 
 // ------------ Delete post ----------

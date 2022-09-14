@@ -1,5 +1,10 @@
 import {
-  auth, logOut, newPosts, displayPosts, likePost, deletePost,
+  auth, 
+  logOut, 
+  newPosts, 
+  displayPosts, 
+  likePost, 
+  deletePost
 } from '../lib/firebase.js';
 
 // main route
@@ -428,6 +433,8 @@ const posts = () => {
           // img es el <3
           likePost(doc.id);
         });
+
+
 
         // COMMENTS
         

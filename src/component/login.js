@@ -1,5 +1,3 @@
-// import { register } from '../component/register.js';
-// import { check } from 'yargs';
 import { loginEmailPassword, signGoogle, resetPass } from '../lib/firebase.js';
 // importar resetPass
 

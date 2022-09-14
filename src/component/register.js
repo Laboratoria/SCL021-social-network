@@ -53,7 +53,6 @@ const register = () => {
   emailContainer.appendChild(inputEmail);
 
   // Crea ingreso de Password
-  // Crea ingreso de Password
   const passwordContainer = document.createElement('div');
   passwordContainer.setAttribute('id', 'passwordContainer');
   mainContainer.appendChild(passwordContainer);
