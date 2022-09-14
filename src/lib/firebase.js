@@ -1,5 +1,11 @@
 /* eslint import/no-unresolved: [2, { ignore: ['gstatic'] }] */
 import {
+  getDatabase,
+  ref,
+  runTransaction,
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js';
+
+import {
   getFirestore,
   arrayUnion,
   arrayRemove,
@@ -29,12 +35,10 @@ import {
 } from './firebasemodules.js';
 
 import { app } from './firebaseconfig.js';
-import { div } from 'prelude-ls';
 
 // -----------Firebase Login autorización
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
-
 const getUserData = () => auth.currentUser;
 
 // let user = ;
@@ -207,14 +211,14 @@ const likePost = async (id) => {
   console.log(postRef);
   const docPost = await getDoc(postRef);
   const dataLike = docPost.data();
-  const likesCount = dataLike.likesCount;
   if (dataLike.likes.includes(userIdentification)) {
     await updateDoc(
       postRef,
       {
         likes: arrayRemove(userIdentification),
       },
-      document.getElementById('btn-like').setAttribute('class', 'emptyLike')
+      document.getElementById('btn-like').setAttribute('class', 'emptyLike'),
+      console.log('dislike'),
     );
     console.log('docPost', docPost);
   } else {
@@ -223,15 +227,26 @@ const likePost = async (id) => {
       {
         likes: arrayUnion(userIdentification),
       },
-      document.getElementById('btn-like').classList.remove('class', 'emptyLike')
+      document.getElementById('btn-like').setAttribute('class', 'fullLike'),
+      console.log('like'),
     );
   }
-  await updateDoc(
-  postRef,{
-    likesCount: likes.length,
-  }
-  );
 };
+
+// ------- Actualiza likes ---------
+// const db = getFirestore(); estaba arriba
+
+// pruebita 
+
+/* const likesCountRef = (id) => {
+//  ref(db, `gg-girls/google/${[id]}/likes`);
+  ref(db, 'google', + postId + '')
+  onValue(likesCountRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    return data;
+  });
+}; */
 
 // ------------ Delete post ----------
 function deletePost(id) {
@@ -244,10 +259,11 @@ function deletePost(id) {
 /* const editPost = (id, newDescription) =>
   updateDoc(doc(db,'post', id) , newDescription) */
 
+// podria func
 /* function editPost(id) {
   updateDoc(doc(db, 'google', id))
   .then (() => console.log('ya puedes editar tu post'))
-  .catch ((error) => console.log ('no se pudo editar t', error))
+  .catch ((error) => console.log ('no se pudo editar', error))
 } */
 
 // ----------- Comment Post -------
@@ -269,5 +285,6 @@ export {
   displayPosts,
   likePost,
   deletePost,
-  /* getPostPic, */
+ /* likesCountRef,
+ getPostPic, */
 };
