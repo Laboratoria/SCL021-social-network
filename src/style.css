@@ -436,9 +436,14 @@ dialog + .backdrop {
   padding-bottom: 30px;
   margin-top: 30px;
 }
+
+.emptyLike{
+  background-image: url(./assets/heart.png);
+}
+
 #btn-like{
   background-image: url(./assets/heart-filled.png);
-}
+} 
 /* RESPONSIVE PANTALLAS GRANDES */
 @media only screen and (min-width: 990px) {
   body {

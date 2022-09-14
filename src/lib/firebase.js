@@ -1,12 +1,15 @@
 /* eslint import/no-unresolved: [2, { ignore: ['gstatic'] }] */
 import {
   getFirestore,
+  arrayUnion,
   collection,
   addDoc,
   doc,
   Timestamp,
   query,
+  getDoc,
   getDocs,
+  updateDoc,
   orderBy,
   onSnapshot,
   where,
@@ -199,28 +202,28 @@ const likePost = async (id) => {
   let userIdentification = getUserData();
   userIdentification = userIdentification.uid;
   const postRef = doc(db, 'google', postId);
-  //const docPost = await getDocs(postRef);
-  //const dataLike = docPost.data();
-  //console.log(dataLike);
-  const likesCount = dataLike.numberLike;
-  if (dataLike.like.includes(userIdentification.uid)) {
+  console.log(postRef);
+  const docPost = await getDoc(postRef);
+  const dataLike = docPost.data();
+  const likesCount = dataLike.likesCount;
+  if (dataLike.likes.includes(userIdentification)) {
     await updateDoc(
       postRef,
       {
-        like: arrayRemove(userIdentification.uid),
-        //numberLike: likesCount - 1,
+        like: arrayRemove(userIdentification),
+        likesCount: likesCount - 1,
       },
-      /* [img].setAttribute('src', './assets/heart.png') */
+      document.getElementsByClassName('emptyLike').setAttribute('id', 'btn-like')
     );
     console.log('docPost', docPost);
   } else {
     await updateDoc(
       postRef,
       {
-        like: arrayUnion(userIdentification.uid),
-        //numberLike: likesCount + 1,
+        like: arrayUnion(userIdentification),
+        likesCount: likesCount + 1,
       },
-      /* [img].setAttribute('src', './assets/heart-filled.png') */
+      document.getElementById('btn-like').classList.remove('class', 'emptyLike')
     );
   }
 };
@@ -228,12 +231,19 @@ const likePost = async (id) => {
 // ------------ Delete post ----------
 function deletePost(id) {
   deleteDoc(doc(db, 'google', id))
+    .then(() => console.log('exito al borrar'))
+    .catch((error) => console.log('error', error));
 }
-
 // ------------ Edit Post ------------
 
-/*const editPost = (id, newDescription) =>
+/* const editPost = (id, newDescription) =>
   updateDoc(doc(db,'post', id) , newDescription) */
+
+/* function editPost(id) {
+  updateDoc(doc(db, 'google', id))
+  .then (() => console.log('ya puedes editar tu post'))
+  .catch ((error) => console.log ('no se pudo editar t', error))
+} */
 
 // ----------- Comment Post -------
 

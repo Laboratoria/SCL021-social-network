@@ -53,6 +53,7 @@ const register = () => {
   emailContainer.appendChild(inputEmail);
 
   // Crea ingreso de Password
+  // Crea ingreso de Password
   const passwordContainer = document.createElement('div');
   passwordContainer.setAttribute('id', 'passwordContainer');
   mainContainer.appendChild(passwordContainer);
@@ -61,7 +62,7 @@ const register = () => {
   inputPassword.setAttribute('value', '');
   inputPassword.setAttribute('type', 'password');
   inputPassword.setAttribute('class', 'transparent-input');
-  inputPassword.setAttribute('id', 'passwordRegister');
+  inputPassword.setAttribute('id', 'passwordLogin');
   inputPassword.setAttribute('placeholder', 'Ingresa tu contraseña');
   inputPassword.setAttribute('minlength', '6');
   inputPassword.setAttribute('maxlength', '12');
@@ -92,7 +93,7 @@ const register = () => {
     }
   }
   checkbox.addEventListener('click', showPassword);
-
+  
   // Boton de Crear Cuenta
   const buttonForNewAccount = document.createElement('button');
   buttonForNewAccount.setAttribute('id', 'buttonLogin');

@@ -291,7 +291,9 @@ const posts = () => {
   // Función para traer todo los datos de los posts y creación de Div para contenerlos
   displayPosts().then(
     (value) => {
+       console.log(value)
       value.forEach((doc) => {
+        console.log("doc",doc)
         const postIdentifier = doc.date;
         const divPostMain = document.createElement('div');
         divPostMain.setAttribute('id', postIdentifier);
@@ -389,8 +391,8 @@ const posts = () => {
 
         // Caroooo
         deletePosts.addEventListener('click', () => {
-          const id = auth.currentUser.uid;
-          console.log(id);
+          const id = doc.id;
+          console.log("estes es el id",id);
           const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?');
           if (deleteAlert == true) {
             deletePost(id);
@@ -399,54 +401,6 @@ const posts = () => {
             alert('post no eliminado!');
           }
         }); 
-
-        /* document.querySelectorAll('#btn-delete').forEach (element=>element.addEventListener('click', (e)  => {
-          let id = auth.currentUser.uid;
-          console.log (id)
-          if (confirm ('¿Estás seguro que quieres eliminar este post?') == true ){
-            deletePost(id)
-          }
-          else {
-            alert('post no eliminado!');
-          }
-        })) */
-
-        /* document.querySelectorAll('#btn-delete').forEach((element) => element.addEventListener('click', (e) => {
-          const id = e.target.dataset.id;
-          if (confirm('¿Quieres borrar este post?') === true) {
-            deletePost(id);
-         } else if(deletePost(id).forEach(element) == true ){
-            alert('Se ha eliminado tu post!'
-
-          const btnDelete = editDiv.document.getElementById('btn-delete');
-         console.log(btnDelete);
-        btnDelete.forEach(buttonPost => {
-          buttonPost.addEventListener('click',  (e) => {
-            //console.log(deletePosts)
-            id = e.target.dataset.id;
-            //console.log(id);
-            const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?')
-              if(deleteAlert == true){
-            deletePost(id)
-            alert('Se ha eliminado tu post')
-          }else{
-            alert('No se pudo eliminar tu post! Intenta nuevamente')
-          }
-
-              })
-            }) */
-
-        // carito la conflictiva dhvshvfbhsvbfvh
-      /*  deletePosts.addEventListener('click', (e) => {
-          // console.log(btn)
-          const id = e.target.dataset.id;
-          // console.log(id);
-          const deleteAlert = confirm('¿Estas seguro que quieres eliminar este post?');
-          if (deleteAlert == true) {
-            deletePost(id);
-            alert('se borro tu post');
-          }
-        }); */
 
         // DIV DESCRIPTION
         const postDesc = document.createElement('div');
@@ -465,7 +419,7 @@ const posts = () => {
         // likePost.setAttribute('type', 'likecito')
         likePosts.setAttribute('class', 'emptyLike');
         likePosts.setAttribute('id', 'btn-like');
-        likePosts.setAttribute('src', './assets/heart.png');
+        likePosts.setAttribute('src', './assets/heart.png')
         likeDiv.appendChild(likePosts);
         likePosts.addEventListener('click', (e) => {
           e.preventDefault();
@@ -483,30 +437,6 @@ const posts = () => {
         commentPosts.setAttribute('src', './assets/commeents.png');
         likeDiv.appendChild(commentPosts);
 
-        /* <div class="likes-border">
-              <button  class="btn-like" value=${doc.id}>
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm4.186 10.74L12 16.926L7.814 12.74a2.745 2.745 0 0 1 0-3.907a2.745 2.745 0 0 1 3.906 0l.28.279l.279-.279a2.745 2.745 0 0 1 3.906 0a2.745 2.745 0 0 1 .001 3.907z"/></svg>
-            </button>
-            <span id="like-count" class="like-count"> ${posts.numberLike}Me gusta</span>
-            </div>
-
-      const btnLike = postContainer.querySelectorAll('.likes');
-        console.log(likes);
-        likes.forEach((like) => {
-          console.log(likes);
-          like.addEventListener('click', () => {
-          // id = e.target.dataset.id;
-            console.log('ola');
-            //const idLike = e.target.dataset.id;
-            const userId =auth.currentUser.uid;
-            likePost(like.value, userId);
-            console.log(id);
-          });
-        });
-
-        });
-
-      }   */
         // DIV COMMENTS
         const commentsPosts = document.createElement('span');
         commentsPosts.setAttribute('id', 'comments');
