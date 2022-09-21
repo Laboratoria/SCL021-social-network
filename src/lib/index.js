@@ -1,6 +1,11 @@
 // aqui exportaras las funciones que necesites
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};
+
+// export function registerButton() {
+//     registerDiv.querySelector("#register").addEventListener("click", function () {
+//         console.log("diste un click")
+//     });
+// }
+
+
+

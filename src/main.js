@@ -1,5 +1,16 @@
-// Este es el punto de entrada de tu aplicacion
+// import { welcome } from "./views/welcome.js"
+import { routes, onNavigate } from "./lib/routes.js"
+const root = document.getElementById("root")
+console.log(window.location.pathname)
+root.appendChild(routes[window.location.pathname])
 
-import { myFunction } from './lib/index.js';
 
-myFunction();
+window.onpopstate = () => {
+    console.log("estoy funcionando")
+    onNavigate(location.pathname)
+    //rootDiv.innerHTML = routes[window.location.pathname]
+    //root.appendChild(routes[window.location.pathname])
+}
+
+
+
