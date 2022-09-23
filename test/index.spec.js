@@ -1,8 +1,13 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { changeRoute } from '../src/lib/ruta.js';
 
-describe('myFunction', () => {
+describe('pruebas de la funcion changeRoute', () => {
+  //it es una prueba
   it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+    expect(typeof changeRoute).toBe('function');
+  });
+  it('debería mostrar el login', () => {
+    expect(typeof changeRoute).toBe('function');
+    
   });
 });
