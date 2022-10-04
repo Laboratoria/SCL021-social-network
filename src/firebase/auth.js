@@ -30,6 +30,23 @@ export const signCreate = (email, password) => {
     });
 };
 
+export const resetPass = (email, callback) => {
+  sendPasswordResetEmail(auth, email)
+    .then((userCredential) => {
+      callback(true);
+      alert('We sent you an email, please check your spam folder!');
+      return userCredential;
+      // console.log('entraste jeje');
+    })
+    .catch((error) => {
+      callback(false);
+      alert("We couldn't recover your password");
+      // const errorCode = error.code;
+      const errorMessage = error.message;
+      return errorMessage;
+    });
+};
+
 //Funcion y promesa para ingresar a la cuenta
 export const signInFunction = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
@@ -50,26 +67,6 @@ export const signInFunction = (email, password) => {
 
 // Function redirect to google
 export const accessGoogle = () => {
-  // signInWithRedirect(auth,provider);
-  // getRedirectResult(auth)
-  // .then((result) => {
-  //   // This gives you a Google Access Token. You can use it to access Google APIs.
-  //   const credential = GoogleAuthProvider.credentialFromResult(result);
-  //   const token = credential.accessToken;
-  //   // The signed-in user info.
-  //   const user = result.user;
-  //   console.log(user)
-
-  // }).catch((error) => {
-  //   // Handle Errors here.
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   // The email of the user's account used.
-  //   const email = error.customData.email;
-  //   // The AuthCredential type that was used.
-  //   const credential = GoogleAuthProvider.credentialFromError(error);
-  //   // ...
-  // });
 
   // With popup
   signInWithPopup(auth, provider)
@@ -88,11 +85,6 @@ export const accessGoogle = () => {
       // Handle Errors here.
       // const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
-      // const email = error.customData.email;
-      // The AuthCredential type that was used.
-      // const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
       alert(errorMessage);
     });
 };
@@ -142,22 +134,7 @@ export const verification = () => {
     console.log(auth.currentUser);
   });
 };
-export const resetPass = (email, callback) => {
-  sendPasswordResetEmail(auth, email)
-    .then((userCredential) => {
-      callback(true);
-      alert('We sent you an email, please check your spam folder!');
-      return userCredential;
-      // console.log('entraste jeje');
-    })
-    .catch((error) => {
-      callback(false);
-      alert("We couldn't recover your password");
-      // const errorCode = error.code;
-      const errorMessage = error.message;
-      return errorMessage;
-    });
-};
+
 // Log out
 export const logOut = () => {
   signOut(auth)

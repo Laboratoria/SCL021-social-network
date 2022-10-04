@@ -167,36 +167,6 @@ export const feed = () => {
   const textNotification = document.createElement("h3");
   textNotification.textContent = "Notification";
   aNotification.appendChild(textNotification);
-  // Create div popUp
-  // const divPopup = document.createElement("div");
-  // divPopup.className = "notifications-popup";
-  // aNotification.appendChild(divPopup);
-  // // Create div container notification
-  // const divContainerNotification = document.createElement("div");
-  // divPopup.appendChild(divContainerNotification);
-  // // Create div profile photo popUp
-  // const divProfileNotification = document.createElement("div");
-  // divProfileNotification.className = "profile-photo";
-  // divContainerNotification.appendChild(divProfileNotification);
-  // // Create img profile
-  // const imgProfileNotification = document.createElement("img");
-  // imgProfileNotification.className = "profilePhoto";
-  // imgProfileNotification.setAttribute("src", "/img/profile-4.jpg");
-  // divProfileNotification.appendChild(imgProfileNotification);
-  // // Create div notification body
-  // const divNotBody = document.createElement("div");
-  // divNotBody.className = "notification-body";
-  // divNotBody.textContent = `liked you photo`;
-  // divContainerNotification.appendChild(divNotBody);
-  // //Problemas con benito jijij
-  // const bNotName = document.createElement("b");
-  // bNotName.textContent = "Benito";
-  // divNotBody.appendChild(bNotName);
-  // //Small text notification body
-  // const smallNotText = document.createElement("small");
-  // smallNotText.className = "text-muted"
-  // smallNotText.textContent = "2 DAYS AGO";
-  // divNotBody.appendChild(smallNotText);
   // Create a message notification
   const aNotMess = document.createElement("a");
   aNotMess.className = "menu-item";
@@ -373,8 +343,6 @@ export const feed = () => {
   createPost.addEventListener("submit", (e) => {
     e.preventDefault();
     const textPost = document.querySelector(".text-input");
-    //  createPostFunction(postInput.value)
-    console.log(textPost.value);
     savePost(textPost.value);
     // para resetear el input de texto createPost.reset();
   });
@@ -388,129 +356,13 @@ export const feed = () => {
   const divFeed = document.createElement("div");
   divFeed.className = "feed";
   feeds.appendChild(divFeed);
-  // // head
-  // const head = document.createElement("div");
-  // head.className = "head";
-  // divFeed.appendChild(head);
-  // // user feed
-  // const userFeed = document.createElement("div");
-  // userFeed.className = "user";
-  // head.appendChild(userFeed);
-  // // profile photo
-  // const photoFeed = document.createElement("div");
-  // photoFeed.className = "profile-photo";
-  // userFeed.appendChild(photoFeed);
-  // const profileImgFeed = document.createElement("img");
-  // profileImgFeed.className = "profilePhoto";
-  // profileImgFeed.setAttribute("src", "/img/profile-13.jpg");
-  // photoFeed.appendChild(profileImgFeed);
-  // // other info user
-  // const userInfo = document.createElement("div");
-  // userInfo.className = "info";
-  // userFeed.appendChild(userInfo);
-  // const usersName = document.createElement("h3");
-  // usersName.textContent = "Lana Rose";
-  // userInfo.appendChild(usersName);
-  // const datePost = document.createElement("small");
-  // datePost.textContent = "Dubai, 15 MINUTES AGO";
-  // userInfo.appendChild(datePost);
-  // // create icon edit post
-  // const editIconDiv = document.createElement("span");
-  // editIconDiv.className = "edit";
-  // head.appendChild(editIconDiv);
-  // const editIcon = document.createElement("i");
-  // editIcon.className = "fa-solid fa-ellipsis fa-2x";
-  // editIconDiv.appendChild(editIcon);
-  // // post photo
-  // const postPhoto = document.createElement("div");
-  // postPhoto.className = "photo";
-  // divFeed.appendChild(postPhoto);
-  // const postImg = document.createElement("img");
-  // postImg.setAttribute("src", "/img/feed-1.jpg");
-  // postPhoto.appendChild(postImg);
-  // // action buttons
-  // const actionButtons = document.createElement("div");
-  // actionButtons.className = "action-buttons";
-  // divFeed.appendChild(actionButtons);
-  // // interaction buttons
-  // const interactionButtons = document.createElement("div");
-  // interactionButtons.className = "interaction-buttons";
-  // actionButtons.appendChild(interactionButtons);
-  // //spans
-
-  // //like
-  // const spanLike = document.createElement("span");
-  // interactionButtons.appendChild(spanLike);
-  // const likeIcon = document.createElement("i");
-  // likeIcon.className = "fa-solid fa-heart";
-  // spanLike.appendChild(likeIcon);
-  // //comment
-  // const spanComment = document.createElement("span");
-  // interactionButtons.appendChild(spanComment);
-  // const commentIcon = document.createElement("i");
-  // commentIcon.className = "fa-regular fa-comment";
-  // spanComment.appendChild(commentIcon);
-  //share
-  // const spanShare = document.createElement("span");
-  // interactionButtons.appendChild(spanShare);
-  // const shareIcon = document.createElement("i");
-  // shareIcon.className = "fa-solid fa-share";
-  // spanShare.appendChild(shareIcon);
-  // //save post
-  // const bookmark = document.createElement("div");
-  // bookmark.className = "bookmark";
-  // actionButtons.appendChild(bookmark);
-  // const bookmarkSpan = document.createElement("span");
-  // bookmark.appendChild(bookmarkSpan);
-  // // save post btn
-  // const bookmarkIcon = document.createElement("span");
-  // bookmarkIcon.className = "fa-solid fa-bookmark";
-  // bookmarkSpan.appendChild(bookmarkIcon);
-  // //liked by
-  // const likedBy = document.createElement("div");
-  // likedBy.className = "liked-by";
-  // divFeed.appendChild(likedBy);
-  // const likedSpan = document.createElement("span");
-  // likedBy.appendChild(likedSpan);
-  // // liked by photos
-  // const likedByPhotos = document.createElement("img");
-  // likedByPhotos.className = "profilePhoto";
-  // likedByPhotos.setAttribute("src", "/img/profile-12.jpg");
-  // likedSpan.appendChild(likedByPhotos);
-  // const likedByPhotos2 = document.createElement("img");
-  // likedByPhotos2.className = "profilePhoto";
-  // likedByPhotos2.setAttribute("src", "/img/profile-4.jpg");
-  // likedSpan.appendChild(likedByPhotos2);
-  // const likedByPhotos3 = document.createElement("img");
-  // likedByPhotos3.className = "profilePhoto";
-  // likedByPhotos3.setAttribute("src", "/img/profile-2.jpg");
-  // likedSpan.appendChild(likedByPhotos3);
-  // etiqueta <p>Liked by <b>Ernest Achiever</b> and <b> 2,400 others</b></p>
-  //lo anterior es hijo de likedBy
+  
 
   // feeds
   const divFeeds = document.createElement("div");
   divFeeds.className = "feeds";
   middle.appendChild(divFeeds);
 
-  // // description photo
-  // const captionComments = document.createElement("div");
-  // captionComments.className = "caption";
-  // divFeed.appendChild(captionComments);
-  // //aquí va <p><b>Lana Rose </b>lorem ipsum dolor sit quisquam eius.
-  // //hijo de caption
-  // const spanCaption = document.createElement("span");
-  // captionComments.appendChild(spanCaption);
-  // const hashtag = document.createElement("p");
-  // hashtag.className = "harsh-tag"; //harshtag?
-  // hashtag.textContent = "#lifestyle";
-  // spanCaption.appendChild(hashtag);
-
-  //comments (muted)
-  // const comments = document.createElement("div");
-  // comments.className = "comments";
-  // comments.className = "text-muted";
-  // divFeed.appendChild(comments);
 
   // create right container
   const right = document.createElement("div");
@@ -644,4 +496,3 @@ export const feed = () => {
 
   return root;
 };
-// console.log(feed);
