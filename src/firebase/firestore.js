@@ -57,7 +57,6 @@ window.addEventListener("DOMContentLoaded", async () => {
      </div>
       `;
       containerFeed.innerHTML = html;
-      const deletePost = (id) => deleteDoc(doc(db, "Posts", id));
       const deletePostFeed = containerFeed.querySelector('.fa-ellipsis')
       deletePostFeed.addEventListener('click', ({target: {dataset}}) => {
         deletePost(dataset.id)
@@ -90,15 +89,11 @@ export const savePost = (description) => {
         : auth.currentUser.email,
   });
 };
-
-export const onGetSnapShot = (callback) => onSnapshot(collection(db, "Posts"), callback);
-
 const q = query(collection(db, "Posts"), orderBy("date", "desc"));
+export const onGetSnapShot = (callback) =>
+  onSnapshot(q, callback);
 
-
-
-
-
+const deletePost = (id) => deleteDoc(doc(db, "Posts", id));
 // async function likes(id, user) {
 //   const postlike = doc(db, 'Posts', id);
 //   const dataDocs = await getDoc(postlike);
@@ -116,6 +111,5 @@ const q = query(collection(db, "Posts"), orderBy("date", "desc"));
 //   }
 // }
 
-////LIKES///////////
 
 
